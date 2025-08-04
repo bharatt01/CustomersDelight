@@ -1,0 +1,59 @@
+.store-banner {
+  background-image: url('/Images/store11.avif');
+  background-size: cover;
+  background-position: center;
+  height: 320px;
+  position: relative;
+  border-radius: 0 0 20px 20px;
+  overflow: hidden;
+}
+
+.store-banner .overlay {
+  background: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.store-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+}
+
+.store-subtitle {
+  font-size: 1.1rem;
+  margin-top: 10px;
+}
+
+.product-card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+  transition: transform 0.3s ease;
+  overflow: hidden;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+}
+
+.product-img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.product-body {
+  padding: 16px;
+}
+
+.btn-group {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: 10px;
+}

@@ -1,0 +1,59 @@
+/* .hero-section {
+  background: linear-gradient(to right, rgba(5, 5, 216, 0.6), rgba(74, 74, 170, 0.1)), url('/Images/backgroundimg.jpg') no-repeat center center;
+  background-size: cover;
+    min-height: 90vh;
+      padding: 4rem 0;
+} */
+ .hero-section p {
+    font-size: 1.3rem;
+    font-weight: 500;
+  }
+.hero-section h3 {
+    font-size: 3rem;
+  }
+ 
+@media (max-width: 768px) {
+  .hero-section h3 {
+    font-size: 2.5rem;
+  }
+
+  .hero-section p {
+    font-size: 1.5rem;
+  }
+
+ .hero-section .btn {
+  width: auto; /* Allow buttons to size based on content */
+  text-align: center;
+  height: 3rem;
+  white-space: nowrap;
+}
+
+
+  .hero-section {
+    padding: 2rem 1rem;
+        min-height: 35rem !important;
+        background-size: cover !important;
+        background-position: center !important;
+    
+  }
+ 
+  
+}
+.hero-wrapper {
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-bg {
+  /* background-image: url('/Images/backgroundimg.jpg'); */
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  filter: blur(2px);
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  z-index: 0;
+}
