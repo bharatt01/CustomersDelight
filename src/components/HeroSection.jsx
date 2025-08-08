@@ -29,13 +29,13 @@ const Heros = () => {
 
         <div className="flex flex-wrap gap-4 pt-4">
           <button
-            onClick={() => navigate("/men'swear")}
+            onClick={() => navigate("/category/men")}
             className="bg-orange-500 hover:bg-orange-600 text-white font-medium px-6 py-3 rounded-md"
           >
             Men's Wear
           </button>
           <button
-            onClick={() => navigate("/women'swear")}
+            onClick={() => navigate("/category/women")}
             className="bg-orange-500 hover:bg-orange-600 text-white font-medium px-6 py-3 rounded-md"
           >
             Women's Wear

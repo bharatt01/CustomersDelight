@@ -1,80 +1,74 @@
-import React from 'react';
-import { Container, Row, Col, Button } from 'react-bootstrap';
-import { useNavigate } from 'react-router-dom';
-import './stores.css';
+import React, { useEffect, useState } from "react";
+import { db } from "../firebase";
+import { collection, getDocs } from "firebase/firestore";
+import { Link } from "react-router-dom";
 
-const stores = [
-  {
-    id: 1,
-    name: 'Fashion Forward',
-    image: '/Images/store11.avif',
-    description: 'Premium clothing for modern professionals',
-    path: '/store-details',
-  },
-  {
-    id: 2,
-    name: 'Urban Kicks',
-    image: '/Images/store2.avif',
-    description: 'Trendy footwear for all occasions',
-    path: '/store-details',
-  },
-  {
-    id: 3,
-    name: 'Elegance',
-    image: '/Images/store3.avif',
-    description: "Elegant women's clothing and accessories",
-    path: '/store-details',
-  },
-  {
-    id: 4,
-    name: 'Street Style',
-    image: '/Images/store4.avif',
-    description: 'Urban streetwear and casual footwear',
-    path: '/store-details',
-  },
-  {
-    id: 5,
-    name: 'Comfort Steps',
-    image: '/Images/store5.avif',
-    description: 'Comfortable and stylish shoes',
-    path: '/store-details',
-  },
-  {
-    id: 6,
-    name: 'Trendsetter',
-    image: '/Images/store6.avif',
-    description: 'Latest fashion trends for all',
-    path: '/store-details',
-  },
-];
+const Stores = () => {
+  const [stores, setStores] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-const Store = () => {
-  const navigate = useNavigate();
+  useEffect(() => {
+    const fetchStores = async () => {
+      try {
+        const snapshot = await getDocs(collection(db, "stores"));
+        const storeList = snapshot.docs
+          .map((doc) => ({
+            id: doc.id,
+            ...doc.data(),
+          }))
+          // Only include stores that have required fields
+          .filter((store) => store.name && store.slug);
+
+        setStores(storeList);
+      } catch (error) {
+        console.error("Error fetching stores:", error.message);
+        setStores([]); // optional: clear stores if fetch fails
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchStores();
+  }, []);
 
   return (
-    <Container className="py-5">
-      <h2 className="text-center mb-5 fw-bold">🌟 Explore Our Stores</h2>
-      <Row className="g-4">
-        {stores.map((store) => (
-          <Col key={store.id} xs={12} sm={6} md={4} lg={4}>
-            <div className="store-card-modern" onClick={() => navigate(store.path)}>
-              <div
-                className="store-image"
-                style={{ backgroundImage: `url(${store.image})` }}
+    <div className="py-10 bg-[#fefefe] px-4 sm:px-6 lg:px-8">
+      <h2 className="text-3xl font-bold text-center mb-8">🏪 Our Stores</h2>
+
+      {loading ? (
+        <p className="text-center text-gray-500">Loading stores...</p>
+      ) : stores.length === 0 ? (
+        <p className="text-center text-gray-500">No stores available at the moment.</p>
+      ) : (
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+          {stores.map((store) => (
+            <div
+              key={store.id}
+              className="bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow p-4"
+            >
+              <img
+                src={store.imageUrl || "/placeholder.jpg"}
+                alt={store.name || "Store"}
+                className="w-full h-48 object-cover rounded-md mb-3"
               />
-              <div className="store-content">
-                <h5>{store.name}</h5>
-                <p className="store-description">{store.description}</p>
-                <Button className="visit-btn-modern" variant="outline-dark">
-                  Visit Store
-                </Button>
-              </div>
+              <h3 className="text-xl font-semibold">
+                {store.name || "Unnamed Store"}
+              </h3>
+              <p className="text-gray-600 line-clamp-3">
+                {store.description || "No description available."}
+              </p>
+              <Link
+                to={store.slug ? `/${store.slug}` : "#"}
+                className="inline-block mt-4 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition"
+              >
+                View Store
+              </Link>
             </div>
-          </Col>
-        ))}
-      </Row>
-    </Container>
+          ))}
+        </div>
+      )}
+    </div>
   );
 };
 
-export default Store;
+export default Stores;

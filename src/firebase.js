@@ -1,23 +1,25 @@
-// firebase.js
+// Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+// import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 import { getStorage } from "firebase/storage";
+import { getAuth } from 'firebase/auth';
 
-// ✅ Your Firebase config
+// Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "YOUR_API_KEY",
-  authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
-  projectId: "YOUR_PROJECT_ID",
-  storageBucket: "YOUR_PROJECT_ID.appspot.com",
-  messagingSenderId: "SENDER_ID",
-  appId: "APP_ID",
+  apiKey: "AIzaSyDTJME0BmXvRH8yZbquIdTYKetfmTLRzrk",
+  authDomain: "customersdelight-b19cc.firebaseapp.com",
+  projectId: "customersdelight-b19cc",
+  storageBucket: "customersdelight-b19cc.firebasestorage.app",
+  messagingSenderId: "898446286413",
+  appId: "1:898446286413:web:e9a7c6d0d45da8dfc38604"
 };
 
-// ✅ Initialize Firebase
+// Initialize Firebase
 const app = initializeApp(firebaseConfig);
-
-// ✅ Firestore
-export const db = getFirestore(app);
-
-// ✅ Storage (THIS IS MISSING IN YOUR ERROR)
-export const storage = getStorage(app);
+const auth = getAuth(app)
+const db = getFirestore(app);
+const storage = getStorage(app);
+export { db, storage,auth };

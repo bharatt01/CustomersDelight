@@ -1,25 +1,35 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../../firebase"; // Make sure you import your initialized auth
 
-const AdminLogin = () => {
+const SuperAdminLogin = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
 
-    // Dummy check — replace with Firebase/Auth API
-    if (email === "admin@example.com" && password === "admin123") {
-      navigate("/admin/dashboard");
-    } else {
-      setError("Invalid email or password");
+    try {
+      const userCredential = await signInWithEmailAndPassword(auth, email, password);
+      const user = userCredential.user;
+
+      if (user.email === "bharatsharma@gmail.com") {
+        navigate("/superadmin/dashboard");
+      } else {
+        setError("Unauthorized email.");
+      }
+    } catch (err) {
+      setError("Invalid email or password.");
     }
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-100 to-gray-300 flex items-center justify-center px-4">
+    // (Same UI as before)
+
+      <div className="min-h-screen bg-gradient-to-br from-gray-100 to-gray-300 flex items-center justify-center px-4">
       <div className="max-w-md w-full bg-white rounded-2xl shadow-2xl p-8">
         <h2 className="text-2xl font-bold text-center text-gray-800 mb-6">
           Admin Login
@@ -75,7 +85,8 @@ const AdminLogin = () => {
         </p>
       </div>
     </div>
+    
   );
 };
 
-export default AdminLogin;
+export default SuperAdminLogin;

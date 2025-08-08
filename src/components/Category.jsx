@@ -1,23 +1,11 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
-import './category.css';
+import React from "react";
+import { useNavigate } from "react-router-dom";
+import "./category.css";
 
 const categories = [
-  {
-    title: 'Men',
-    image: '/Images/men2.avif',
-    path: '/men',
-  },
-  {
-    title: 'Women',
-    image: '/Images/woman2.avif',
-    path: '/women',
-  },
-  {
-    title: 'Kids',
-    image: '/Images/kids2.avif',
-    path: '/kids',
-  },
+  { title: "Men", image: "/Images/men2.avif", categorySlug: "men" },
+  { title: "Women", image: "/Images/woman2.avif", categorySlug: "women" },
+  { title: "Kids", image: "/Images/kids2.avif", categorySlug: "kids" },
 ];
 
 const SplitCategory = () => {
@@ -31,7 +19,7 @@ const SplitCategory = () => {
           <div
             key={cat.title}
             className="category-card"
-            onClick={() => navigate(cat.path)}
+            onClick={() => navigate(`/category/${cat.categorySlug}`)}
           >
             <div
               className="category-image"

@@ -1,33 +1,115 @@
-import React from 'react'
-import { BrowserRouter as Router,Route,Routes} from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import ScrollToTop from './components/ScrollToTop';
+import Navbar from './components/Navbar';
+import Footer from './components/Footer';
+
+// Pages
 import Home from './pages/Home';
-import Fashionstore from './pages/Fashionstore'
- import ProductDetails from './pages/Productdetails';
- import Urbanstore from './pages/Urbanstore'
+import ProductDetails from './pages/Productdetails';
 import AboutUs from './components/AboutUs';
-import StorePage from './components/StorePage';
-import AdminLogin from './pages/AdminLogin';
-import AdminDashboard from './pages/AdminDashboard';
+import StoreDetail from './components/StoreDetail';
+import CategoryProducts from './components/CategoryProducts';
+import SearchResults from './pages/SearchResults';
+import SplitCategory from './components/Category';
+
+// SuperAdmin
+import SuperAdminLogin from './pages/SuperAdmin/SuperAdminLogin';
+import SuperAdminDashboard from './pages/SuperAdmin/SuperAdminDashboard';
+import AddStore from './pages/SuperAdmin/AddStore';
+import ManageStores from './pages/SuperAdmin/ManageStores';
+import ProtectedRoute from './components/ProtectedRoute';
+
+// StoreAdmin
+import AdminLogin from './pages/Admin/AdminLogin';
+import StoreAdminDashboard from './pages/Admin/StoreAdminDashboard';
+import ProtectedRouteForStoreAdmin from './components/ProtectedRouteForStoreAdmin';
+import AddProduct from './pages/Admin/AddProduct'; // if needed
+
+// BlogAdmin
+import BlogAdminLogin from './pages/BlogAdminLogin';
+import AddBlog from './pages/AddBlog';
+import BlogAdminProtectedRoute from './components/BlogAdminProtectedRoute'; // ✅ we'll create this below
+import Blogs from './pages/Blogs';
+import BlogDetails from "./pages/BlogDetails";
+import Member from './pages/Member';
+
+// import CategoryProducts from "./pages/CategoryProducts"
+
 function App() {
   return (
-    <>
-       <Router>
-        <ScrollToTop />
-     <Routes>
-     <Route path='/' element={<Home/>}> </Route>
+    <Router>
+      <ScrollToTop />
+      {/* <Navbar /> */}
+
+      <Routes>
+        {/* Public */}
+        <Route path="/" element={<Home />} />
         <Route path="/product/:id" element={<ProductDetails />} />
-        <Route path='/about-us' element={<AboutUs/>}/>
-        <Route path='/fashion-forward' element={<Fashionstore/>}/>
-         <Route path='/urban-store' element={<Urbanstore/>}/>
-         <Route path='/store-details' element={<StorePage/>}/>
-         <Route path='/admin-login' element={<AdminLogin/>}/>
-         <Route path='/admin/dashboard' element={<AdminDashboard/>}/>
-     </Routes>
-        </Router>
-    
-    </>
-  )
+        <Route path="/about-us" element={<AboutUs />} />
+        <Route path="/search" element={<SearchResults />} />
+        <Route path="/:slug" element={<StoreDetail />} />
+        <Route path="/category/:categoryName" element={<CategoryProducts />} />
+           <Route path="/" element={<SplitCategory />} />
+           <Route path='/exclusive-member' element={<Member/>}></Route>
+             {/* <Route path="/products/:category" element={<CategoryProducts />} /> */}
+
+        {/* Blog Admin */}
+        <Route path="/blog-admin/login" element={<BlogAdminLogin />} />
+        <Route
+          path="/admin/add-blog"
+          element={
+            <BlogAdminProtectedRoute>
+              <AddBlog />
+            </BlogAdminProtectedRoute>
+          }
+        />
+        <Route path="/blogs" element={<Blogs/>}/>
+<Route path="/blog/:id" element={<BlogDetails />} />
+
+
+
+        {/* SuperAdmin */}
+        <Route path="/superadmin-login" element={<SuperAdminLogin />} />
+        <Route
+          path="/superadmin/dashboard"
+          element={
+            <ProtectedRoute requireSuperadmin={true}>
+              <SuperAdminDashboard />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/superadmin/add-store"
+          element={
+            <ProtectedRoute requireSuperadmin={true}>
+              <AddStore />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/superadmin/manage-store"
+          element={
+            <ProtectedRoute requireSuperadmin={true}>
+              <ManageStores />
+            </ProtectedRoute>
+          }
+        />
+
+        {/* Store Admin */}
+        <Route path="/admin-login" element={<AdminLogin />} />
+        <Route
+          path="/admin/dashboard"
+          element={
+            <ProtectedRouteForStoreAdmin>
+              <StoreAdminDashboard />
+            </ProtectedRouteForStoreAdmin>
+          }
+        />
+      </Routes>
+
+      {/* <Footer /> */}
+    </Router>
+  );
 }
 
-export default App
+export default App;
