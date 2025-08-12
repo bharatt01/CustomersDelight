@@ -23,7 +23,7 @@ const AddBlog = () => {
   // ✅ Redirect to login if not signed in
   useEffect(() => {
     if (!auth.currentUser) {
-      navigate("/adminlogin");
+      navigate("/blog-admin/login");
     }
   }, [navigate]);
 

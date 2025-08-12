@@ -21,7 +21,7 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
         {/* Logo */}
         <Link to="/">
-          <div className="text-2xl font-bold text-orange-500">
+          <div className="text-xl font-bold text-orange-500">
             Customer's Delight
           </div>
         </Link>
@@ -48,54 +48,95 @@ const Navbar = () => {
           <Menu className="w-6 h-6 text-gray-700" />
         </button>
 
-{/* Desktop Nav */}
-<div className="hidden md:flex items-center justify-between flex-1 ml-6 gap-6">
-  <ul className="flex items-center gap-6 font-medium text-gray-700 whitespace-nowrap">
-    <li className="hover:text-orange-500 transition">
-      <Link to="/">Home</Link>
-    </li>
-    <li
-      className="relative group"
-      onMouseEnter={() => setShowCategories(true)}
-      onMouseLeave={() => setShowCategories(false)}
-    >
-      <button className="flex items-center gap-1 hover:text-orange-500 transition">
-        Categories <ChevronDown className="w-4 h-4" />
-      </button>
-      {/* Dropdown code stays same */}
-    </li>
-    <li className="hover:text-orange-500 transition">
-      <Link to="/exclusive-member">Become VIP Member</Link>
-    </li>
-    <li className="hover:text-orange-500 transition">
-      <Link to="/about-us">About Us</Link>
-    </li>
-    <li className="hover:text-orange-500 transition">
-      <Link to="/blogs">Blogs</Link>
-    </li>
-  </ul>
+        {/* Desktop Nav */}
+        <div className="hidden md:flex items-center justify-between flex-1 ml-6 gap-6">
+          <ul className="flex items-center gap-6 font-medium text-gray-700 whitespace-nowrap">
+            <li className="hover:text-orange-500 transition">
+              <Link to="/">Home</Link>
+            </li>
+            <li
+              className="relative group"
+              onMouseEnter={() => setShowCategories(true)}
+              onMouseLeave={() => setShowCategories(false)}
+            >
+              <button className="flex items-center gap-1 hover:text-orange-500 transition">
+                Categories <ChevronDown className="w-4 h-4" />
+              </button>
 
-  {/* Search Bar (Desktop) */}
-  <form
-    onSubmit={handleSearch}
-    className="relative flex-shrink-0 w-full max-w-sm"
-  >
-    <input
-      type="text"
-      value={searchQuery}
-      onChange={(e) => setSearchQuery(e.target.value)}
-      placeholder="Search products, brands, or categories..."
-      className="w-full py-2 pl-4 pr-12 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-orange-400 shadow-sm"
-    />
-    <button
-      type="submit"
-      className="absolute right-2 top-1/2 transform -translate-y-1/2 text-white bg-orange-500 hover:bg-orange-600 p-2 rounded-full"
-    >
-      <Search className="w-5 h-5" />
-    </button>
-  </form>
-</div>
-</div>
+              {/* Dropdown */}
+              <div
+                className={`absolute top-full left-0 bg-white shadow-lg rounded-md py-3 px-2 w-60 z-50 transition-all duration-200 origin-top transform ${
+                  showCategories
+                    ? "scale-100 opacity-100"
+                    : "scale-95 opacity-0 pointer-events-none"
+                }`}
+              >
+                <ul className="space-y-2">
+                  <li>
+                    <Link
+                      to="/category/men"
+                      className="flex items-center gap-2 px-3 py-2 hover:bg-orange-100 rounded transition"
+                    >
+                      Men's Wear
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      to="/category/women"
+                      className="flex items-center gap-2 px-3 py-2 hover:bg-orange-100 rounded transition"
+                    >
+                      Women's Wear
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      to="/category/kids"
+                      className="flex items-center gap-2 px-3 py-2 hover:bg-orange-100 rounded transition"
+                    >
+                      Kids
+                    </Link>
+                  </li>
+                </ul>
+              </div>
+            </li>
+            <li className="hover:text-orange-500 transition">
+              <Link to="/exclusive-member">Become VIP Member</Link>
+            </li>
+            <li className="hover:text-orange-500 transition">
+              <Link to="/about-us">About Us</Link>
+            </li>
+            <li className="hover:text-orange-500 transition">
+              <Link to="/blogs">Blogs</Link>
+            </li>
+          </ul>
+
+          {/* Search Bar (Desktop) */}
+          <form
+            onSubmit={handleSearch}
+            className="relative flex-shrink-0 w-full max-w-sm"
+          >
+            <input
+              type="text"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              placeholder="Search products, brands, or categories..."
+               className="w-full py-2 pl-4 pr-12 rounded-full border border-gray-300 focus:outline-none"
+    style={{
+      boxShadow: "0 0 2px orange", // ✅ orange box shadow
+    }}
+    onFocus={(e) => (e.target.style.boxShadow = "0 0 8px orange")}
+    onBlur={(e) => (e.target.style.boxShadow = "0 0 6px orange")}
+  
+            />
+            <button
+              type="submit"
+              className="absolute right-2 top-1/2 transform -translate-y-1/2 text-white bg-orange-500 hover:bg-orange-600 p-2 rounded-full"
+            >
+              <Search className="w-5 h-5" />
+            </button>
+          </form>
+        </div>
+      </div>
 
       {/* Mobile Drawer */}
       {mobileOpen && (
@@ -146,7 +187,7 @@ const Navbar = () => {
                   <ul className="mt-2 ml-2 pl-2 border-l border-gray-200 space-y-2 text-sm text-gray-600">
                     <li>
                       <Link
-                        to="/category/mens-wear"
+                        to="/category/men"
                         onClick={() => setMobileOpen(false)}
                       >
                         Men's Wear
@@ -154,7 +195,7 @@ const Navbar = () => {
                     </li>
                     <li>
                       <Link
-                        to="/category/womens-wear"
+                        to="/category/womens"
                         onClick={() => setMobileOpen(false)}
                       >
                         Women's Wear
@@ -168,27 +209,14 @@ const Navbar = () => {
                         Kids
                       </Link>
                     </li>
-                    <li>
-                      <Link
-                        to="/category/Electronics"
-                        onClick={() => setMobileOpen(false)}
-                      >
-                        Electronics
-                      </Link>
-                    </li>
-                    <li>
-                      <Link
-                        to="/category/shoes"
-                        onClick={() => setMobileOpen(false)}
-                      >
-                        Shoes
-                      </Link>
-                    </li>
                   </ul>
                 )}
               </li>
               <li>
-                <Link to="/exclusive-member" onClick={() => setMobileOpen(false)}>
+                <Link
+                  to="/exclusive-member"
+                  onClick={() => setMobileOpen(false)}
+                >
                   Become a Prime Member
                 </Link>
               </li>
@@ -197,9 +225,11 @@ const Navbar = () => {
                   About Us
                 </Link>
               </li>
-                <li className="hover:text-orange-500 transition">
-              <Link to="/blogs">Blogs</Link>
-            </li>
+              <li className="hover:text-orange-500 transition">
+                <Link to="/blogs" onClick={() => setMobileOpen(false)}>
+                  Blogs
+                </Link>
+              </li>
             </ul>
           </div>
         </div>

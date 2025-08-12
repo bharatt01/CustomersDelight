@@ -40,12 +40,7 @@ const Heros = () => {
           >
             Women's Wear
           </button>
-          <button
-            onClick={() => navigate("/stores")}
-            className="border border-white text-white hover:bg-white hover:text-black px-6 py-3 rounded-md"
-          >
-            Browse Stores
-          </button>
+         
         </div>
       </div>
     </div>

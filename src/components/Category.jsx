@@ -6,6 +6,7 @@ const categories = [
   { title: "Men", image: "/Images/men2.avif", categorySlug: "men" },
   { title: "Women", image: "/Images/woman2.avif", categorySlug: "women" },
   { title: "Kids", image: "/Images/kids2.avif", categorySlug: "kids" },
+  { title: "Home", image: "/Images/home2.jpg", categorySlug: "home" }, // ✅ New category
 ];
 
 const SplitCategory = () => {

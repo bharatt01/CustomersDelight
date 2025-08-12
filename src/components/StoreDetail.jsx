@@ -1,14 +1,10 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { db } from "../firebase";
-import {
-  collection,
-  query,
-  where,
-  getDocs,
-} from "firebase/firestore";
+import { collection, query, where, getDocs } from "firebase/firestore";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
+import { Share2, Phone } from "lucide-react";
 
 const StoreDetail = () => {
   const { slug } = useParams();
@@ -82,21 +78,41 @@ const StoreDetail = () => {
     <>
       <Navbar />
 
-      {/* Store Banner */}
-      <div className="relative w-full h-[90vh]">
+      {/* Banner Section */}
+      <div className="w-full h-[50vh] relative">
         <img
           src={store.imageUrl}
           alt={store.name}
           className="w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-black/10 flex flex-col justify-center items-center text-white text-center p-6">
-          <h1 className="text-5xl md:text-6xl font-bold mb-4 drop-shadow-lg">{store.name}</h1>
-          <p className="max-w-3xl text-lg md:text-xl text-gray-200">{store.description}</p>
+      </div>
+
+      {/* Store Info */}
+      <div className="max-w-6xl mx-auto px-6 -mt-12 relative z-10">
+        <div className="bg-white rounded-xl shadow-lg p-6 md:p-8 flex flex-col md:flex-row md:items-center justify-between">
+          <div>
+            <h1 className="text-3xl md:text-4xl font-bold text-gray-800">{store.name}</h1>
+            <p className="text-gray-600 mt-2">{store.description}</p>
+          </div>
+          <div className="flex gap-4 mt-4 md:mt-0">
+            <a
+              href={`tel:${store.phoneNumber}`}
+              className="flex items-center gap-2 bg-green-500 text-white px-4 py-2 rounded-lg shadow hover:bg-green-600 transition"
+            >
+              <Phone size={18} /> Call
+            </a>
+            <button
+              onClick={() => navigator.share ? navigator.share({ title: store.name, url: window.location.href }) : alert("Sharing not supported")}
+              className="flex items-center gap-2 bg-blue-500 text-white px-4 py-2 rounded-lg shadow hover:bg-blue-600 transition"
+            >
+              <Share2 size={18} /> Share
+            </button>
+          </div>
         </div>
       </div>
 
-      {/* Filters and Sorting */}
-      <div className="max-w-6xl mx-auto p-6">
+      {/* Filters & Sorting */}
+      <div className="max-w-6xl mx-auto px-6 mt-8">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-8">
           {/* Category Filter */}
           <div className="flex flex-wrap gap-3">
@@ -133,23 +149,23 @@ const StoreDetail = () => {
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
             {filteredProducts.map((product) => (
-              <div key={product.id} className="bg-white rounded-xl shadow-md hover:shadow-lg transition duration-300 overflow-hidden">
+              <div key={product.id} className="bg-white rounded-xl shadow-md hover:shadow-xl transition duration-300 overflow-hidden">
                 <img
                   src={product.imageUrl}
                   alt={product.name}
-                  className="w-full h-52 object-cover"
+                  className="w-full h-56 object-cover hover:scale-105 transition-transform duration-300"
                 />
                 <div className="p-4">
-                  <h3 className="text-xl font-semibold text-gray-800">{product.name}</h3>
+                  <h3 className="text-lg font-semibold text-gray-800">{product.name}</h3>
                   <p className="text-green-600 font-bold text-lg mt-1 mb-2">₹{product.price}</p>
-                  <p className="text-gray-500 text-sm mb-3">{product.description}</p>
+                  <p className="text-gray-500 text-sm mb-4 line-clamp-2">{product.description}</p>
                   <a
                     href={`https://wa.me/91${store.phoneNumber}?text=Hi, I’m interested in ${product.name}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="block text-center bg-green-500 hover:bg-green-600 text-white py-2 rounded-md transition font-medium"
                   >
-                    WhatsApp to Buy
+                    Click To Know More
                   </a>
                 </div>
               </div>
