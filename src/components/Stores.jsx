@@ -69,7 +69,7 @@ const Stores = () => {
                 </p>
                 <Link
                   to={store.slug ? `/${store.slug}` : "#"}
-                  className="mt-auto inline-flex w-full items-center justify-center px-8 py-4 rounded-full bg-white text-orange-600 font-extrabold text-lg shadow-lg hover:bg-orange-600 hover:text-white transition-all duration-300"
+                  className="mt-auto inline-flex w-full items-center justify-center px-10 py-2 rounded-full bg-white text-orange-600  text-lg shadow-lg hover:bg-orange-600 hover:text-orange transition-all duration-300"
                 >
                   View Store
                 </Link>
