@@ -8,14 +8,11 @@ const CLOUD_NAME = "dc4hshi8o";
 const AddProduct = () => {
   const [productName, setProductName] = useState("");
   const [price, setPrice] = useState("");
-  const [description, setDescription] = useState("");
   const [category, setCategory] = useState("men");
-  const [imageFile, setImageFile] = useState(null);
+  const [imageFiles, setImageFiles] = useState([]);
   const [loading, setLoading] = useState(false);
-
   const [storeId, setStoreId] = useState(null);
 
-  // 🔍 Fetch storeId by matching current user email
   useEffect(() => {
     const fetchStore = async () => {
       const user = auth.currentUser;
@@ -27,7 +24,6 @@ const AddProduct = () => {
         setStoreId(snapshot.docs[0].id);
       }
     };
-
     fetchStore();
   }, []);
 
@@ -47,33 +43,33 @@ const AddProduct = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!storeId || !productName || !price || !description || !category || !imageFile) {
-      alert("Please fill all fields.");
+    if (!storeId || !productName || !price || !category || imageFiles.length === 0) {
+      alert("Please fill all fields and upload at least one image.");
       return;
     }
 
     setLoading(true);
-
     try {
-      const imageUrl = await uploadImageToCloudinary(imageFile);
+      const uploadedImageUrls = [];
+      for (const file of imageFiles) {
+        const imageUrl = await uploadImageToCloudinary(file);
+        uploadedImageUrls.push(imageUrl);
+      }
 
       const productRef = collection(db, "stores", storeId, "products");
-
       await addDoc(productRef, {
         name: productName,
         price: parseFloat(price),
-        description,
         category,
-        imageUrl,
+        images: uploadedImageUrls,
         createdAt: new Date(),
       });
 
       alert("Product added successfully!");
       setProductName("");
       setPrice("");
-      setDescription("");
       setCategory("men");
-      setImageFile(null);
+      setImageFiles([]);
     } catch (error) {
       console.error("Error adding product:", error);
       alert("Failed to add product.");
@@ -83,13 +79,13 @@ const AddProduct = () => {
   };
 
   return (
-    <div className="bg-white p-6 rounded-lg shadow-md mb-8">
-      <h2 className="text-xl font-bold mb-4">Add Product</h2>
-      <form onSubmit={handleSubmit} className="space-y-4">
+    <div className="max-w-md mx-auto bg-white p-6 rounded-2xl shadow-lg">
+      <h2 className="text-2xl font-bold mb-6 text-gray-800 text-center">Add Product</h2>
+      <form onSubmit={handleSubmit} className="space-y-5">
         <input
           type="text"
           placeholder="Product Name"
-          className="w-full border p-2 rounded"
+          className="w-full border border-gray-300 p-3 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-400"
           value={productName}
           onChange={(e) => setProductName(e.target.value)}
         />
@@ -97,22 +93,15 @@ const AddProduct = () => {
         <input
           type="number"
           placeholder="Price (₹)"
-          className="w-full border p-2 rounded"
+          className="w-full border border-gray-300 p-3 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-400"
           value={price}
           onChange={(e) => setPrice(e.target.value)}
-        />
-
-        <textarea
-          placeholder="Description"
-          className="w-full border p-2 rounded"
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
         />
 
         <select
           value={category}
           onChange={(e) => setCategory(e.target.value)}
-          className="w-full border p-2 rounded"
+          className="w-full border border-gray-300 p-3 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-400"
         >
           <option value="men">Men</option>
           <option value="women">Women</option>
@@ -122,14 +111,28 @@ const AddProduct = () => {
         <input
           type="file"
           accept="image/*"
-          className="w-full border p-2 rounded"
-          onChange={(e) => setImageFile(e.target.files[0])}
+          multiple
+          className="w-full border border-gray-300 p-3 rounded-xl cursor-pointer"
+          onChange={(e) => setImageFiles([...e.target.files])}
         />
+
+        {imageFiles.length > 0 && (
+          <div className="flex flex-wrap gap-2 mt-2 justify-center">
+            {imageFiles.map((file, idx) => (
+              <img
+                key={idx}
+                src={URL.createObjectURL(file)}
+                alt={`preview-${idx}`}
+                className="w-24 h-24 object-cover rounded-xl border"
+              />
+            ))}
+          </div>
+        )}
 
         <button
           type="submit"
           disabled={loading}
-          className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
+          className="w-full bg-gradient-to-r from-indigo-500 to-indigo-600 hover:from-indigo-600 hover:to-indigo-700 text-white py-3 rounded-xl font-semibold shadow-lg transition-all"
         >
           {loading ? "Adding..." : "Add Product"}
         </button>

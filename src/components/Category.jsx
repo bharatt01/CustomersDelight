@@ -14,7 +14,7 @@ const SplitCategory = () => {
 
   return (
     <section className="category-section">
-      <h2 className="category-title">Explore Categories</h2>
+      <h2 className="category-title">Categories</h2>
       <div className="category-grid">
         {categories.map((cat) => (
           <div

@@ -12,10 +12,7 @@ const Stores = () => {
       try {
         const snapshot = await getDocs(collection(db, "stores"));
         const storeList = snapshot.docs
-          .map((doc) => ({
-            id: doc.id,
-            ...doc.data(),
-          }))
+          .map((doc) => ({ id: doc.id, ...doc.data() }))
           .filter((store) => store.name && store.slug);
         setStores(storeList);
       } catch (error) {
@@ -25,19 +22,18 @@ const Stores = () => {
         setLoading(false);
       }
     };
-
     fetchStores();
   }, []);
 
   return (
-    <section className="relative py-20 px-6 lg:px-12 bg-gradient-to-b from-gray-50 via-white to-gray-50">
+    <section className="relative py-20 px-6 lg:px-12 bg-white">
       {/* Heading */}
-      <div className="relative z-10 max-w-4xl mx-auto text-center mb-16">
-        <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-gray-900">
+      <div className="max-w-4xl mx-auto text-center mb-16">
+        <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight text-gray-900">
           Our Featured Stores
         </h2>
         <p className="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">
-          Explore the best stores curated for quality, design, and unique products.
+          Discover unique stores curated for style, quality, and creativity.
         </p>
       </div>
 
@@ -45,37 +41,35 @@ const Stores = () => {
       {loading ? (
         <p className="text-center text-gray-500">Loading stores...</p>
       ) : stores.length === 0 ? (
-        <p className="text-center text-gray-500">
-          No stores available at the moment.
-        </p>
+        <p className="text-center text-gray-500">No stores available at the moment.</p>
       ) : (
-        <div className="relative z-10 max-w-7xl mx-auto grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="max-w-7xl mx-auto grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
           {stores.map((store) => (
             <div
               key={store.id}
-              className="group flex flex-col rounded-xl overflow-hidden border border-gray-200 bg-white shadow-sm hover:shadow-xl transition-all duration-300"
+              className="group relative rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-transform duration-500 bg-orange-50 border border-orange-200"
             >
               {/* Image */}
-              <div className="relative aspect-[4/3] overflow-hidden">
+              <div className="relative h-64 overflow-hidden rounded-t-2xl">
                 <img
                   src={store.imageUrl || "/placeholder.jpg"}
                   alt={store.name || "Store"}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
-                <h3 className="absolute bottom-4 left-4 text-white text-lg font-semibold drop-shadow">
+                <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+                <h3 className="absolute bottom-4 left-4 text-white text-lg font-bold drop-shadow-md">
                   {store.name || "Unnamed Store"}
                 </h3>
               </div>
 
               {/* Details */}
-              <div className="flex flex-col flex-1 p-6">
-                <p className="text-gray-600 text-sm line-clamp-3 flex-1">
+              <div className="p-6 flex flex-col flex-1">
+                <p className="text-orange-700 text-sm line-clamp-3 mb-4">
                   {store.description || "No description available."}
                 </p>
                 <Link
                   to={store.slug ? `/${store.slug}` : "#"}
-                  className="mt-4 inline-flex items-center justify-center px-4 py-2 rounded-md bg-black text-white text-sm font-medium hover:bg-gray-800 transition-colors"
+                  className="mt-auto inline-flex items-center justify-center px-5 py-3 rounded-full bg-white text-orange-500 font-bold text-lg shadow hover:bg-orange-500 hover:text-white transition-colors duration-300"
                 >
                   View Store
                 </Link>
