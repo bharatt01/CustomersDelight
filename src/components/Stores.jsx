@@ -47,29 +47,29 @@ const Stores = () => {
           {stores.map((store) => (
             <div
               key={store.id}
-              className="group relative rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-transform duration-500 bg-orange-50 border border-orange-200"
+              className="group relative rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-transform duration-500 transform hover:-translate-y-2 bg-gradient-to-b from-orange-50 to-orange-100 border border-orange-200"
             >
               {/* Image */}
-              <div className="relative h-64 overflow-hidden rounded-t-2xl">
+              <div className="relative h-64 sm:h-72 md:h-80 overflow-hidden rounded-t-3xl">
                 <img
                   src={store.imageUrl || "/placeholder.jpg"}
                   alt={store.name || "Store"}
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  className="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
-                <h3 className="absolute bottom-4 left-4 text-white text-lg font-bold drop-shadow-md">
+                <h3 className="absolute bottom-4 left-4 text-white text-xl font-bold drop-shadow-lg z-10">
                   {store.name || "Unnamed Store"}
                 </h3>
               </div>
 
               {/* Details */}
               <div className="p-6 flex flex-col flex-1">
-                <p className="text-orange-700 text-sm line-clamp-3 mb-4">
+                <p className="text-gray-800 text-sm line-clamp-3 mb-6">
                   {store.description || "No description available."}
                 </p>
                 <Link
                   to={store.slug ? `/${store.slug}` : "#"}
-                  className="mt-auto inline-flex items-center justify-center px-5 py-3 rounded-full bg-white text-orange-500 font-bold text-lg shadow hover:bg-orange-500 hover:text-white transition-colors duration-300"
+                  className="mt-auto inline-flex w-full items-center justify-center px-8 py-4 rounded-full bg-white text-orange-600 font-extrabold text-lg shadow-lg hover:bg-orange-600 hover:text-white transition-all duration-300"
                 >
                   View Store
                 </Link>
@@ -83,3 +83,4 @@ const Stores = () => {
 };
 
 export default Stores;
+  
