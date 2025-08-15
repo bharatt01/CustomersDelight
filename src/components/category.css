@@ -1,130 +1,193 @@
-.split-container {
-  text-align: center;
-  padding: 2rem 1rem;
-}
-
-.category-heading {
-  font-size: 2rem;
-  font-weight: 700;
-  margin-bottom: 2rem;
-}
-
-.split-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-  justify-content: center;
-}
-
-.split-item {
-  position: relative;
-  width: 300px;
-  height: 350px;
-  overflow: hidden;
-  cursor: pointer;
-  border-radius: 10px;
-  transition: transform 0.3s ease;
-}
-
-.split-item:hover {
-  transform: scale(1.03);
-}
-
-.background {
-  width: 100%;
-  height: 100%;
-  background-size: cover;
-  background-position: center;
-  filter: brightness(70%);
-  transition: filter 0.3s;
-}
-
-.overlay {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  color: white;
-  font-size: 1.8rem;
-  font-weight: bold;
-  text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.6);
-}
-
-@media (max-width: 768px) {
-  .split-item {
-    width: 90%;
-    height: 250px;
-  }
-
-  .overlay h3 {
-    font-size: 1.5rem;
-  }
-  .category-heading {
-  font-size: 2rem;
-  }
-}
+/* Section background with angled gradient stripes */
 .category-section {
-  padding: 4rem 2rem;
-  background: #f9f9f9;
-  text-align: center;
+  padding: 80px 40px;
+  background: linear-gradient(135deg, #fff 0%, #fafafa 50%, #f2f2f2 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.category-section::before {
+  content: "";
+  position: absolute;
+  top: -80px;
+  right: -120px;
+  width: 400px;
+  height: 400px;
+  background: conic-gradient(from 180deg at 50% 50%, #ff6b6b, #f9c74f, #4dabf7, #ff6b6b);
+  border-radius: 50%;
+  filter: blur(160px);
+  opacity: 0.3;
+  z-index: 0;
+}
+
+/* Heading */
+.category-heading {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-bottom: 50px;
+  position: relative;
+  z-index: 2;
 }
 
 .category-title {
-  font-size: 2.5rem;
-  font-weight: 700;
-  margin-bottom: 3rem;
-  color: #222;
+  font-size: 3rem;
+  font-weight: 800;
+  color: #111;
+  position: relative;
 }
 
-.category-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 2rem;
-  max-width: 1200px;
-  margin: 0 auto;
+.category-title span {
+  background: linear-gradient(90deg, #ff6b6b, #f9c74f);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
+.heading-design {
+  flex: 1;
+  height: 4px;
+  margin-left: 20px;
+  background: linear-gradient(to right, #ff6b6b, transparent);
+  border-radius: 4px;
+}
+
+/* Slider coverflow effect */
+.category-slider .slick-slide {
+  transition: transform 0.5s ease, opacity 0.5s ease;
+  transform: scale(0.8);
+  opacity: 0.5;
+}
+.category-slider .slick-center {
+  transform: scale(1) translateY(-10px);
+  opacity: 1;
+  z-index: 3;
+}
+
+/* Cards */
 .category-card {
   position: relative;
-  height: 300px;
-  border-radius: 1rem;
+  margin: 15px;
+  border-radius: 20px;
   overflow: hidden;
-  cursor: pointer;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
-  transition: transform 0.3s ease;
+  background: #fff;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+  transition: transform 0.4s ease;
 }
 
 .category-card:hover {
-  transform: scale(1.03);
+  transform: translateY(-8px);
 }
 
 .category-image {
-  position: absolute;
-  inset: 0;
+  height: 280px;
   background-size: cover;
   background-position: center;
-  transition: transform 0.4s ease;
-  z-index: 1;
-}
-
-.category-card:hover .category-image {
-  transform: scale(1.08);
 }
 
 .category-overlay {
   position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.45);
-  color: #fff;
-  z-index: 2;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.75rem;
-  font-weight: 600;
-  transition: background 0.3s ease;
+  bottom: 0;
+  width: 100%;
+  padding: 20px;
+  background: linear-gradient(transparent, rgba(0,0,0,0.7));
+  text-align: center;
 }
 
-.category-card:hover .category-overlay {
-  background: rgba(0, 0, 0, 0.6);
+.category-overlay h3 {
+  color: #fff;
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  transform: translateY(20px);
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+.category-card:hover .category-overlay h3 {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* Arrows */
+/* Arrows - Always visible sleek style */
+.slick-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 2.5rem;          /* clean arrow size */
+  font-weight: bold;
+  color: #ff7f00;             /* orange */
+  z-index: 5;
+  cursor: pointer;
+  background: none;           /* no circle */
+  border: none;
+  opacity: 0.9;               /* slightly softer */
+  transition: all 0.3s ease;
+}
+
+.slick-arrow:hover {
+  color: #ff9500;             /* brighter orange on hover */
+  transform: translateY(-50%) scale(1.15); /* smooth zoom */
+  text-shadow: 0 0 8px rgba(255, 150, 0, 0.5);
+}
+
+.slick-prev { left: -40px; }
+.slick-next { right: -40px; }
+/* Force slick arrows to always be visible */
+.slick-prev:before,
+.slick-next:before {
+  font-size: 30px;
+  color: #ff7f00 !important;   /* strong orange */
+  opacity: 1 !important;       /* always visible */
+}
+
+/* Positioning */
+.slick-prev {
+  left: -40px;
+  z-index: 10;
+}
+.slick-next {
+  right: -40px;
+  z-index: 10;
+}
+
+/* Hover effect (optional for glow/zoom) */
+.slick-prev:hover:before,
+.slick-next:hover:before {
+  color: #ff9500 !important;
+  text-shadow: 0 0 8px rgba(255, 150, 0, 0.6);
+  transform: scale(1.2);
+  transition: 0.2s ease;
+}
+/* Mobile list layout */
+@media (max-width: 768px) {
+  .category-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  /* Hide slick arrows on mobile */
+  .slick-arrow {
+    display: none !important;
+  }
+}
+/* Category Overlay - Always show title */
+.category-overlay {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 20px;
+  background: linear-gradient(transparent, rgba(0,0,0,0.7));
+  text-align: center;
+}
+
+.category-overlay h3 {
+  color: #fff;
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  opacity: 1;                  /* Always visible */
+  transform: translateY(0);    /* No slide-up */
+  transition: none;            /* Remove animation */
 }

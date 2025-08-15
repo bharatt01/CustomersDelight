@@ -1,12 +1,12 @@
 import React from 'react';
-import { Container, Row, Col, Form, Button } from 'react-bootstrap';
+import { Container, Row, Col } from 'react-bootstrap';
 import './footer.css'; // Custom styles
 
 const Footer = () => {
   return (
     <footer className="footer-section text-light">
       <Container>
-        <Row className="gy-4">
+        <Row className="gy-4 text-center text-md-start justify-content-center">
           <Col md={4}>
             <h4 className="footer-brand">Customer's Delight</h4>
             <p className="footer-text">
@@ -14,7 +14,7 @@ const Footer = () => {
             </p>
           </Col>
 
-          <Col md={2}>
+          <Col md={3}>
             <h6 className="footer-title">Explore</h6>
             <ul className="footer-links">
               <li><a href="/">Home</a></li>
@@ -22,16 +22,6 @@ const Footer = () => {
               <li><a href="/about">About</a></li>
               <li><a href="/contact">Contact</a></li>
             </ul>
-          </Col>
-
-          <Col md={3}>
-            <h6 className="footer-title">Newsletter</h6>
-            <Form className="footer-form">
-              <Form.Group controlId="formEmail">
-                <Form.Control type="email" placeholder="Your email" />
-              </Form.Group>
-              <Button variant="outline-light" size="sm" className="mt-2">Subscribe</Button>
-            </Form>
           </Col>
 
           <Col md={3}>
@@ -47,7 +37,9 @@ const Footer = () => {
 
         <div className="footer-bottom text-center mt-4">
           <hr className="border-light" />
-          <p className="mb-0 small">&copy; {new Date().getFullYear()} Customer's Delight — All rights reserved.</p>
+          <p className="mb-0 small">
+            &copy; {new Date().getFullYear()} Customer's Delight — All rights reserved.
+          </p>
         </div>
       </Container>
     </footer>

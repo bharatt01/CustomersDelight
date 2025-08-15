@@ -96,11 +96,27 @@ const Navbar = () => {
                       Kids
                     </Link>
                   </li>
+                   <li>
+                      <Link
+                        to="/category/Home-Appliances"
+                        onClick={() => setMobileOpen(false)}
+                      >
+                        Home Appliances
+                      </Link>
+                    </li>
+                      <li>
+                      <Link
+                        to="/category/Furniture"
+                        onClick={() => setMobileOpen(false)}
+                      >
+                        Furniture
+                      </Link>
+                    </li>
                 </ul>
               </div>
             </li>
             <li className="hover:text-orange-500 transition">
-              <Link to="/exclusive-member">Become VIP Member</Link>
+              <Link to="/exclusive-member">VIP Membership</Link>
             </li>
             <li className="hover:text-orange-500 transition">
               <Link to="/about-us">About Us</Link>
@@ -209,6 +225,22 @@ const Navbar = () => {
                         Kids
                       </Link>
                     </li>
+                      <li>
+                      <Link
+                        to="/category/Home-appliances"
+                        onClick={() => setMobileOpen(false)}
+                      >
+                        Home Appliances
+                      </Link>
+                    </li>
+                      <li>
+                      <Link
+                        to="/category/Furniture"
+                        onClick={() => setMobileOpen(false)}
+                      >
+                        Furniture
+                      </Link>
+                    </li>
                   </ul>
                 )}
               </li>
@@ -217,7 +249,7 @@ const Navbar = () => {
                   to="/exclusive-member"
                   onClick={() => setMobileOpen(false)}
                 >
-                  Become a Prime Member
+                  VIP Membership
                 </Link>
               </li>
               <li>
