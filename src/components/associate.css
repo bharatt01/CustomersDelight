@@ -503,3 +503,65 @@
     font-size: 32px;
   }
 }
+/* Mobile Fix for heading */
+@media (max-width: 992px) {
+  .associate-container {
+    flex-direction: column; /* ensure heading comes first */
+    text-align: center;
+    gap: 40px;
+  }
+
+  /* Keep heading on top */
+  .associate-right {
+    order: -1; /* forces heading to appear before cards */
+    align-items: center;
+    margin-bottom: 20px;
+  }
+
+  .associate-left {
+    order: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .associate-grid {
+    grid-template-columns: repeat(2, 1fr);
+    justify-items: center;
+  }
+
+  .associate-card {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+  }
+
+  .associate-icon {
+    font-size: 36px;
+  }
+
+  .associate-title {
+    font-size: 36px;
+  }
+}
+
+@media (max-width: 600px) {
+  .associate-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .associate-card {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 25px 15px;
+  }
+
+  .associate-icon {
+    font-size: 32px;
+  }
+
+  .associate-title {
+    font-size: 32px;
+  }
+}
