@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { db } from "../firebase";
 import { collection, getDocs, query, where } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
+import './Featured.css';
 
 const SkeletonCard = () => (
   <div className="animate-pulse bg-white rounded-3xl shadow-2xl overflow-hidden flex flex-col">
@@ -25,7 +26,6 @@ const FeaturedProducts = ({ limit = 4 }) => {
       try {
         const storesSnapshot = await getDocs(collection(db, "stores"));
 
-        // Fetch all products in parallel instead of sequentially
         const productPromises = storesSnapshot.docs.map(async (storeDoc) => {
           const storeId = storeDoc.id;
           const storeData = storeDoc.data();
@@ -82,7 +82,7 @@ const FeaturedProducts = ({ limit = 4 }) => {
     <div className="p-8 bg-gray-50">
       {/* Heading */}
       <div className="relative flex flex-col items-center mb-16">
-        <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 text-center">
+        <h2 className="featured-heading">
           Featured Products
         </h2>
         <div className="absolute left-0 top-1/2 transform -translate-y-1/2 w-72 h-1 bg-gradient-to-r from-red-500 via-orange-400 to-yellow-400 rounded-full"></div>
@@ -98,13 +98,14 @@ const FeaturedProducts = ({ limit = 4 }) => {
             className="bg-white rounded-3xl shadow-2xl overflow-hidden transform hover:scale-105 hover:shadow-3xl transition-all duration-300 flex flex-col"
           >
             <div className="relative w-full h-64">
-              <img
-                src={product.imageUrl || "https://via.placeholder.com/400"}
-                alt={product.name}
-                loading="lazy" // <-- lazy loading
-                className="absolute inset-0 w-full h-full object-cover"
-                onError={(e) => (e.target.src = "https://via.placeholder.com/400")}
-              />
+           <img
+  src={(product.images && product.images[0]) || "https://via.placeholder.com/400"}
+  alt={product.name}
+  loading="lazy"
+  className="absolute inset-0 w-full h-full object-cover"
+  onError={(e) => (e.target.src = "https://via.placeholder.com/400")}
+/>
+
               <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent"></div>
 
               <div className="absolute top-3 left-3 flex flex-col gap-2">

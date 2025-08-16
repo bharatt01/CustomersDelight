@@ -13,7 +13,7 @@ function Home() {
     <>
     <Navbar/>
     <HeroSection/>
-    <FeaturedProducts/>
+    <FeaturedProducts limit={4}/>
     <Category/>
     <FeaturedStores/>
     <OwnerBenefits/>

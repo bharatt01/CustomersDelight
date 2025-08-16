@@ -91,11 +91,11 @@ const StoreProductList = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
           {products.map((product) => (
             <div key={product.id} className="border p-3 rounded shadow-sm">
-              <img
-                src={product.imageUrl}
-                alt={product.name}
-                className="w-full h-40 object-cover mb-2 rounded"
-              />
+             <img
+  src={product.images && product.images.length > 0 ? product.images[0] : "fallback.jpg"}
+  alt={product.name}
+  className="max-w-full max-h-full object-contain p-4 transition-transform duration-300 group-hover:scale-105"
+/>
               <h3 className="font-semibold">{product.name}</h3>
               <p>₹{product.price}</p>
               <p className="text-sm text-gray-500">{product.description}</p>

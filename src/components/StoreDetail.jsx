@@ -5,6 +5,7 @@ import { collection, query, where, getDocs } from "firebase/firestore";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 import { Share2, Phone } from "lucide-react";
+import "./StoreDetail.css";
 
 const StoreDetail = () => {
   const { slug } = useParams();
@@ -155,16 +156,17 @@ const StoreDetail = () => {
 
         {/* Product Image */}
         <div className="w-full h-64 bg-gray-50 flex items-center justify-center overflow-hidden">
-          <img
-            src={product.imageUrl}
-            alt={product.name}
-            className="max-w-full max-h-full object-contain p-4 transition-transform duration-300 group-hover:scale-105"
-          />
+        <img
+  src={product.images && product.images.length > 0 ? product.images[0] : "fallback.jpg"}
+  alt={product.name}
+  className="max-w-full max-h-full object-contain p-4 transition-transform duration-300 group-hover:scale-105"
+/>
+
         </div>
 
         {/* Product Info */}
         <div className="flex flex-col p-5 h-[220px]">
-          <h3 className="text-lg font-semibold text-gray-900 truncate">
+          <h3 className="text-lg font-semibold text-gray-900 truncate product-title">
             {product.name}
           </h3>
           <p className="text-indigo-600 font-extrabold text-xl mt-1">

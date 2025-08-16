@@ -11,7 +11,7 @@ import StoreDetail from './components/StoreDetail';
 import CategoryProducts from './components/CategoryProducts';
 import SearchResults from './pages/SearchResults';
 import SplitCategory from './components/Category';
-
+import FeaturedProductsPage from './pages/FeaturedProductsPage';
 // SuperAdmin
 import SuperAdminLogin from './pages/SuperAdmin/SuperAdminLogin';
 import SuperAdminDashboard from './pages/SuperAdmin/SuperAdminDashboard';
@@ -54,6 +54,7 @@ function App() {
            <Route path="/" element={<SplitCategory />} />
            <Route path='/exclusive-member' element={<Member/>}></Route>
              {/* <Route path="/products/:category" element={<CategoryProducts />} /> */}
+<Route path="/featured-products" element={<FeaturedProductsPage />} />
 
         {/* Blog Admin */}
         <Route path="/blog-admin/login" element={<BlogAdminLogin />} />

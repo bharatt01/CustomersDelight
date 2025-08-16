@@ -74,45 +74,47 @@ const Heros = () => {
       </SwiperSlide>
 
       {/* Slide 2 */}
-      <SwiperSlide>
-        <div className="relative h-[90vh] flex items-center justify-end px-6 md:px-16">
-          <div
-            className="absolute inset-0 bg-cover bg-center"
-            style={{
-              backgroundImage: `url(${process.env.PUBLIC_URL + "/Images/prime.jpg"})`,
-            }}
-          ></div>
-          <div className="absolute inset-0 bg-gradient-to-l from-black/80 via-black/60 to-yellow-900/40"></div>
-          <div className="relative z-10 max-w-4xl text-right text-white space-y-6">
-            <h1 className="text-5xl sm:text-6xl font-extrabold leading-tight">
-              Become a{" "}
-              <span className="bg-gradient-to-r from-yellow-300 via-yellow-400 to-yellow-600 bg-clip-text text-transparent drop-shadow-md">
-                Prime Member
-              </span>
-            </h1>
-            <p className="text-lg sm:text-xl text-gray-200 max-w-xl leading-relaxed ml-auto">
-              Unlock <span className="text-yellow-300 font-semibold">exclusive deals</span>, 
-              get <span className="text-yellow-300 font-semibold">early access</span> to sales, 
-              and enjoy <span className="text-yellow-300 font-semibold">free shipping</span> on every order.  
-              Elevate your shopping experience today!
-            </p>
-            <div className="flex flex-wrap gap-4 pt-4 justify-end">
-              <button
-                onClick={() => navigate("/prime")}
-                className="px-8 py-3 rounded-full bg-gradient-to-r from-yellow-400 to-yellow-600 text-black font-semibold shadow-lg hover:scale-105 transform transition"
-              >
-                Join Now
-              </button>
-              <button
-                onClick={() => navigate("/learn-more")}
-                className="px-8 py-3 rounded-full border-2 border-yellow-400 text-yellow-300 hover:bg-yellow-400 hover:text-black font-semibold transition"
-              >
-                Learn More
-              </button>
-            </div>
-          </div>
-        </div>
-      </SwiperSlide>
+    {/* Slide 2 */}
+<SwiperSlide>
+  <div className="relative h-[90vh] flex items-center justify-start px-6 md:px-16">
+    <div
+      className="absolute inset-0 bg-cover bg-center"
+      style={{
+        backgroundImage: `url(${process.env.PUBLIC_URL + "/Images/vip5.jpg"})`,
+      }}
+    ></div>
+    <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-yellow-900/40"></div>
+    <div className="relative z-10 max-w-4xl text-left text-white space-y-6">
+      <h1 className="text-5xl sm:text-6xl font-extrabold leading-tight">
+        Become a{" "}
+        <span className="bg-gradient-to-r from-yellow-300 via-yellow-400 to-yellow-600 bg-clip-text text-transparent drop-shadow-md">
+          Prime Member
+        </span>
+      </h1>
+      <p className="text-lg sm:text-xl text-gray-200 max-w-xl leading-relaxed">
+        Unlock <span className="text-yellow-300 font-semibold">exclusive deals</span>, 
+        get <span className="text-yellow-300 font-semibold">early access</span> to sales, 
+        and enjoy <span className="text-yellow-300 font-semibold">free shipping</span> on every order.  
+        Elevate your shopping experience today!
+      </p>
+      <div className="flex flex-wrap gap-4 pt-4 justify-start">
+        <button
+          onClick={() => navigate("/prime")}
+          className="px-8 py-3 rounded-full bg-gradient-to-r from-yellow-400 to-yellow-600 text-black font-semibold shadow-lg hover:scale-105 transform transition"
+        >
+          Join Now
+        </button>
+        <button
+          onClick={() => navigate("/learn-more")}
+          className="px-8 py-3 rounded-full border-2 border-yellow-400 text-yellow-300 hover:bg-yellow-400 hover:text-black font-semibold transition"
+        >
+          Learn More
+        </button>
+      </div>
+    </div>
+  </div>
+</SwiperSlide>
+
     </Swiper>
   );
 };
