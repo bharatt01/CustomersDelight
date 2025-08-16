@@ -3,6 +3,21 @@ import { db } from "../firebase";
 import { collection, getDocs, query, where } from "firebase/firestore";
 import { Link } from "react-router-dom";
 
+// Skeleton loader for stores
+const StoreSkeleton = () => {
+  return (
+    <div className="bg-white shadow-lg rounded-xl overflow-hidden flex flex-col animate-pulse">
+      <div className="w-full h-48 bg-gray-300"></div>
+      <div className="p-5 flex flex-col flex-grow">
+        <div className="h-6 w-2/3 bg-gray-300 rounded mb-3"></div>
+        <div className="h-4 w-full bg-gray-300 rounded mb-2"></div>
+        <div className="h-4 w-3/4 bg-gray-300 rounded mb-4"></div>
+        <div className="h-10 w-full bg-gray-300 rounded mt-auto"></div>
+      </div>
+    </div>
+  );
+};
+
 const FeaturedStores = () => {
   const [stores, setStores] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -27,27 +42,26 @@ const FeaturedStores = () => {
     fetchStores();
   }, []);
 
-  if (loading) {
-    return (
-      <div className="flex justify-center items-center h-64">
-        <p className="text-lg text-gray-600">Loading featured stores...</p>
-      </div>
-    );
-  }
-
   return (
     <div className="p-8 bg-gray-100">
       <h2 className="text-4xl font-bold text-center text-gray-800 mb-12">
         Featured Stores
       </h2>
-      {stores.length === 0 ? (
+
+      {loading ? (
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+          {Array.from({ length: 4 }).map((_, idx) => (
+            <StoreSkeleton key={idx} />
+          ))}
+        </div>
+      ) : stores.length === 0 ? (
         <p className="text-center text-gray-600">No featured stores yet</p>
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
           {stores.map((store) => (
             <div
               key={store.id}
-              className="bg-white shadow-lg rounded-xl overflow-hidden flex flex-col"
+              className="bg-white shadow-lg rounded-xl overflow-hidden flex flex-col hover:scale-105 transition-transform duration-300"
             >
               <img
                 src={store.imageUrl || "https://via.placeholder.com/400"}

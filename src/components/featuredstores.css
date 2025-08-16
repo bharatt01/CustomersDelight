@@ -1,0 +1,89 @@
+.stores-container {
+  padding: 50px 20px;
+  text-align: center;
+}
+
+.stores-heading {
+  font-size: 2rem;
+  margin-bottom: 30px;
+  font-weight: bold;
+}
+
+.stores-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 25px;
+}
+
+/* Card */
+.store-card {
+  background: #fff;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  text-decoration: none;
+  color: inherit;
+}
+.store-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+}
+
+.store-img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.store-name {
+  font-size: 1.2rem;
+  margin: 15px 0 8px;
+  font-weight: 600;
+}
+
+.store-description {
+  font-size: 0.95rem;
+  color: #555;
+}
+
+/* Skeleton shimmer */
+.skeleton {
+  position: relative;
+  overflow: hidden;
+  border-radius: 15px;
+  background: #f0f0f0;
+}
+
+.skeleton-img {
+  width: 100%;
+  height: 180px;
+  background: #e0e0e0;
+  border-radius: 10px;
+}
+
+.skeleton-text {
+  height: 20px;
+  margin: 15px auto;
+  width: 70%;
+  background: #e0e0e0;
+  border-radius: 5px;
+}
+
+.skeleton::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -150px;
+  height: 100%;
+  width: 150px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+  animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}

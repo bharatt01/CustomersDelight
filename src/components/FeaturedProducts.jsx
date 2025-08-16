@@ -3,6 +3,18 @@ import { db } from "../firebase";
 import { collection, getDocs, query, where } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
 
+const SkeletonCard = () => (
+  <div className="animate-pulse bg-white rounded-3xl shadow-2xl overflow-hidden flex flex-col">
+    <div className="w-full h-64 bg-gray-200"></div>
+    <div className="p-5 flex flex-col flex-grow">
+      <div className="h-4 bg-gray-200 rounded w-1/3 mb-2"></div>
+      <div className="h-5 bg-gray-300 rounded w-2/3 mb-2"></div>
+      <div className="h-4 bg-gray-200 rounded w-1/4 mb-4"></div>
+      <div className="mt-auto h-10 bg-gray-300 rounded-xl"></div>
+    </div>
+  </div>
+);
+
 const FeaturedProducts = ({ limit = 4 }) => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -12,11 +24,12 @@ const FeaturedProducts = ({ limit = 4 }) => {
     const fetchFeaturedProducts = async () => {
       try {
         const storesSnapshot = await getDocs(collection(db, "stores"));
-        let allFeatured = [];
 
-        for (let storeDoc of storesSnapshot.docs) {
+        // Fetch all products in parallel instead of sequentially
+        const productPromises = storesSnapshot.docs.map(async (storeDoc) => {
           const storeId = storeDoc.id;
           const storeData = storeDoc.data();
+
           const productsSnapshot = await getDocs(
             query(
               collection(db, `stores/${storeId}/products`),
@@ -24,16 +37,17 @@ const FeaturedProducts = ({ limit = 4 }) => {
             )
           );
 
-          const storeFeatured = productsSnapshot.docs.map((doc) => ({
+          return productsSnapshot.docs.map((doc) => ({
             id: doc.id,
             storeId,
             storeName: storeData.name,
-            storePhone: storeData.phoneNumber, // store number
+            storePhone: storeData.phoneNumber,
             ...doc.data(),
           }));
+        });
 
-          allFeatured = [...allFeatured, ...storeFeatured];
-        }
+        const allResults = await Promise.all(productPromises);
+        const allFeatured = allResults.flat();
 
         setProducts(allFeatured);
       } catch (error) {
@@ -46,9 +60,21 @@ const FeaturedProducts = ({ limit = 4 }) => {
     fetchFeaturedProducts();
   }, []);
 
-  if (loading) return <p className="text-center mt-10">Loading...</p>;
-  if (products.length === 0)
+  if (loading) {
+    return (
+      <div className="p-8 bg-gray-50">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+          {[...Array(limit)].map((_, i) => (
+            <SkeletonCard key={i} />
+          ))}
+        </div>
+      </div>
+    );
+  }
+
+  if (products.length === 0) {
     return <p className="text-center mt-10 text-gray-500">No featured products yet.</p>;
+  }
 
   const displayedProducts = products.slice(0, limit);
 
@@ -59,10 +85,8 @@ const FeaturedProducts = ({ limit = 4 }) => {
         <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 text-center">
           Featured Products
         </h2>
-
         <div className="absolute left-0 top-1/2 transform -translate-y-1/2 w-72 h-1 bg-gradient-to-r from-red-500 via-orange-400 to-yellow-400 rounded-full"></div>
         <div className="absolute right-0 top-1/2 transform -translate-y-1/2 w-72 h-1 bg-gradient-to-l from-cyan-400 via-blue-400 to-indigo-500 rounded-full"></div>
-
         <div className="mt-4 w-40 h-1 rounded-full bg-gradient-to-r from-red-500 via-orange-400 to-yellow-400 shadow-md"></div>
       </div>
 
@@ -77,7 +101,9 @@ const FeaturedProducts = ({ limit = 4 }) => {
               <img
                 src={product.imageUrl || "https://via.placeholder.com/400"}
                 alt={product.name}
+                loading="lazy" // <-- lazy loading
                 className="absolute inset-0 w-full h-full object-cover"
+                onError={(e) => (e.target.src = "https://via.placeholder.com/400")}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent"></div>
 
