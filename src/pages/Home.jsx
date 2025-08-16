@@ -7,6 +7,7 @@ import OwnerBenefits from '../components/OwnerBenefits'
 import Stores from '../components/Stores'
 import  Footer from '../components/Footer'
 import FeaturedProducts from '../components/FeaturedProducts'
+import AssociateWithUs from '../components/AssociateWithUs'
 function Home() {
   return (
     <>
@@ -16,6 +17,7 @@ function Home() {
     <Category/>
     <FeaturedStores/>
     <OwnerBenefits/>
+    <AssociateWithUs/>
     {/* <Stores/> */}
     <Footer/>
     </>
