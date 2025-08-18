@@ -5,32 +5,32 @@ import { FaHandshake, FaUsers, FaMapMarkedAlt, FaLaptopCode, FaStar, FaBullhorn 
 const steps = [
   {
     title: "Step 1: Meeting & Plan",
-    description: "Meeting and finalisation of implementation plan",
+    description: "Meeting, discussion and finalization of implementation plan ",
     icon: <FaHandshake />,
   },
   {
-    title: "Step 2: WhatsApp Setup",
-    description: "Formation of WhatsApp group with the shop and put the QR code at the counter",
+    title: "Step 2: WhatsApp Community Setup",
+    description: "Formation of Whatsapp group and Whatsapp community to build local customer base",
     icon: <FaUsers />,
   },
   {
-    title: "Step 3: Google My Business",
-    description: "Listing, address, mapping, phone, WhatsApp, timings, reviews",
+    title: "Step 3: Prime Membership ",
+    description: "Start of building prime members community ",
     icon: <FaMapMarkedAlt />,
   },
   {
     title: "Step 4: Website",
-    description: "Website building",
+    description: "Building of website according to clients' business profile ",
     icon: <FaLaptopCode />,
   },
   {
-    title: "Step 5: Prime Membership",
-    description: "Prime membership for Customers",
+    title: "Step 5: Google My Business Setup",
+    description: "Listing on GMB. Address, map, phone, whatsapp, and reviews setup",
     icon: <FaStar />,
   },
   {
-    title: "Step 6: Execution",
-    description: "Execution of different programs, strategies, and promotional activities",
+    title: "Step 6: Other work",
+    description: "Creation and implementation of other work such as video content, posters and messages",
     icon: <FaBullhorn />,
   },
 ];
@@ -55,7 +55,7 @@ const AssociateWithUs = () => {
 
         {/* Right side: heading */}
         <div className="associate-right">
-          <h2 className="associate-title">🚀 How to Associate With Us</h2>
+          <h2 className="associate-title">🚀 How Retailers Can Associate With Us</h2>
           <p className="associate-sub">
             Follow these steps to join and grow with our platform.
           </p>

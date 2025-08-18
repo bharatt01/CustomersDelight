@@ -22,7 +22,7 @@ const Heros = () => {
         swiper.slidePrev(); // move backward
         setDirection("next"); // next time go forward
       }
-    }, 4000); // change every 4s
+    }, 5000); // change every 4s
 
     return () => clearInterval(interval);
   }, [direction]);
@@ -33,7 +33,7 @@ const Heros = () => {
       modules={[Pagination]}
       pagination={{ clickable: true }}
       loop
-      speed={800}
+      speed={900}
       className="w-full h-[90vh]"
     >
       {/* Slide 1 */}
@@ -47,9 +47,9 @@ const Heros = () => {
           ></div>
           <div className="absolute inset-0 bg-black/60"></div>
           <div className="relative z-10 max-w-4xl text-left text-white space-y-6">
-            <h1 className="text-5xl sm:text-6xl font-extrabold leading-tight">
-              Explore{" "}
-              <span className="text-orange-400">Top Fashion Stores</span>
+            <h1 className="text-5xl sm:text-5xl font-extrabold leading-tight">
+              Explore, visit and buy from the{" "}<br />
+              <span className="text-orange-400">Top Stores/Shops in your City</span>
             </h1>
             <p className="text-lg sm:text-xl text-gray-200 max-w-xl">
               Shop directly from local fashion entrepreneurs. Skip the middlemen.
@@ -73,9 +73,7 @@ const Heros = () => {
         </div>
       </SwiperSlide>
 
-      {/* Slide 2 */}
-    {/* Slide 2 */}
-<SwiperSlide>
+      {/* Slide 2 */}<SwiperSlide>
   <div className="relative h-[90vh] flex items-center justify-start px-6 md:px-16">
     <div
       className="absolute inset-0 bg-cover bg-center"
@@ -85,15 +83,15 @@ const Heros = () => {
     ></div>
     <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-yellow-900/40"></div>
     <div className="relative z-10 max-w-4xl text-left text-white space-y-6">
-      <h1 className="text-5xl sm:text-6xl font-extrabold leading-tight">
-        Become a{" "}
-        <span className="bg-gradient-to-r from-yellow-300 via-yellow-400 to-yellow-600 bg-clip-text text-transparent drop-shadow-md">
-          Prime Member
-        </span>
-      </h1>
+    <h1 className="text-5xl sm:text-5xl font-extrabold leading-tight">
+  Become our <span className="text-yellow-400">Prime member</span> <br/> and avail exclusive {" "}
+  <span className="text-yellow-400 whitespace-nowrap">
+   Discount/Cashback/Deals/Offers
+  </span>
+</h1>
       <p className="text-lg sm:text-xl text-gray-200 max-w-xl leading-relaxed">
         Unlock <span className="text-yellow-300 font-semibold">exclusive deals</span>, 
-        get <span className="text-yellow-300 font-semibold">early access</span> to sales, 
+        get <span className="text-yellow-400 font-semibold">early access</span> to sales, 
         and enjoy <span className="text-yellow-300 font-semibold">free shipping</span> on every order.  
         Elevate your shopping experience today!
       </p>
@@ -114,6 +112,8 @@ const Heros = () => {
     </div>
   </div>
 </SwiperSlide>
+
+
 
     </Swiper>
   );

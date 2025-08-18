@@ -68,7 +68,7 @@ const WhatWeDo = () => {
             <div className="w-20 h-20 mx-auto bg-orange-100 rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition shadow-inner shadow-orange-200">
               <Store className="w-10 h-10 text-orange-500" />
             </div>
-            <h3 className="text-xl font-bold text-gray-800 mb-2">Digital Foundation</h3>
+            <h3 className="text-xl font-bold text-gray-800 mb-2">Digital Solutions</h3>
             <p className="text-gray-600 text-sm">
               Set up your Mini Website and Google Business Profile to go fully online.
             </p>
@@ -82,7 +82,7 @@ const WhatWeDo = () => {
             <div className="w-20 h-20 mx-auto bg-orange-100 rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition shadow-inner shadow-orange-200">
               <Share2 className="w-10 h-10 text-orange-500" />
             </div>
-            <h3 className="text-xl font-bold text-gray-800 mb-2">Social Presence</h3>
+            <h3 className="text-xl font-bold text-gray-800 mb-2">Marketing and social media solutions </h3>
             <p className="text-gray-600 text-sm">
               Build your brand with regular content on Instagram, Facebook, and YouTube.
             </p>
@@ -96,7 +96,7 @@ const WhatWeDo = () => {
             <div className="w-20 h-20 mx-auto bg-orange-100 rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition shadow-inner shadow-orange-200">
               <Repeat className="w-10 h-10 text-orange-500" />
             </div>
-            <h3 className="text-xl font-bold text-gray-800 mb-2">Customer Connection</h3>
+            <h3 className="text-xl font-bold text-gray-800 mb-2">Customer Connections</h3>
             <p className="text-gray-600 text-sm">
               Engage and retain your customers with smart tools that drive repeat visits.
             </p>

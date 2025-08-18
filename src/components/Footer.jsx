@@ -29,7 +29,7 @@ const Footer = () => {
         <div className="footer-contact-section">
           <h6 className="footer-title">Contact</h6>
           <ul className="footer-links">
-            <li>📞 +91 98765 43210</li>
+            <li>📞 +91 9871428686</li>
             <li>✉️ info@customersdelight.com</li>
           </ul>
         </div>

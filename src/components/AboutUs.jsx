@@ -26,8 +26,8 @@ const AboutUs = () => {
           <h1 className="text-4xl sm:text-5xl font-extrabold mb-4 drop-shadow">
             About <span className="text-orange-400">Customer Delight</span>
           </h1>
-          <p className="text-lg sm:text-xl max-w-2xl mx-auto drop-shadow-md">
-            We help retail shops, restaurants and other local businesses grow with <br />
+          <p className="text-lg sm:text-xl max-w-xl mx-auto drop-shadow-md">
+          We help retail shops, restaurants and other businesses grow locally with the use of<br />
             <span className="text-white font-medium">Technology. Tools. Ideas.</span>
           </p>
         </div>
@@ -43,9 +43,6 @@ const AboutUs = () => {
         Who <span className="text-orange-500">We Are</span>
       </h3>
       <div className="mt-3 w-20 h-1 bg-orange-400 mx-auto rounded-full"></div>
-      <p className="mt-6 text-lg text-gray-600 max-w-2xl mx-auto">
-        Building bridges between traditional business values and modern technology — that's our specialty.
-      </p>
     </div>
 
     {/* Content Grid */}
