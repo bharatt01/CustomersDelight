@@ -1,29 +1,56 @@
 .footer-section {
-  background: linear-gradient(135deg, #0d0d0d, #1a1a1a);
-  padding: 60px 0 40px;
+  background: #111; /* dark black background */
+  padding: 60px 20px;
   font-family: 'Segoe UI', sans-serif;
-  position: relative;
-  z-index: 1;
   color: #ccc;
+}
+
+.footer-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 40px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.footer-brand-section,
+.footer-links-section,
+.footer-contact-section,
+.footer-social-section {
+  flex: 1 1 200px;
+  min-width: 180px;
 }
 
 .footer-brand {
   font-size: 1.8rem;
   font-weight: 700;
-  color: #fff;
   margin-bottom: 10px;
+  color: #fff;
 }
 
 .footer-text {
   font-size: 0.95rem;
-  color: #aaa;
+  line-height: 1.5;
+  color: #bbb;
 }
 
 .footer-title {
-  font-size: 1rem;
+  font-size: 1.1rem;
   font-weight: 600;
-  margin-bottom: 15px;
+  margin-bottom: 12px;
   color: #fff;
+  position: relative;
+}
+
+.footer-title::after {
+  content: "";
+  display: block;
+  width: 40px;
+  height: 2px;
+  background-color: #ff9800; /* subtle orange underline */
+  margin-top: 4px;
+  border-radius: 1px;
 }
 
 .footer-links {
@@ -33,6 +60,12 @@
 
 .footer-links li {
   margin-bottom: 8px;
+  color: #bbb;
+  transition: transform 0.2s ease;
+}
+
+.footer-links li:hover {
+  transform: translateX(5px);
 }
 
 .footer-links a {
@@ -42,40 +75,60 @@
 }
 
 .footer-links a:hover {
-  color: #fff;
+  color: #ff9800; /* orange hover */
 }
 
-.footer-form input {
-  background: #222;
-  border: none;
-  color: #fff;
-  font-size: 0.9rem;
+.footer-contact-section li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #bbb;
+  margin-bottom: 8px;
+  transition: color 0.2s ease, transform 0.2s ease;
 }
 
-.footer-form input::placeholder {
-  color: #777;
-}
-
-.footer-form .btn {
-  width: 100%;
+.footer-contact-section li:hover {
+  color: #ff9800;
+  transform: translateX(4px);
 }
 
 .footer-social {
   display: flex;
   gap: 15px;
-  margin-top: 8px;
 }
 
 .footer-social a {
   color: #bbb;
   font-size: 1.3rem;
-  transition: color 0.2s ease;
+  transition: color 0.3s ease, transform 0.3s ease;
 }
 
 .footer-social a:hover {
-  color: #0d6efd;
+  color: #ff9800;
+  transform: scale(1.2);
 }
 
-.footer-bottom p {
+.footer-bottom {
+  text-align: center;
+  margin-top: 40px;
+  font-size: 0.9rem;
   color: #777;
+}
+
+.footer-bottom hr {
+  border-color: rgba(255,255,255,0.2);
+  margin-bottom: 12px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .footer-container {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 30px;
+  }
+
+  .footer-social {
+    justify-content: flex-start;
+  }
 }

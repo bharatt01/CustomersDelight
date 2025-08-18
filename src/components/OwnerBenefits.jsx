@@ -28,13 +28,18 @@ const services = [
     description: "Create a lasting impression with custom branding and design services.",
     icon: <FaPaintBrush />,
   },
+  {
+    title: "WhatsApp Community",
+    description: "Build WhatsApp Community to create awareness, promote offers, and increase footfall.",
+    icon: <FaShareAlt />,
+  },
 ];
 
 const Services = () => {
   return (
     <section className="services-section">
       <div className="services-container">
-        
+
         {/* Left Side */}
         <div className="services-left">
           <h2 className="services-title">✨ Our Services</h2>
@@ -46,25 +51,13 @@ const Services = () => {
         {/* Right Side */}
         <div className="services-right">
           <div className="services-grid">
-            {/* First row (3 cards) */}
-            {services.slice(0, 3).map((service, index) => (
+            {services.map((service, index) => (
               <div key={index} className="service-card">
                 <div className="service-icon">{service.icon}</div>
                 <h3>{service.title}</h3>
                 <p>{service.description}</p>
               </div>
             ))}
-
-            {/* Second row (2 cards, centered) */}
-            <div className="services-row-center">
-              {services.slice(3).map((service, index) => (
-                <div key={index} className="service-card">
-                  <div className="service-icon">{service.icon}</div>
-                  <h3>{service.title}</h3>
-                  <p>{service.description}</p>
-                </div>
-              ))}
-            </div>
           </div>
         </div>
 

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { db } from "../firebase";
 import { collection, getDocs } from "firebase/firestore";
 import { Link } from "react-router-dom";
-
+import './stores.css';
 const Stores = () => {
   const [stores, setStores] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -48,11 +48,14 @@ const Stores = () => {
               key={store.id}
               className="bg-white shadow-lg rounded-xl overflow-hidden flex flex-col"
             >
-              <img
-                src={store.imageUrl || "https://via.placeholder.com/400"}
-                alt={store.name}
-                className="w-full h-48 object-cover"
-              />
+             <div className="h-80 overflow-hidden imgcard">   {/* increased from h-68 to h-80 */}
+  <img
+    src={store.imageUrl || "https://via.placeholder.com/400"}
+    alt={store.name}
+    className="w-full h-full object-cover"
+  />
+</div>
+
               <div className="p-5 flex flex-col flex-grow">
                 <h3 className="text-xl font-semibold text-gray-800 mb-2">
                   {store.name}

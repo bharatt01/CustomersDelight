@@ -1,0 +1,88 @@
+.services-section {
+  padding: 80px 20px;
+}
+
+.services-container {
+  display: flex;
+  gap: 60px;
+  max-width: 1200px;
+  margin: auto;
+  align-items: flex-start;
+}
+
+.services-heading h2 {
+  font-size: 72px; /* big & tall */
+  font-weight: 800;
+  line-height: 1.1;
+  writing-mode: vertical-rl; /* vertical heading */
+  transform: rotate(180deg);
+  color: #111827;
+}
+
+.services-grid {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 25px;
+}
+
+.service-card {
+  background: #fff;
+  padding: 25px;
+  border-radius: 18px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease;
+}
+
+.service-card:hover {
+  transform: translateY(-8px);
+}
+
+/* Mobile view */
+@media (max-width: 768px) {
+  .services-container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .services-heading h2 {
+    writing-mode: horizontal-tb;
+    transform: none;
+    font-size: 42px;
+    margin-bottom: 20px;
+  }
+}
+@keyframes pulse-slow {
+  0%, 100% { transform: scale(1); opacity: 0.15; }
+  50% { transform: scale(1.05); opacity: 0.25; }
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 6s ease-in-out infinite;
+}
+/* Premium Gradient Glow Animations */
+@keyframes pulse-slow {
+  0%, 100% { transform: scale(1); opacity: 0.15; }
+  50% { transform: scale(1.05); opacity: 0.25; }
+}
+.animate-pulse-slow { animation: pulse-slow 6s ease-in-out infinite; }
+
+/* Floating background animation (optional) */
+@keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-20px); } }
+.animate-float { animation: float 10s ease-in-out infinite; }
+.animate-float-reverse { animation: float 12s ease-in-out infinite reverse; }
+
+/* Text Gradient Utility */
+.text-gradient-to-r {
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  background-image: linear-gradient(to right, #ec4899, #8b5cf6, #fbbf24);
+}
+
+/* Border Gradient Utility */
+.border-gradient-to-r {
+  border-image-slice: 1;
+  border-width: 2px;
+  border-image-source: linear-gradient(to right, #ec4899, #8b5cf6, #fbbf24);
+}

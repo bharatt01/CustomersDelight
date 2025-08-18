@@ -1,4 +1,4 @@
-.stores-container {
+/* .stores-container {
   padding: 50px 20px;
   text-align: center;
 }
@@ -13,10 +13,10 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 25px;
-}
+} */
 
 /* Card */
-.store-card {
+/* .store-card {
   background: #fff;
   padding: 20px;
   border-radius: 15px;
@@ -49,7 +49,7 @@
 }
 
 /* Skeleton shimmer */
-.skeleton {
+/* .skeleton {
   position: relative;
   overflow: hidden;
   border-radius: 15px;
@@ -86,4 +86,13 @@
   100% {
     transform: translateX(100%);
   }
+} */
+ /* .card img {
+  height: 400px !important;
+} */
+.img {
+  height: 250px !important;  /* increase height */
+  width: 100%;
+  object-fit: cover;
 }
+

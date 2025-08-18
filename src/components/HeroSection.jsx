@@ -40,7 +40,7 @@ const Heros = () => {
       <SwiperSlide>
         <div className="relative h-[90vh] flex items-center justify-start px-6 md:px-16 bg-black">
           <div
-            className="absolute inset-0 bg-cover bg-center opacity-90"
+            className="absolute inset-0 bg-cover bg-center opacity-120"
             style={{
               backgroundImage: `url(${process.env.PUBLIC_URL + "/Images/hero.jpg"})`,
             }}

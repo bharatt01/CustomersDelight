@@ -77,7 +77,7 @@ const Navbar = () => {
                       to="/category/men"
                       className="flex items-center gap-2 px-3 py-2 hover:bg-orange-100 rounded transition"
                     >
-                      Men's Wear
+                      Men
                     </Link>
                   </li>
                   <li>
@@ -85,7 +85,7 @@ const Navbar = () => {
                       to="/category/women"
                       className="flex items-center gap-2 px-3 py-2 hover:bg-orange-100 rounded transition"
                     >
-                      Women's Wear
+                      Women
                     </Link>
                   </li>
                   <li>
@@ -96,27 +96,29 @@ const Navbar = () => {
                       Kids
                     </Link>
                   </li>
-                   <li>
-                      <Link
-                        to="/category/Home-Appliances"
-                        onClick={() => setMobileOpen(false)}
-                      >
-                        Home Appliances
-                      </Link>
-                    </li>
-                      <li>
-                      <Link
-                        to="/category/Furniture"
-                        onClick={() => setMobileOpen(false)}
-                      >
-                        Furniture
-                      </Link>
-                    </li>
-                </ul>
+                  <li>
+  <Link
+    to="/category/Home-Appliances"
+    onClick={() => setMobileOpen(false)}
+    className="flex items-center gap-2 px-3 py-2 hover:bg-orange-100 rounded transition"
+  >
+    Home Appliances
+  </Link>
+</li>
+<li>
+  <Link
+    to="/category/Furniture"
+    onClick={() => setMobileOpen(false)}
+    className="flex items-center gap-2 px-3 py-2 hover:bg-orange-100 rounded transition"
+  >
+    Furniture
+  </Link>
+</li>
+</ul>
               </div>
             </li>
             <li className="hover:text-orange-500 transition">
-              <Link to="/exclusive-member">VIP Membership</Link>
+              <Link to="/prime-member">Prime Membership</Link>
             </li>
             <li className="hover:text-orange-500 transition">
               <Link to="/about-us">About Us</Link>
@@ -206,7 +208,7 @@ const Navbar = () => {
                         to="/category/men"
                         onClick={() => setMobileOpen(false)}
                       >
-                        Men's Wear
+                        Men
                       </Link>
                     </li>
                     <li>
@@ -214,7 +216,7 @@ const Navbar = () => {
                         to="/category/womens"
                         onClick={() => setMobileOpen(false)}
                       >
-                        Women's Wear
+                        Women
                       </Link>
                     </li>
                     <li>
@@ -246,10 +248,10 @@ const Navbar = () => {
               </li>
               <li>
                 <Link
-                  to="/exclusive-member"
+                  to="/Prime-member"
                   onClick={() => setMobileOpen(false)}
                 >
-                  VIP Membership
+                  Prime Membership
                 </Link>
               </li>
               <li>

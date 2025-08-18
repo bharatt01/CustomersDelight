@@ -12,6 +12,7 @@ import CategoryProducts from './components/CategoryProducts';
 import SearchResults from './pages/SearchResults';
 import SplitCategory from './components/Category';
 import FeaturedProductsPage from './pages/FeaturedProductsPage';
+import FeaturedStoresPage from './pages/FeaturedStoresPage';
 // SuperAdmin
 import SuperAdminLogin from './pages/SuperAdmin/SuperAdminLogin';
 import SuperAdminDashboard from './pages/SuperAdmin/SuperAdminDashboard';
@@ -32,6 +33,7 @@ import BlogAdminProtectedRoute from './components/BlogAdminProtectedRoute'; // â
 import Blogs from './pages/Blogs';
 import BlogDetails from "./pages/BlogDetails";
 import Member from './pages/Member';
+import PrimeMembership from './pages/PrimeMembership';
 
 // import CategoryProducts from "./pages/CategoryProducts"
 
@@ -48,14 +50,15 @@ function App() {
         {/* <Route path="/store/:id" element={<StoreDetail />} /> */}
         <Route path="/product/:id" element={<ProductDetails />} />
         <Route path="/about-us" element={<AboutUs />} />
+        <Route path="/prime-member" element={<PrimeMembership />} />
         <Route path="/search" element={<SearchResults />} />
         <Route path="/:slug" element={<StoreDetail />} />
         <Route path="/category/:categoryName" element={<CategoryProducts />} />
            <Route path="/" element={<SplitCategory />} />
-           <Route path='/exclusive-member' element={<Member/>}></Route>
+
              {/* <Route path="/products/:category" element={<CategoryProducts />} /> */}
 <Route path="/featured-products" element={<FeaturedProductsPage />} />
-
+<Route path='/featured-stores' element={<FeaturedStoresPage />} />
         {/* Blog Admin */}
         <Route path="/blog-admin/login" element={<BlogAdminLogin />} />
         <Route

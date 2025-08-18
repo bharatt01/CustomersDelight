@@ -1,4 +1,4 @@
-.store-container {
+/* .store-container {
   background-color: #f7f9fb;
 }
 
@@ -125,4 +125,9 @@
 .visit-btn-modern:hover {
   background-color: #000;
   color: #fff;
+} */
+ .imgcard{
+  height: 50px;
+  width: auto;
+  object-fit: contain;  /* fits inside height */
 }
