@@ -5,21 +5,21 @@ const teamMembers = [
   {
     name: 'Amod Sharma',
     role: 'Founder & CEO',
-    image: '/images/founder-image.png', // Replace with actual path
+    image: '/Images/founder-image.png', // Replace with actual path
     linkedin: 'https://linkedin.com/in/amodsharma',
     email: 'mailto:amod@example.com'
   },
   {
     name: 'Abhishek Rawat',
     role: 'Technical Head',
-    image: '/images/Technical-Head.jpg',
+    image: '/Images/Technical-Head.jpg',
     linkedin: 'https://linkedin.com/in/ritikajain',
     email: 'mailto:ritika@example.com'
   },
   {
     name: 'Bharat Sharma',
     role: 'Full Stack Developer',
-    image: '/images/webdeveloper2.jpg',
+    image: '/Images/webdeveloper2.jpg',
     linkedin: 'https://linkedin.com/in/rajeevmalhotra',
     email: 'mailto:rajeev@example.com'
   }
