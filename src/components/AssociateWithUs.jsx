@@ -4,7 +4,7 @@ import { FaHandshake, FaUsers, FaMapMarkedAlt, FaLaptopCode, FaStar, FaBullhorn 
 
 const steps = [
   {
-    title: "Step 1: Meeting & Plan",
+    title: "Step 1: Meeting & Planing",
     description: "Meeting, discussion and finalization of implementation plan ",
     icon: <FaHandshake />,
   },
@@ -14,20 +14,22 @@ const steps = [
     icon: <FaUsers />,
   },
   {
-    title: "Step 3: Prime Membership ",
-    description: "Start of building prime members community ",
+    title: "Step 3: Google My Business Setup",
+    description: "Listing on GMB. Address, map, phone, whatsapp, and reviews setup",
     icon: <FaMapMarkedAlt />,
   },
   {
-    title: "Step 4: Website",
+    title: "Step 4: Website Building",
     description: "Building of website according to clients' business profile ",
     icon: <FaLaptopCode />,
   },
   {
-    title: "Step 5: Google My Business Setup",
-    description: "Listing on GMB. Address, map, phone, whatsapp, and reviews setup",
+    title: "Step 5: Prime Membership ",
+    description: "Start of building prime members community ",
     icon: <FaStar />,
   },
+  
+  
   {
     title: "Step 6: Other work",
     description: "Creation and implementation of other work such as video content, posters and messages",

@@ -6,7 +6,7 @@ import Footer from './components/Footer';
 // Pages
 import Home from './pages/Home';
 import ProductDetails from './pages/Productdetails';
-import AboutUs from './components/AboutUs';
+import AboutUs from './pages/AboutUs';
 import StoreDetail from './components/StoreDetail';
 import CategoryProducts from './components/CategoryProducts';
 import SearchResults from './pages/SearchResults';

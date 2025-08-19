@@ -15,7 +15,7 @@ import Navbar from "./../components/Navbar";
 
 const benefits = [
   { icon: <CheckCircle />, title: "Flat Discounts", desc: "Guaranteed savings at partner stores." },
-  { icon: <Gift />, title: "Welcome Kit", desc: "Exclusive welcome kit worth ₹7,000." },
+  { icon: <Gift />, title: "Welcome Kit", desc: "Exclusive welcome kit worth upto ₹10,000." },
   { icon: <Wallet />, title: "Cashback Bonus", desc: "Earn extra cashback on purchases." },
   { icon: <Truck />, title: "Free Delivery", desc: "Free delivery at select partner stores." },
   { icon: <Star />, title: "Birthday & Festival Perks", desc: "Gift vouchers on special occasions." },
@@ -39,7 +39,7 @@ const PrimeMembership = () => {
       <section className="relative bg-gradient-to-br from-white via-orange-50 to-white py-20 px-6 lg:px-20 overflow-hidden text-gray-800">
         <div className="relative z-10 max-w-6xl mx-auto">
           {/* Mission & Prime Card */}
-          <div className="mb-20 grid lg:grid-cols-2 gap-10 items-center">
+          <div className="mb-20 grid lg:grid-cols-2 gap-9 items-center">
             <motion.div
               initial="hidden"
               whileInView="visible"
@@ -48,13 +48,13 @@ const PrimeMembership = () => {
               custom={0}
             >
               <h2 className="text-5xl font-extrabold mb-6 text-gradient bg-clip-text text-transparent bg-gradient-to-r from-orange-400 via-yellow-400 to-orange-500">
-                Our Mission
+                Objectives
               </h2>
-              <p className="text-gray-700 mb-4 leading-relaxed">
-                Building a <span className="font-semibold text-orange-500">trusted retail loyalty network</span> that empowers customers.
+              <p className="text-gray-700 mb-3 leading-relaxed">
+                To Build a <span className="font-semibold text-orange-500">trusted retail loyalty network</span> that truly empowers customers. And,
               </p>
-              <p className="text-gray-700 mb-4 leading-relaxed">
-                Save on every purchase from apparel shops, restaurants, furniture, medical stores, fashion outlets & FMCG shops.
+              <p className="text-gray-700 mb-3 leading-relaxed">
+               Let them save on every purchase from apparel shops, restaurants, furniture shops, medical stores, fashion outlets & FMCG shops.
               </p>
               <p className="text-gray-700 leading-relaxed">
                 Currently operating in <span className="font-semibold text-orange-600">Delhi NCR</span>. Unlock exclusive benefits like discounts, cashback, free gifts & more!
@@ -113,7 +113,7 @@ const PrimeMembership = () => {
 
           {/* Subscription Section */}
           <motion.div
-            className="relative max-w-4xl mx-auto text-center rounded-3xl py-16 px-8 bg-gradient-to-r from-orange-400 via-yellow-400 to-orange-500 shadow-xl overflow-hidden"
+            className="relative max-w-4xl mx-auto text-center rounded-3xl py-12 px-6 bg-gradient-to-r from-orange-400 via-yellow-400 to-orange-500 shadow-xl overflow-hidden"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}

@@ -5,21 +5,21 @@ const teamMembers = [
   {
     name: 'Amod Sharma',
     role: 'Founder & CEO',
-    image: '/team/amod.jpg', // Replace with actual path
+    image: '/images/founder-image.png', // Replace with actual path
     linkedin: 'https://linkedin.com/in/amodsharma',
     email: 'mailto:amod@example.com'
   },
   {
     name: 'Abhishek Rawat',
     role: 'Technical Head',
-    image: '/team/ritika.jpg',
+    image: '/images/Technical-Head.jpg',
     linkedin: 'https://linkedin.com/in/ritikajain',
     email: 'mailto:ritika@example.com'
   },
   {
     name: 'Bharat Sharma',
     role: 'Full Stack Developer',
-    image: '/team/rajeev.jpg',
+    image: '/images/webdeveloper2.jpg',
     linkedin: 'https://linkedin.com/in/rajeevmalhotra',
     email: 'mailto:rajeev@example.com'
   }
@@ -42,7 +42,7 @@ const Team = () => {
               key={idx}
               className="group bg-white border border-gray-200 rounded-2xl p-6 shadow-md hover:shadow-xl transition duration-300 flex flex-col items-center text-center"
             >
-              <div className="w-28 h-28 rounded-full overflow-hidden mb-4 border-4 border-orange-100 group-hover:scale-105 transition duration-300">
+              <div className="w-32 h-36 rounded-full overflow-hidden mb-4 border-4 border-orange-100 group-hover:scale-105 transition duration-300">
                 <img
                   src={member.image}
                   alt={member.name}

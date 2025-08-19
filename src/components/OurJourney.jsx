@@ -83,7 +83,7 @@ const Journey = () => {
             {/* Card Content */}
             <div className={`w-full lg:w-5/12 ${index % 2 === 0 ? 'lg:pr-16' : 'lg:pl-16'}`}>
               <div className="bg-white border border-gray-200 shadow-md hover:shadow-xl transition duration-300 rounded-2xl p-8">
-                <div className="flex items-center mb-5">
+                <div className="flex items-center mb-3">
                   <div className={`${milestone.color} p-3 rounded-full shadow-md`}>
                     <milestone.icon className="h-6 w-6 text-white" />
                   </div>

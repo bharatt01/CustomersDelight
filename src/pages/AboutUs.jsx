@@ -1,12 +1,12 @@
 import React from 'react';
 import { MapPin, Calendar, Target, Award } from 'lucide-react';
-import Navbar from './Navbar';
-import WhatWeDo from './WhatWeDo';
-import MissionVision from './MissionVision';
-import OurJourney from './OurJourney';
-import Team from './Team';
-import Testimonials from './Testimonials';
-import Footer from './Footer';
+import Navbar from '../components/Navbar';
+import WhatWeDo from '../components/WhatWeDo';
+import MissionVision from '../components/MissionVision';
+import OurJourney from '../components/OurJourney';
+import Team from '../components/Team';
+import Testimonials from '../components/Testimonials';
+import Footer from '../components/Footer';
 
 const AboutUs = () => {
   return (
@@ -28,7 +28,7 @@ const AboutUs = () => {
           </h1>
           <p className="text-lg sm:text-xl max-w-xl mx-auto drop-shadow-md">
           We help retail shops, restaurants and other businesses grow locally with the use of<br />
-            <span className="text-white font-medium">Technology. Tools. Ideas.</span>
+            <span className="text-white font-medium">Technology, Tools, Ideas.</span>
           </p>
         </div>
       </section>

@@ -154,20 +154,32 @@ const Testimonials = () => {
         </div>
 
         {/* CTA Section */}
-        <div className="bg-gradient-to-r from-yellow-400 to-orange-400 rounded-2xl text-white p-12 text-center">
-          <h3 className="text-3xl font-bold mb-3">Ready to Grow Your Business?</h3>
-          <p className="text-white text-lg mb-8 max-w-3xl mx-auto">
-            Join hundreds of shop owners who are reaching more customers, increasing revenue, and building their brand online.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button className="bg-white text-yellow-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition">
-              Get Free Consultation
-            </button>
-            <button className="border-2 border-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-yellow-600 transition">
-              View Portfolio
-            </button>
-          </div>
-        </div>
+      {/* CTA Section */}
+<div className="bg-gradient-to-r from-yellow-400 to-orange-400 rounded-2xl text-white p-12 text-center">
+  <h3 className="text-3xl font-bold mb-3">Ready to Grow Your Business?</h3>
+  <p className="text-white text-lg mb-8 max-w-3xl mx-auto">
+    Join hundreds of shop owners who are reaching more customers, increasing revenue, and building their brand online.
+  </p>
+
+  <div className="flex flex-col sm:flex-row gap-4 justify-center">
+    {/* Call directly */}
+    <a
+      href="tel:+919871428686" // replace with your number
+      className="bg-white text-yellow-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition"
+    >
+      Get Free Consultation
+    </a>
+
+    {/* Go to homepage */}
+    <button
+      onClick={() => (window.location.href = "/")} // change route if needed
+      className="border-2 border-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-yellow-600 transition"
+    >
+      Discover More
+    </button>
+  </div>
+</div>
+
       </div>
     </section>
   );

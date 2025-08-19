@@ -3,6 +3,7 @@ import { db } from "../firebase";
 import { collectionGroup, query, where, getDocs, getDoc, doc } from "firebase/firestore";
 import { useParams } from "react-router-dom";
 import Navbar from "./Navbar";
+import Footer from "./Footer";
 
 const CategoryProducts = () => {
   const { categoryName } = useParams();
@@ -121,6 +122,7 @@ const CategoryProducts = () => {
           </div>
         )}
       </div>
+      <Footer />
     </>
   );
 };
