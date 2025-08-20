@@ -47,9 +47,17 @@ const PrimeMembership = () => {
               variants={fadeUp}
               custom={0}
             >
-              <h2 className="text-5xl font-extrabold mb-6 text-gradient bg-clip-text text-transparent bg-gradient-to-r from-orange-400 via-yellow-400 to-orange-500">
-                Objectives
-              </h2>
+             <h2
+  className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-6
+             bg-gradient-to-r from-orange-400 via-yellow-400 to-orange-500
+             bg-clip-text text-transparent
+             leading-snug sm:leading-normal md:leading-relaxed
+             overflow-visible"
+>
+  Objectives
+</h2>
+
+
               <p className="text-gray-700 mb-3 leading-relaxed">
                 To Build a <span className="font-semibold text-orange-500">trusted retail loyalty network</span> that truly empowers customers. And,
               </p>

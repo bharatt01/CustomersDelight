@@ -1,33 +1,47 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { db, auth } from "../firebase";
-import { collection, addDoc, serverTimestamp } from "firebase/firestore";
+import {
+  collection,
+  addDoc,
+  serverTimestamp,
+  onSnapshot,
+  orderBy,
+  query,
+  deleteDoc,
+  doc,
+} from "firebase/firestore";
 import { signOut } from "firebase/auth";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 
-const CLOUDINARY_UPLOAD_PRESET = "CustomersDelight"; // 🔁 Replace if needed
-const CLOUD_NAME = "dc4hshi8o"; // 🔁 Replace if needed
+const CLOUDINARY_UPLOAD_PRESET = "CustomersDelight"; 
+const CLOUD_NAME = "dc4hshi8o"; 
 
 const AddBlog = () => {
   const [title, setTitle] = useState("");
   const [slug, setSlug] = useState("");
-  const [category, setCategory] = useState("");
+  const [author, setAuthor] = useState("");
   const [content, setContent] = useState("");
   const [imageFile, setImageFile] = useState(null);
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
+  const [blogs, setBlogs] = useState([]);
 
   const navigate = useNavigate();
 
-  // ✅ Redirect to login if not signed in
   useEffect(() => {
-    if (!auth.currentUser) {
-      navigate("/blog-admin/login");
-    }
+    if (!auth.currentUser) navigate("/blog-admin/login");
   }, [navigate]);
 
-  // ✅ Upload image to Cloudinary
+  useEffect(() => {
+    const q = query(collection(db, "blogs"), orderBy("createdAt", "desc"));
+    const unsubscribe = onSnapshot(q, (snapshot) => {
+      setBlogs(snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() })));
+    });
+    return () => unsubscribe();
+  }, []);
+
   const handleImageUpload = async () => {
     const formData = new FormData();
     formData.append("file", imageFile);
@@ -35,16 +49,19 @@ const AddBlog = () => {
 
     const res = await fetch(
       `https://api.cloudinary.com/v1_1/${CLOUD_NAME}/image/upload`,
-      {
-        method: "POST",
-        body: formData,
-      }
+      { method: "POST", body: formData }
     );
     const data = await res.json();
     return data.secure_url;
   };
 
-  // ✅ Submit blog to Firestore
+  const generateSlug = (text) =>
+    text
+      .toLowerCase()
+      .trim()
+      .replace(/\s+/g, "-")
+      .replace(/[^\w-]+/g, "");
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
@@ -58,11 +75,12 @@ const AddBlog = () => {
       }
 
       const imageUrl = await handleImageUpload();
+      const blogSlug = slug || generateSlug(title);
 
       await addDoc(collection(db, "blogs"), {
         title,
-        slug,
-        category,
+        slug: blogSlug,
+        author,
         content,
         imageUrl,
         createdAt: serverTimestamp(),
@@ -71,18 +89,23 @@ const AddBlog = () => {
       setMessage("✅ Blog added successfully!");
       setTitle("");
       setSlug("");
-      setCategory("");
+      setAuthor("");
       setContent("");
       setImageFile(null);
     } catch (error) {
       console.error("Error adding blog:", error);
-      setMessage("❌ Error adding blog. Check permissions.");
+      setMessage("❌ Error adding blog.");
     } finally {
       setLoading(false);
     }
   };
 
-  // ✅ Sign out handler
+  const handleDelete = async (id) => {
+    if (window.confirm("Are you sure you want to delete this blog?")) {
+      await deleteDoc(doc(db, "blogs", id));
+    }
+  };
+
   const handleSignOut = async () => {
     try {
       await signOut(auth);
@@ -94,9 +117,9 @@ const AddBlog = () => {
   };
 
   return (
-    <div className="max-w-3xl mx-auto p-6">
+    <div className="max-w-5xl mx-auto p-6">
       <div className="flex justify-between items-center mb-6">
-        <h2 className="text-2xl font-bold">Add New Blog</h2>
+        <h2 className="text-2xl font-bold">Manage Blogs</h2>
         <button
           onClick={handleSignOut}
           className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600"
@@ -111,7 +134,7 @@ const AddBlog = () => {
         </p>
       )}
 
-      <form onSubmit={handleSubmit} className="space-y-4">
+      <form onSubmit={handleSubmit} className="space-y-4 mb-10">
         <input
           type="text"
           placeholder="Blog Title"
@@ -122,18 +145,18 @@ const AddBlog = () => {
         />
         <input
           type="text"
-          placeholder="Slug (unique-url)"
+          placeholder="Slug (optional)"
           className="w-full border px-4 py-2 rounded"
           value={slug}
           onChange={(e) => setSlug(e.target.value)}
-          required
         />
         <input
           type="text"
-          placeholder="Category"
+          placeholder="Author Name"
           className="w-full border px-4 py-2 rounded"
-          value={category}
-          onChange={(e) => setCategory(e.target.value)}
+          value={author}
+          onChange={(e) => setAuthor(e.target.value)}
+          required
         />
         <ReactQuill
           theme="snow"
@@ -156,6 +179,34 @@ const AddBlog = () => {
           {loading ? "Uploading..." : "Add Blog"}
         </button>
       </form>
+
+      <h3 className="text-xl font-semibold mb-4">Recently Uploaded Blogs</h3>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {blogs.map((blog) => (
+          <div
+            key={blog.id}
+            className="border rounded-lg p-4 shadow bg-white flex flex-col justify-between"
+          >
+            <div>
+              <img
+                src={blog.imageUrl}
+                alt={blog.title}
+                className="w-full h-40 object-cover rounded mb-3"
+              />
+              <h4 className="text-lg font-bold mb-2">{blog.title}</h4>
+              <p className="text-sm text-gray-500">
+                {blog.author} | {blog.slug}
+              </p>
+            </div>
+            <button
+              onClick={() => handleDelete(blog.id)}
+              className="mt-3 bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600"
+            >
+              Delete
+            </button>
+          </div>
+        ))}
+      </div>
     </div>
   );
 };

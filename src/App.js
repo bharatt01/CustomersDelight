@@ -70,7 +70,7 @@ function App() {
           }
         />
         <Route path="/blogs" element={<Blogs/>}/>
-<Route path="/blog/:id" element={<BlogDetails />} />
+<Route path="/blog/:slug" element={<BlogDetails />} />
 
 
 

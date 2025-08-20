@@ -42,7 +42,7 @@ const Services = () => {
 
         {/* Left Side */}
         <div className="services-left">
-          <h2 className="services-title">✨ Our Suit of Services</h2>
+          <h2 className="services-title">✨ Our Suite of Services</h2>
           <p className="services-sub">
             We provide innovative digital solutions to grow your business.
           </p>
