@@ -1,99 +1,90 @@
-import React, { useRef, useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Pagination } from "swiper/modules";
+import { Pagination, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
-import "./hero.css";
+import "./hero.css"; // custom CSS for fine-tuning
 
-const slides = [
-  {
-    img: "/Images/hero.jpg",
-    title: (
-      <>
-        Explore, visit and buy from the <br />
-        <span className="highlight-orange">Top Stores/Shops in your City</span>
-      </>
-    ),
-    desc:
-      "Shop directly from local fashion entrepreneurs. Skip the middlemen. Support bold, original style.",
-    btns: [
-      { label: "Men's Wear", link: "/category/men", type: "primary" },
-      { label: "Women's Wear", link: "/category/women", type: "secondary" },
-    ],
-  },
-  {
-    img: "/Images/vip5.jpg",
-    title: (
-      <>
-        Become our <span className="highlight-yellow">Prime member</span>
-        <br />
-        and avail exclusive Discount/Cashback/Deals/Offers
-      </>
-    ),
-    desc:
-      "Unlock exclusive deals, get early access to sales, and enjoy free shipping on every order. Elevate your shopping experience today!",
-    btns: [
-      { label: "Join Now", link: "/prime", type: "primary" },
-      { label: "Learn More", link: "/learn-more", type: "secondary" },
-    ],
-  },
-];
-
-const Heros = () => {
-  const navigate = useNavigate();
-  const swiperRef = useRef(null);
-  const [direction, setDirection] = useState("next");
-
-  // Auto swiper slide
-  useEffect(() => {
-    if (!swiperRef.current) return;
-    const swiper = swiperRef.current.swiper;
-    const interval = setInterval(() => {
-      direction === "next" ? swiper.slideNext() : swiper.slidePrev();
-      setDirection(direction === "next" ? "prev" : "next");
-    }, 5000);
-    return () => clearInterval(interval);
-  }, [direction]);
-
+const HeroSlider = () => {
   return (
-    <Swiper
-      ref={swiperRef}
-      modules={[Pagination]}
-      pagination={{ clickable: true }}
-      loop
-      speed={900}
-      className="w-full"
-    >
-      {slides.map((slide, index) => (
-        <SwiperSlide key={index}>
-          <div className="hero-slide">
+    <div className="relative w-full h-[80vh] md:h-[90vh] overflow-hidden">
+      <Swiper
+        modules={[Pagination, Autoplay]}
+        pagination={{ clickable: true }}
+        autoplay={{ delay: 4000 }}
+        loop={true}
+        className="h-full"
+      >
+        {/* Slide 1 */}
+        <SwiperSlide>
+          <div className="relative w-full h-full">
             <img
-              src={process.env.PUBLIC_URL + slide.img}
-              alt="Hero"
-              className="hero-image"
+              src="/images/hero3.png"
+              alt="Local Stores"
+              className="w-full h-full object-cover"
             />
-            <div className="hero-overlay" />
-            <div className="hero-text left-on-desktop">
-              <h1>{slide.title}</h1>
-              <p>{slide.desc}</p>
-              <div className="hero-buttons">
-                {slide.btns.map((btn, i) => (
-                  <button
-                    key={i}
-                    onClick={() => navigate(btn.link)}
-                    className={btn.type === "primary" ? "btn-primary" : "btn-secondary"}
-                  >
-                    {btn.label}
-                  </button>
-                ))}
+            <div className="absolute inset-0 bg-black/40"></div>
+            <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4">
+              <h1 className="text-3xl md:text-5xl font-extrabold text-white leading-tight max-w-3xl">
+                Explore, {" "}
+                <span className="text-orange-500">Visit and Buy</span> from the{" "}
+                <span className="text-orange-500">Top Stores</span> in Your City
+              </h1>
+              <p className="mt-4 text-lg md:text-xl text-gray-200 max-w-2xl">
+                Shop directly from local fashion entrepreneurs.{" "}
+                <span className="text-orange-400 font-semibold">
+                  Skip the middlemen
+                </span>{" "}
+                and support bold, original style.
+              </p>
+              <div className="mt-6 flex gap-4">
+                <button className="bg-orange-500 text-white px-6 py-3 rounded-full font-semibold hover:bg-orange-600 transition">
+                  Men's Wear
+                </button>
+                <button className="bg-white text-orange-500 px-6 py-3 rounded-full font-semibold hover:bg-gray-100 transition">
+                  Women's Wear
+                </button>
               </div>
             </div>
           </div>
         </SwiperSlide>
-      ))}
-    </Swiper>
+
+        {/* Slide 2 */}
+        <SwiperSlide>
+          <div className="relative w-full h-full">
+            <img
+              src="/images/hero6.jpg"
+              alt="Prime Membership"
+              className="w-full h-full object-cover"
+            />
+            <div className="absolute inset-0 bg-black/40"></div>
+            <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4">
+              <h1 className="text-3xl md:text-5xl font-extrabold text-white leading-tight max-w-3xl">
+                Become our{" "}
+                <span className="text-yellow-400">Prime Member</span> and Avail{" "}
+                <span className="text-yellow-400">Exclusive Discounts/Cashback/Deals/Offers</span>
+              </h1>
+              <p className="mt-4 text-lg md:text-xl text-gray-200 max-w-2xl">
+                Unlock exclusive offers, early access to sales, and free
+                shipping on every order.{" "}
+                <span className="text-yellow-300 font-semibold">
+                  Elevate your shopping experience today!
+                </span>
+              </p>
+              <div className="mt-6 flex gap-4">
+                <button className="bg-yellow-400 text-black px-6 py-3 rounded-full font-semibold hover:bg-yellow-500 transition">
+                  Join Now
+                </button>
+                <button className="bg-white text-yellow-500 px-6 py-3 rounded-full font-semibold hover:bg-gray-100 transition">
+                  Learn More
+                </button>
+              </div>
+            </div>
+          </div>
+        </SwiperSlide>
+      </Swiper>
+    </div>
   );
 };
 
-export default Heros;
+export default HeroSlider;

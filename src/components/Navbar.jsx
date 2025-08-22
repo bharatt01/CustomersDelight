@@ -20,28 +20,34 @@ const Navbar = () => {
     <header className="bg-white shadow-md sticky top-0 z-50 transition-all duration-300">
       <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
         {/* Logo */}
-        <Link to="/">
-          <div className="text-xl font-bold text-orange-500">
-            Customer's Delight
-          </div>
-        </Link>
+     {/* Logo */}
+{/* Logo */}
+<Link to="/" className="md:ml-0 -ml-3 mr-3">
+  <div className="text-xl font-bold text-orange-500 whitespace-nowrap">
+    Customer's Delight
+  </div>
+</Link>
+
 
         {/* Mobile Search */}
-        <form
-          onSubmit={handleSearch}
-          className="flex items-center gap-3 md:hidden flex-1"
-        >
-          <div className="flex items-center bg-gray-100 px-3 py-1 rounded-full flex-1">
-            <Search className="w-4 h-4 text-gray-500 mr-2" />
-            <input
-              type="text"
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder="Search..."
-              className="bg-transparent focus:outline-none w-full text-sm text-gray-800"
-            />
-          </div>
-        </form>
+   <form
+  onSubmit={handleSearch}
+  className="flex items-center gap-3 md:hidden flex-1"
+>
+  <div
+    className="flex items-center bg-gray-100 px-3 py-1 rounded-full flex-1 
+               border border-orange-300 shadow-[0_0_8px_rgba(249,115,22,0.4)]"
+  >
+    <Search className="w-4 h-4 text-gray-500 mr-2" />
+    <input
+      type="text"
+      value={searchQuery}
+      onChange={(e) => setSearchQuery(e.target.value)}
+      placeholder="Search..."
+      className="bg-transparent focus:outline-none w-full text-sm text-gray-800"
+    />
+  </div>
+</form>
 
         {/* Mobile Hamburger */}
         <button onClick={() => setMobileOpen(true)} className="md:hidden ml-2">

@@ -38,10 +38,10 @@ const Footer = () => {
         <div className="footer-social-section">
           <h6 className="footer-title">Connect</h6>
           <div className="footer-social">
-            <a href="#"><i className="bi bi-facebook"></i></a>
-            <a href="#"><i className="bi bi-instagram"></i></a>
-            <a href="#"><i className="bi bi-twitter"></i></a>
-            <a href="#"><i className="bi bi-linkedin"></i></a>
+            <a href="https://www.facebook.com/customerdelight"><i className="bi bi-facebook"></i></a>
+            <a href="https://www.instagram.com/customerdelight_/"><i className="bi bi-instagram"></i></a>
+            <a href="https://x.com/CSDelight_"><i className="bi bi-twitter"></i></a>
+            <a href="https://www.linkedin.com/in/customer-delight/"><i className="bi bi-linkedin"></i></a>
           </div>
         </div>
 

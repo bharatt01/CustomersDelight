@@ -117,7 +117,7 @@ const FeaturedProducts = ({ limit = 4 }) => {
             <div className="absolute top-3 left-3 flex flex-col gap-2">
               {product.featured && (
                 <span className="bg-orange-500 text-white px-3 py-1 text-xs font-bold rounded-full shadow-md">
-                  FEATURED
+                  Special Offer
                 </span>
               )}
               {product.deal && (
