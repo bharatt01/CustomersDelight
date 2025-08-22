@@ -19,7 +19,7 @@ const HeroSlider = () => {
         <SwiperSlide>
           <div className="relative w-full h-full">
             <img
-              src="/images/hero3.png"
+              src="/Images/hero3.png"
               alt="Local Stores"
               className="w-full h-full object-cover"
             />
@@ -53,7 +53,7 @@ const HeroSlider = () => {
         <SwiperSlide>
           <div className="relative w-full h-full">
             <img
-              src="/images/hero6.jpg"
+              src="/Images/hero6.jpg"
               alt="Prime Membership"
               className="w-full h-full object-cover"
             />
