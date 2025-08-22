@@ -3,7 +3,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
-import "./hero.css"; // custom CSS for fine-tuning
+import "./hero.css";
 
 const HeroSlider = () => {
   return (
@@ -11,7 +11,7 @@ const HeroSlider = () => {
       <Swiper
         modules={[Pagination, Autoplay]}
         pagination={{ clickable: true }}
-        autoplay={{ delay: 4000 }}
+        autoplay={{ delay: 6000 }}
         loop={true}
         className="h-full"
       >
@@ -25,19 +25,20 @@ const HeroSlider = () => {
             />
             <div className="absolute inset-0 bg-black/40"></div>
             <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4">
-              <h1 className="text-3xl md:text-5xl font-extrabold text-white leading-tight max-w-3xl">
-                Explore, {" "}
-                <span className="text-orange-500">Visit and Buy</span> from the{" "}
-                <span className="text-orange-500">Top Stores</span> in Your City
+              <h1 className="text-3xl md:text-6xl font-extrabold text-white leading-snug max-w-4xl">
+                Explore,{" "}
+                <span className="text-orange-500">Visit and Buy</span> <br />
+                from the <span className="text-orange-500">Top Stores</span> in
+                Your City
               </h1>
-              <p className="mt-4 text-lg md:text-xl text-gray-200 max-w-2xl">
+              <p className="mt-4 text-lg md:text-2xl text-gray-200 max-w-3xl">
                 Shop directly from local fashion entrepreneurs.{" "}
                 <span className="text-orange-400 font-semibold">
                   Skip the middlemen
                 </span>{" "}
                 and support bold, original style.
               </p>
-              <div className="mt-6 flex gap-4">
+              <div className="mt-6 flex gap-4 flex-wrap justify-center">
                 <button className="bg-orange-500 text-white px-6 py-3 rounded-full font-semibold hover:bg-orange-600 transition">
                   Men's Wear
                 </button>
@@ -59,19 +60,22 @@ const HeroSlider = () => {
             />
             <div className="absolute inset-0 bg-black/40"></div>
             <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4">
-              <h1 className="text-3xl md:text-5xl font-extrabold text-white leading-tight max-w-3xl">
+              <h1 className="text-3xl md:text-6xl font-extrabold text-white leading-snug max-w-4xl">
                 Become our{" "}
-                <span className="text-yellow-400">Prime Member</span> and Avail{" "}
-                <span className="text-yellow-400">Exclusive Discounts/Cashback/Deals/Offers</span>
+                <span className="text-yellow-400">Prime Member</span> <br />
+                and Avail{" "}
+                <span className="text-yellow-400">
+                  Exclusive Discounts, Cashback, Deals & Offers
+                </span>
               </h1>
-              <p className="mt-4 text-lg md:text-xl text-gray-200 max-w-2xl">
+              <p className="mt-4 text-lg md:text-2xl text-gray-200 max-w-3xl">
                 Unlock exclusive offers, early access to sales, and free
                 shipping on every order.{" "}
                 <span className="text-yellow-300 font-semibold">
                   Elevate your shopping experience today!
                 </span>
               </p>
-              <div className="mt-6 flex gap-4">
+              <div className="mt-6 flex gap-4 flex-wrap justify-center">
                 <button className="bg-yellow-400 text-black px-6 py-3 rounded-full font-semibold hover:bg-yellow-500 transition">
                   Join Now
                 </button>

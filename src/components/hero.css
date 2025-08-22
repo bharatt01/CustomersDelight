@@ -115,3 +115,67 @@
   background: #f97316 !important; /* orange active dot */
   opacity: 1;
 }
+.slide-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: white;
+  padding: 15px;
+  max-width: 85%; /* reduced for safer mobile spacing */
+  word-wrap: break-word; /* ensures long words wrap */
+}
+
+.slide-text h1 {
+  font-size: 2.5rem;
+  line-height: 1.3;
+  margin-bottom: 15px;
+}
+
+.slide-text p {
+  font-size: 1.1rem;
+  margin-bottom: 20px;
+}
+
+/* 🔥 Mobile adjustments */
+@media (max-width: 768px) {
+  .hero-slider {
+    height: 80vh;
+  }
+
+  .slide-content {
+    height: 80vh;
+  }
+
+  .slide-text {
+    max-width: 90%;
+    top: 55%; /* push a bit lower for balance */
+  }
+
+  .slide-text h1 {
+    font-size: 1.4rem; /* smaller heading */
+    line-height: 1.2;
+  }
+
+  .slide-text p {
+    font-size: 0.9rem;
+    line-height: 1.4;
+  }
+
+  .btn-primary,
+  .btn-secondary {
+    padding: 7px 14px;
+    font-size: 0.85rem;
+  }
+}
+
+/* Extra small phones (<480px) */
+@media (max-width: 480px) {
+  .slide-text h1 {
+    font-size: 1.2rem;
+  }
+  .slide-text p {
+    font-size: 0.8rem;
+  }
+}
