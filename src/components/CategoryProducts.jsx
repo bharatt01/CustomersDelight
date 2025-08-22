@@ -4,6 +4,22 @@ import { collectionGroup, query, where, getDocs, getDoc, doc } from "firebase/fi
 import { useParams } from "react-router-dom";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
+// import "./categoryproducts.css"; // optional if you want to add animation like featuredstores
+
+// Skeleton loader for products
+const ProductSkeleton = () => {
+  return (
+    <div className="bg-white shadow-lg rounded-2xl overflow-hidden flex flex-col animate-pulse border border-gray-200">
+      <div className="w-full h-64 bg-gray-200"></div>
+      <div className="p-6 flex flex-col flex-grow">
+        <div className="h-6 w-2/3 bg-gray-300 rounded mb-3"></div>
+        <div className="h-4 w-full bg-gray-300 rounded mb-2"></div>
+        <div className="h-4 w-3/4 bg-gray-300 rounded mb-4"></div>
+        <div className="h-10 w-full bg-gray-300 rounded mt-auto"></div>
+      </div>
+    </div>
+  );
+};
 
 const CategoryProducts = () => {
   const { categoryName } = useParams();
@@ -45,66 +61,85 @@ const CategoryProducts = () => {
     fetchCategoryProducts();
   }, [categoryName]);
 
-  if (loading) return <p className="text-center text-lg">Loading...</p>;
-
   return (
     <>
       <Navbar />
-      <div className="max-w-7xl mx-auto p-6">
-        <h1 className="text-3xl font-extrabold mb-6 capitalize text-gray-900">
-          {categoryName}
-        </h1>
 
-        {products.length === 0 ? (
-          <p className="text-center text-gray-500">No products to display.</p>
+      <div className="relative p-8 bg-gray-50 overflow-hidden">
+        {/* Background gradient blobs like FeaturedStores */}
+        <div className="absolute -top-16 -left-16 w-64 h-64 bg-orange-200 rounded-full opacity-20 blur-3xl animate-pulse-slow"></div>
+        <div className="absolute -bottom-20 -right-16 w-72 h-72 bg-yellow-200 rounded-full opacity-15 blur-3xl animate-pulse-slow"></div>
+
+        {/* Section Heading */}
+        <div className="flex items-center mb-12 relative z-10">
+          <h1 className="text-4xl sm:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-orange-500 via-yellow-500 to-red-600 relative capitalize">
+            {categoryName}
+            <span className="absolute -inset-1 bg-gradient-to-r from-orange-200 via-yellow-200 to-red-100 blur-xl opacity-25 rounded-lg animate-pulse-slow"></span>
+          </h1>
+          <div className="flex-1 h-1 bg-gradient-to-r from-orange-400 via-yellow-500 to-red-600 rounded-full relative overflow-hidden ml-4">
+            <span className="absolute left-0 top-0 h-full w-1/3 bg-white opacity-20 animate-pulse-slow"></span>
+          </div>
+        </div>
+
+        {/* Products Grid */}
+        {loading ? (
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 relative z-10">
+            {Array.from({ length: 6 }).map((_, idx) => (
+              <ProductSkeleton key={idx} />
+            ))}
+          </div>
+        ) : products.length === 0 ? (
+          <p className="text-center text-gray-600 relative z-10">
+            No products to display.
+          </p>
         ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 relative z-10">
             {products.map((product) => (
               <div
                 key={product.id}
-                className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden group relative"
+                className                ="bg-white border border-gray-200 rounded-2xl shadow-md overflow-hidden flex flex-col hover:-translate-y-2 hover:shadow-xl transition-all duration-300"
               >
-                {/* New Badge */}
-                <span className="absolute top-3 left-3 bg-pink-500 text-white text-xs font-semibold px-3 py-1 rounded-full shadow z-10">
-                  New
-                </span>
+                {/* Product Image */}{/* Product Image */}
+<div className="relative">
+  <img
+    src={product.images && product.images.length > 0 ? product.images[0] : "/placeholder.png"}
+    alt={product.name}
+    className="w-full h-64 object-contain p-4 bg-gray-50"
+  />
+  <span className="absolute top-3 left-3 bg-gradient-to-r from-orange-500 to-yellow-500 text-white text-xs font-semibold px-3 py-1 rounded-full shadow">
+    New
+  </span>
+</div>
 
-                {/* Product Image */}
-                <div className="w-full h-64 bg-gray-50 flex items-center justify-center overflow-hidden">
-                  <img
-                    src={product.imageUrl}
-                    alt={product.name}
-                    className="max-w-full max-h-full object-contain p-4 transition-transform duration-300 group-hover:scale-105"
-                  />
-                </div>
 
                 {/* Product Info */}
-                <div className="flex flex-col p-5 h-[220px]">
-                  <h3 className="text-lg font-semibold text-gray-900 truncate">
+                <div className="p-6 flex flex-col flex-grow">
+                  <h3 className="text-lg font-bold text-gray-800 mb-1 line-clamp-1">
                     {product.name}
                   </h3>
-                  <p className="text-indigo-600 font-extrabold text-xl mt-1">
+                  <p className="text-orange-600 font-extrabold text-xl mb-2">
                     ₹{product.price}
                   </p>
-                  <p className="text-gray-500 text-sm mt-2 line-clamp-2">
+                  <p className="text-gray-600 text-sm mb-4 line-clamp-2">
                     {product.description}
                   </p>
 
-                  <div className="mt-auto flex items-center justify-between">
-                    {product.storePhone && (
-                      <a
-                        href={`https://wa.me/91${product.storePhone}?text=Hi, I’m interested in ${product.name}`}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="w-full text-center bg-indigo-600 hover:bg-indigo-700 text-white py-2 rounded-lg transition font-medium"
-                      >
-                        WhatsApp to Buy
-                      </a>
-                    )}
-                  </div>
+                  {/* WhatsApp Buy Button */}
+                  {product.storePhone && (
+                    <a
+                      href={`https://wa.me/91${product.storePhone}?text=Hi, I’m interested in ${product.name}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="mt-auto inline-flex items-center justify-center px-6 py-3 rounded-full 
+                                 bg-gradient-to-r from-orange-500 to-yellow-400 text-white font-semibold text-sm
+                                 shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300"
+                    >
+                      WhatsApp to Buy
+                    </a>
+                  )}
 
-                  {/* Example Rating Stars */}
-                  <div className="flex items-center mt-2">
+                  {/* Rating Stars */}
+                  <div className="flex items-center mt-3">
                     {[...Array(5)].map((_, idx) => (
                       <svg
                         key={idx}
@@ -122,6 +157,7 @@ const CategoryProducts = () => {
           </div>
         )}
       </div>
+
       <Footer />
     </>
   );

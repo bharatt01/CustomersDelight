@@ -13,6 +13,7 @@ import SearchResults from './pages/SearchResults';
 import SplitCategory from './components/Category';
 import FeaturedProductsPage from './pages/FeaturedProductsPage';
 import FeaturedStoresPage from './pages/FeaturedStoresPage';
+// import SearchResults from './components/SearchResults';
 // SuperAdmin
 import SuperAdminLogin from './pages/SuperAdmin/SuperAdminLogin';
 import SuperAdminDashboard from './pages/SuperAdmin/SuperAdminDashboard';
@@ -55,6 +56,7 @@ function App() {
         <Route path="/:slug" element={<StoreDetail />} />
         <Route path="/category/:categoryName" element={<CategoryProducts />} />
            <Route path="/" element={<SplitCategory />} />
+<Route path="/search" element={<SearchResults />} />
 
              {/* <Route path="/products/:category" element={<CategoryProducts />} /> */}
 <Route path="/featured-products" element={<FeaturedProductsPage />} />
