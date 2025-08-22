@@ -69,17 +69,17 @@ const HeroSlider = () => {
             />
             <div className="absolute inset-0 bg-black/40"></div>
             <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4">
-              <h1 className="text-3xl md:text-6xl font-extrabold leading-tight max-w-4xl text-white drop-shadow-lg">
-                Become our{" "}
-                <span className="bg-gradient-to-r from-orange-400 via-yellow-400 to-amber-500 bg-clip-text text-transparent font-extrabold">
-                  Prime Member
-                </span>
-                <br className="hidden md:block" />
-                and Avail{" "}
-                <span className="bg-gradient-to-r from-orange-400 via-yellow-400 to-amber-500 bg-clip-text text-transparent font-extrabold">
-                  Exclusive Discounts, Cashback, Deals & Offers
-                </span>
-              </h1>
+             <h1 className="text-3xl md:text-6xl font-extrabold leading-tight max-w-4xl text-white drop-shadow-lg">
+  Become our
+  <br className="block md:hidden" /> {/* Only breaks on mobile */}
+  <span className="bg-gradient-to-r from-orange-400 via-yellow-400 to-amber-500 bg-clip-text text-transparent font-extrabold">
+    Prime Member
+  </span>{" "}
+  and Avail{" "}
+  <span className="bg-gradient-to-r from-orange-400 via-yellow-400 to-amber-500 bg-clip-text text-transparent font-extrabold">
+    Exclusive Discounts, Cashback, Deals & Offers
+  </span>
+</h1>
 
               <p className="mt-4 text-base md:text-xl text-gray-200 max-w-2xl leading-relaxed drop-shadow">
                 Unlock exclusive offers, early access to sales, and free
