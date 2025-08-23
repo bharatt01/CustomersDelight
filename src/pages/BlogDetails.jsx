@@ -1,28 +1,41 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { db } from "../firebase";
-import { collection, query, where, getDocs } from "firebase/firestore";
+import { collection, getDocs, orderBy, query } from "firebase/firestore";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 
 const BlogDetail = () => {
   const { slug } = useParams();
+  const navigate = useNavigate();
+
   const [blog, setBlog] = useState(null);
+  const [allBlogs, setAllBlogs] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const fetchBlog = async () => {
+    const fetchBlogs = async () => {
       try {
-        const q = query(collection(db, "blogs"), where("slug", "==", slug));
-        const snapshot = await getDocs(q);
-        if (!snapshot.empty) setBlog(snapshot.docs[0].data());
+        const blogsQuery = query(collection(db, "blogs"), orderBy("createdAt", "desc"));
+        const snapshot = await getDocs(blogsQuery);
+        const blogs = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+        setAllBlogs(blogs);
+
+        const current = blogs.find(b => b.slug === slug);
+        setBlog(current || null);
+
         setLoading(false);
       } catch (error) {
-        console.error("Error fetching blog:", error);
+        console.error("Error fetching blogs:", error);
         setLoading(false);
       }
     };
-    fetchBlog();
+    fetchBlogs();
+  }, [slug]);
+
+  // Scroll to top on blog change
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
   }, [slug]);
 
   if (loading)
@@ -37,6 +50,10 @@ const BlogDetail = () => {
   const createdDate = blog.createdAt
     ? new Date(blog.createdAt.seconds * 1000).toLocaleDateString()
     : "Unknown Date";
+
+  const currentIndex = allBlogs.findIndex(b => b.slug === slug);
+  const prevBlog = currentIndex < allBlogs.length - 1 ? allBlogs[currentIndex + 1] : null;
+  const nextBlog = currentIndex > 0 ? allBlogs[currentIndex - 1] : null;
 
   return (
     <>
@@ -68,6 +85,27 @@ const BlogDetail = () => {
           className="prose prose-lg prose-gray max-w-none"
           dangerouslySetInnerHTML={{ __html: blog.content }}
         ></article>
+
+        {/* Navigation Buttons */}
+        <div className="flex justify-between mt-12 flex-col sm:flex-row gap-4">
+          {prevBlog ? (
+            <button
+              onClick={() => navigate(`/blog/${prevBlog.slug}`)}
+              className="flex-1 px-6 py-3 bg-white border border-gray-300 rounded-lg shadow hover:shadow-lg transition duration-300 text-gray-700 font-semibold hover:bg-gray-50"
+            >
+              ← Previous: <span className="font-medium">{prevBlog.title}</span>
+            </button>
+          ) : <div className="flex-1" />}
+
+          {nextBlog ? (
+            <button
+              onClick={() => navigate(`/blog/${nextBlog.slug}`)}
+              className="flex-1 px-6 py-3 bg-blue-600 text-white rounded-lg shadow hover:shadow-xl transition duration-300 font-semibold hover:bg-blue-700"
+            >
+              Next: <span className="font-medium">{nextBlog.title}</span> →
+            </button>
+          ) : <div className="flex-1" />}
+        </div>
       </div>
       <Footer />
     </>

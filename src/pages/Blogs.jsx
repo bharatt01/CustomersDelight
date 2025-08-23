@@ -4,8 +4,7 @@ import { collection, getDocs } from "firebase/firestore";
 import BlogCard from "../components/BlogCard";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-
-const Blogs = () => {
+ const Blogs = () => {
   const [blogs, setBlogs] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -29,7 +28,6 @@ const Blogs = () => {
   }, []);
 
   if (loading) {
-    // Render a full-page loader so footer does not appear first
     return (
       <div className="min-h-screen flex flex-col">
         <Navbar />
@@ -43,13 +41,29 @@ const Blogs = () => {
   return (
     <div className="min-h-screen flex flex-col">
       <Navbar />
-      <div className="flex-grow max-w-6xl mx-auto p-4 grid grid-cols-1 md:grid-cols-3 gap-6">
+
+      {/* Top Banner / Strip */}
+      <div
+        className="w-full  h-[60vh] md:h-[50vh]  flex items-center justify-center bg-cover bg-center relative"
+        style={{
+          backgroundImage: `url('/images/blog3.jpg')`,
+        }}
+      >
+        <div className="absolute inset-0 bg-black bg-opacity-50"></div>
+        <h1 className="relative text-4xl sm:text-5xl font-extrabold text-white">
+          BLOGS
+        </h1>
+      </div>
+
+      {/* Blog Grid */}
+      <div className="flex-grow max-w-6xl mx-auto p-4 grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
         {blogs.length > 0 ? (
           blogs.map((blog) => <BlogCard key={blog.id} blog={blog} />)
         ) : (
-          <p className="text-center text-lg">No blogs found.</p>
+          <p className="text-center text-lg col-span-full">No blogs found.</p>
         )}
       </div>
+
       <Footer />
     </div>
   );

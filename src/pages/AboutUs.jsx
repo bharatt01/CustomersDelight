@@ -18,13 +18,13 @@ const AboutUs = () => {
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{
-            backgroundImage: `url(${process.env.PUBLIC_URL + '/Images/about-hero.jpg'})`, // replace with your image path
+            backgroundImage: `url(${process.env.PUBLIC_URL + '/Images/local6.png'})`, // replace with your image path
           }}
         />
         <div className="absolute inset-0 bg-black/50" />
         <div className="relative z-10 text-center px-4 text-white">
           <h1 className="text-4xl sm:text-5xl font-extrabold mb-4 drop-shadow">
-            About <span className="text-orange-400">Customer Delight</span>
+            About <span className="text-orange-500">Customer Delight</span>
           </h1>
           <p className="text-lg sm:text-xl max-w-xl mx-auto drop-shadow-md">
           We help retail shops, restaurants and other businesses grow locally with the use of<br />

@@ -4,7 +4,15 @@ import { collectionGroup, query, where, getDocs, getDoc, doc } from "firebase/fi
 import { useParams } from "react-router-dom";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
-// import "./categoryproducts.css"; // optional if you want to add animation like featuredstores
+
+// Example category images (you can replace with real ones)
+const categoryBanners = {
+  electronics: "https://source.unsplash.com/1600x400/?electronics,tech",
+  fashion: "https://source.unsplash.com/1600x400/?fashion,clothes",
+  furniture: "https://source.unsplash.com/1600x400/?furniture,interior",
+  grocery: "https://source.unsplash.com/1600x400/?grocery,food",
+  default: "https://source.unsplash.com/1600x400/?shopping,store",
+};
 
 // Skeleton loader for products
 const ProductSkeleton = () => {
@@ -61,26 +69,30 @@ const CategoryProducts = () => {
     fetchCategoryProducts();
   }, [categoryName]);
 
+  // pick image for category
+  const bannerImage =
+    categoryBanners[categoryName?.toLowerCase()] || categoryBanners.default;
+
   return (
     <>
       <Navbar />
 
-      <div className="relative p-8 bg-gray-50 overflow-hidden">
-        {/* Background gradient blobs like FeaturedStores */}
-        <div className="absolute -top-16 -left-16 w-64 h-64 bg-orange-200 rounded-full opacity-20 blur-3xl animate-pulse-slow"></div>
-        <div className="absolute -bottom-20 -right-16 w-72 h-72 bg-yellow-200 rounded-full opacity-15 blur-3xl animate-pulse-slow"></div>
-
-        {/* Section Heading */}
-        <div className="flex items-center mb-12 relative z-10">
-          <h1 className="text-4xl sm:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-orange-500 via-yellow-500 to-red-600 relative capitalize">
+      {/* Category Banner Strip */}
+      <div className="relative w-full h-60 md:h-72 lg:h-80 overflow-hidden">
+        <img
+          src={bannerImage}
+          alt={`${categoryName} banner`}
+          className="absolute inset-0 w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 bg-black/40 flex justify-center items-center">
+          <h1 className="text-4xl md:text-5xl font-extrabold text-white drop-shadow-lg capitalize">
             {categoryName}
-            <span className="absolute -inset-1 bg-gradient-to-r from-orange-200 via-yellow-200 to-red-100 blur-xl opacity-25 rounded-lg animate-pulse-slow"></span>
           </h1>
-          <div className="flex-1 h-1 bg-gradient-to-r from-orange-400 via-yellow-500 to-red-600 rounded-full relative overflow-hidden ml-4">
-            <span className="absolute left-0 top-0 h-full w-1/3 bg-white opacity-20 animate-pulse-slow"></span>
-          </div>
         </div>
+      </div>
 
+      {/* Category Products Section */}
+      <div className="relative p-8 bg-gray-50 overflow-hidden">
         {/* Products Grid */}
         {loading ? (
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 relative z-10">
@@ -97,20 +109,19 @@ const CategoryProducts = () => {
             {products.map((product) => (
               <div
                 key={product.id}
-                className                ="bg-white border border-gray-200 rounded-2xl shadow-md overflow-hidden flex flex-col hover:-translate-y-2 hover:shadow-xl transition-all duration-300"
+                className="bg-white border border-gray-200 rounded-2xl shadow-md overflow-hidden flex flex-col hover:-translate-y-2 hover:shadow-xl transition-all duration-300"
               >
-                {/* Product Image */}{/* Product Image */}
-<div className="relative">
-  <img
-    src={product.images && product.images.length > 0 ? product.images[0] : "/placeholder.png"}
-    alt={product.name}
-    className="w-full h-64 object-contain p-4 bg-gray-50"
-  />
-  <span className="absolute top-3 left-3 bg-gradient-to-r from-orange-500 to-yellow-500 text-white text-xs font-semibold px-3 py-1 rounded-full shadow">
-    New
-  </span>
-</div>
-
+                {/* Product Image */}
+                <div className="relative">
+                  <img
+                    src={product.images && product.images.length > 0 ? product.images[0] : "/placeholder.png"}
+                    alt={product.name}
+                    className="w-full h-64 object-contain p-4 bg-gray-50"
+                  />
+                  <span className="absolute top-3 left-3 bg-gradient-to-r from-orange-500 to-yellow-500 text-white text-xs font-semibold px-3 py-1 rounded-full shadow">
+                    New
+                  </span>
+                </div>
 
                 {/* Product Info */}
                 <div className="p-6 flex flex-col flex-grow">
