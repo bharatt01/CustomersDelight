@@ -7,13 +7,13 @@ import Footer from "./Footer";
 
 // Example category images (you can replace with real ones)
 const categoryBanners = {
-  electronics: "https://source.unsplash.com/1600x400/?electronics,tech",
-  fashion: "https://source.unsplash.com/1600x400/?fashion,clothes",
-  furniture: "https://source.unsplash.com/1600x400/?furniture,interior",
-  grocery: "https://source.unsplash.com/1600x400/?grocery,food",
-  default: "https://source.unsplash.com/1600x400/?shopping,store",
+  men: "/Images/menss.png",
+  women: "/Images/womens.png",
+  kids: "/Images/kidss.png",
+  furniture: "/Images/furnituree.png",
+  homeappliances: "/Images/homeappliances.png",
+  default: "/Images/default.png", // add fallback
 };
-
 // Skeleton loader for products
 const ProductSkeleton = () => {
   return (

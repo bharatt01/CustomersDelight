@@ -38,17 +38,21 @@ const PrimeMembership = () => {
       <Navbar />
 
       {/* Hero Strip / Banner */}
-      <div
-        className="w-full h-40 sm:h-56 flex items-center justify-center bg-cover bg-center relative"
-        style={{
-          backgroundImage: `url('https://images.unsplash.com/photo-1607082349566-187342b3f8fc?auto=format&fit=crop&w=1350&q=80')`,
-        }}
-      >
-        <div className="absolute inset-0 bg-black bg-opacity-50"></div>
-        <h1 className="relative text-4xl sm:text-5xl font-extrabold text-white">
-          PRIME MEMBERSHIP
-        </h1>
-      </div>
+    <div
+  className="w-full h-60 md:h-72 lg:h-80 flex items-center justify-center bg-cover bg-center relative"
+  style={{
+    backgroundImage: `url('/images/primemember.png')`,
+  }}
+>
+  {/* Dark overlay */}
+  <div className="absolute inset-0 bg-black bg-opacity-50"></div>
+
+  {/* Heading */}
+  <h1 className="relative text-4xl sm:text-5xl font-extrabold text-white text-center">
+    PRIME MEMBERSHIP
+  </h1>
+</div>
+
 
       <section className="relative bg-gradient-to-br from-white via-orange-50 to-white py-20 px-6 lg:px-20 overflow-hidden text-gray-800">
         <div className="relative z-10 max-w-6xl mx-auto">

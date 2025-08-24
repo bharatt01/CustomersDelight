@@ -104,7 +104,7 @@ const Navbar = () => {
                   </li>
                   <li>
   <Link
-    to="/category/Home-Appliances"
+    to="/category/HomeAppliances"
     onClick={() => setMobileOpen(false)}
     className="flex items-center gap-2 px-3 py-2 hover:bg-orange-100 rounded transition"
   >

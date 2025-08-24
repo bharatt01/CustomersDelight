@@ -18,7 +18,7 @@ const AboutUs = () => {
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{
-            backgroundImage: `url(${process.env.PUBLIC_URL + '/Images/local6.png'})`, // replace with your image path
+            backgroundImage: `url(${process.env.PUBLIC_URL + '/Images/aboutus.png'})`, // replace with your image path
           }}
         />
         <div className="absolute inset-0 bg-black/50" />
