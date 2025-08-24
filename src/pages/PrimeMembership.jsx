@@ -41,7 +41,7 @@ const PrimeMembership = () => {
     <div
   className="w-full h-60 md:h-72 lg:h-80 flex items-center justify-center bg-cover bg-center relative"
   style={{
-    backgroundImage: `url('/images/primemember.png')`,
+    backgroundImage: `url('/Images/primemember.png')`,
   }}
 >
   {/* Dark overlay */}
