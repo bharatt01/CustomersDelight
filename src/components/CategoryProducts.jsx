@@ -60,13 +60,13 @@ const categoryTexts = {
     sectionTitle: "Discover Kids' Collection",
     sectionDesc: "Fun, comfortable, and durable fashion for the little ones."
   },
-  furniture: {
+  Furniture: {
     heading: "Furniture",
     subheading: "Crafted with care to bring comfort and style into your home.",
     sectionTitle: "Discover Furniture",
     sectionDesc: "Modern and classic pieces to transform your living space."
   },
-  homeappliances: {
+  HomeAppliances: {
     heading: "Home Appliances",
     subheading: "Smart solutions to make your everyday life easier and efficient.",
     sectionTitle: "Discover Home Appliances",
@@ -163,24 +163,21 @@ const CategoryProducts = () => {
   </div>
 </div>
 
-<div className="py-12 bg-white">
-  <div className="flex items-center pl-6">
-    {/* Small accent line before heading */}
-    <div className="w-6 h-1 bg-gradient-to-r from-orange-500 to-yellow-400 rounded-full mr-3"></div>
-
-    {/* Heading */}
-    <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight text-gray-800 mr-4 flex-shrink-0">
-      <span className="bg-gradient-to-r from-orange-500 via-orange-600 to-yellow-400 bg-clip-text text-transparent">
-        {categoryTexts[categoryName]?.sectionTitle ||
-          categoryTexts.default.sectionTitle}
-      </span>
-    </h2>
-
-    {/* Long line stretching to end (always visible with min width) */}
-    <div className="flex-grow min-w-[40px] h-1 bg-gradient-to-r from-orange-500 via-orange-600 to-yellow-400 rounded-full"></div>
+{/* Category Section Heading (below banner) */}
+<div className="text-center py-16 bg-white">
+  <h2 className="relative inline-block text-4xl md:text-5xl font-extrabold tracking-tight">
+    <span className="bg-gradient-to-r from-orange-500 via-orange-600 to-yellow-400 bg-clip-text text-transparent">
+      {categoryTexts[categoryName]?.sectionTitle ||
+        categoryTexts.default.sectionTitle}
+    </span>
+  </h2>
+  
+  {/* Thick underline accent */}
+  <div className="mt-4 flex justify-center">
+    <span className="h-1.5 w-32 rounded-full bg-gradient-to-r from-orange-500 via-orange-600 to-yellow-400 shadow-md"></span>
   </div>
 
-  <p className="text-gray-600 mt-6 max-w-3xl text-base sm:text-lg md:text-xl leading-relaxed pl-6">
+  <p className="text-gray-600 mt-6 max-w-3xl mx-auto text-lg md:text-xl leading-relaxed">
     {categoryTexts[categoryName]?.sectionDesc ||
       categoryTexts.default.sectionDesc}
   </p>

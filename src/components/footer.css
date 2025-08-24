@@ -163,3 +163,45 @@
 .footer-dropdown a:hover {
   color: #ff9800;
 }
+.dropdown-toggle {
+  list-style: none; /* removes default bullet */
+  cursor: pointer;
+  color: #bbb;
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* keeps text & icon aligned */
+}
+
+.dropdown-toggle span {
+  margin-left: 6px; /* adds a little space between text & chevron */
+}
+.footer-links {
+  list-style: none; /* removes all bullets from footer links */
+  padding-left: 0;
+  margin: 0;
+}
+.footer-links,
+.footer-dropdown {
+  list-style: none;  /* remove bullets */
+  padding-left: 0;   /* remove default padding */
+  margin: 0;
+}
+.dropdown-toggle {
+  list-style: none;          /* remove bullets */
+  cursor: pointer;
+  color: #bbb;
+  display: flex;             /* align text + icon */
+  justify-content: space-between; /* push chevron to the right */
+  align-items: center;
+  padding: 4px 0;            /* optional spacing */
+  font-size: 0.95rem;
+}
+
+.dropdown-toggle:hover {
+  color: #ff9800;
+}
+
+.dropdown-toggle i {
+  font-size: 0.9rem;
+  margin-left: 6px;  /* space between text and chevron */
+}

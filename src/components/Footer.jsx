@@ -22,26 +22,31 @@ const Footer = () => {
             <li><a href="/about-us">About Us</a></li>
 
             {/* Dropdown Toggle */}
-            <li
-              className="dropdown-toggle"
-              onClick={() => setShowCategories(!showCategories)}
-              style={{ cursor: "pointer" }}
-            >
-              Categories{" "}
-              <span>
-                {showCategories ? <i className="bi bi-chevron-up"></i> : <i className="bi bi-chevron-down"></i>}
-              </span>
-            </li>
+       <li
+  className="dropdown-toggle"
+  onClick={() => setShowCategories(!showCategories)}
+>
+  Categories
+  <span>
+    {showCategories ? (
+      <i className="bi bi-chevron-up"></i>
+    ) : (
+      <i className="bi bi-chevron-down"></i>
+    )}
+  </span>
+</li>
+
 
             {/* Dropdown Menu */}
-            {showCategories && (
-              <ul className="footer-dropdown">
-                <li><a href="/categories/men">Men</a></li>
-                <li><a href="/categories/women">Women</a></li>
-                <li><a href="/categories/kids">Kids</a></li>
-                <li><a href="/categories/accessories">Accessories</a></li>
-              </ul>
-            )}
+      {showCategories && (
+  <ul className={`footer-dropdown ${showCategories ? "show" : ""}`}>
+    <li><a href="/categories/men">Men</a></li>
+    <li><a href="/categories/women">Women</a></li>
+    <li><a href="/categories/kids">Kids</a></li>
+    <li><a href="/categories/accessories">Accessories</a></li>
+  </ul>
+)}
+
 
             <li><a href="/prime-member">Prime Membership</a></li>
             <li><a href="/blogs">Blogs</a></li>
