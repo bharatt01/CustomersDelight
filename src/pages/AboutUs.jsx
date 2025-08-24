@@ -14,24 +14,23 @@ const AboutUs = () => {
       <Navbar />
 
       {/* Hero Section */}
-      <section className="relative h-[60vh] md:h-[50vh] flex items-center justify-center overflow-hidden">
-        <div
-          className="absolute inset-0 bg-cover bg-center"
-          style={{
-            backgroundImage: `url(${process.env.PUBLIC_URL + '/Images/aboutus.png'})`, // replace with your image path
-          }}
-        />
-        <div className="absolute inset-0 bg-black/50" />
-        <div className="relative z-10 text-center px-4 text-white">
-          <h1 className="text-4xl sm:text-5xl font-extrabold mb-4 drop-shadow">
-            About <span className="text-orange-500">Customer Delight</span>
-          </h1>
-          <p className="text-lg sm:text-xl max-w-xl mx-auto drop-shadow-md">
-          We help retail shops, restaurants and other businesses grow locally with the use of<br />
-            <span className="text-white font-medium">Technology, Tools, Ideas.</span>
-          </p>
-        </div>
-      </section>
+   {/* Hero Section */}
+<section className="relative h-[75vh] md:h-[70vh] flex items-center justify-center overflow-hidden">
+  <div
+    className="absolute inset-0 bg-cover bg-center"
+    style={{
+      backgroundImage: `url(${process.env.PUBLIC_URL + '/Images/aboutus.png'})`,
+    }}
+  />
+  <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/70" />
+  
+  <div className="relative z-10 text-center px-4 text-white max-w-3xl mx-auto">
+    <p className="text-xl sm:text-2xl md:text-3xl font-medium leading-relaxed drop-shadow-lg">
+      We help retail shops, restaurants and other businesses grow locally with the use of <br />
+      <span className="text-orange-400 font-bold">Technology, Tools, Ideas.</span>
+    </p>
+  </div>
+</section>
 
       {/* Who We Are Section */}
       <section id="about" className="relative bg-gradient-to-br from-white via-gray-50 to-white py-24">

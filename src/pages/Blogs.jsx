@@ -50,26 +50,32 @@
           }}
         >
           <div className="absolute inset-0 bg-black bg-opacity-50"></div>
-          <h1 className="relative text-4xl sm:text-5xl font-extrabold text-white">
-            BLOGS
-          </h1>
+          
         </div>
-
-        {/* Blog Section */}
-<div className="max-w-6xl mx-auto px-4">
+{/* Blog Section */}
+<div className="w-full px-4">
   {/* Section Heading */}
-  <div className="text-center mt-12 mb-6">
-    <h2 className="text-4xl md:text-5xl font-bold text-gray-800 relative inline-block">
-      Latest Blogs
-      <span className="block w-16 h-1 bg-orange-500 mx-auto mt-3 rounded-full"></span>
-    </h2>
-    <p className="text-gray-500 mt-2 text-lg">
+  <div className="text-center mt-12 mb-10">
+    <div className="flex items-center justify-center w-full">
+      {/* Left long line */}
+      <span className="flex-1 h-[2px] bg-orange-500 rounded-full mx-2"></span>
+
+      {/* Heading */}
+      <h2 className="px-3 text-3xl md:text-5xl font-extrabold text-gray-800 whitespace-nowrap">
+        Latest Blogs
+      </h2>
+
+      {/* Right long line */}
+      <span className="flex-1 h-[2px] bg-orange-500 rounded-full mx-2"></span>
+    </div>
+
+    <p className="text-gray-600 mt-4 text-base md:text-xl max-w-2xl mx-auto leading-relaxed">
       Discover our latest updates, tips, and insights
     </p>
   </div>
 
   {/* Blog Grid */}
-  <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
+  <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
     {blogs.length > 0 ? (
       blogs.map((blog) => <BlogCard key={blog.id} blog={blog} />)
     ) : (
@@ -77,6 +83,7 @@
     )}
   </div>
 </div>
+
 
 
         <Footer />

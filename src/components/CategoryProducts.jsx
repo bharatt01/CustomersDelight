@@ -14,6 +14,72 @@ const categoryBanners = {
   homeappliances: "/Images/homeappliances.png",
   default: "/Images/default.png", // add fallback
 };
+// Add this above your component
+// const categoryTexts = {
+//   men: {
+//     heading: "Men's Fashion",
+//     subheading: "Sharp styles, rugged looks, and everything you need to own your day.",
+//   },
+//   women: {
+//     heading: "For Women",
+//     subheading: "Elegance, comfort, and fashion trends tailored just for you.",
+//   },
+//   kids: {
+//     heading: "For Kids",
+//     subheading: "Playful, comfy, and colorful picks for every little adventure.",
+//   },
+//   furniture: {
+//     heading: "Furniture",
+//     subheading: "Crafted with care to bring comfort and style into your home.",
+//   },
+//   homeappliances: {
+//     heading: "Home Appliances",
+//     subheading: "Smart solutions to make your everyday life easier and efficient.",
+//   },
+//   default: {
+//     heading: "Our Collection",
+//     subheading: "Explore our wide range of products for every lifestyle.",
+//   },
+// };
+const categoryTexts = {
+  men: {
+    heading: "Men's Fashion",
+    subheading: "Sharp styles, rugged looks, and everything you need to own your day.",
+    sectionTitle: "Discover Men's Collection",
+    sectionDesc: "Buy latest trendy, modern, ethnic, Indian, western, formal, party wear and more"
+  },
+  women: {
+    heading: "For Women",
+    subheading: "Elegance, comfort, and fashion trends tailored just for you.",
+    sectionTitle: "Discover Women's Collection",
+    sectionDesc: "Find chic dresses, casuals, and everything a modern woman needs."
+  },
+  kids: {
+    heading: "For Kids",
+    subheading: "Playful, comfy, and colorful picks for every little adventure.",
+    sectionTitle: "Discover Kids' Collection",
+    sectionDesc: "Fun, comfortable, and durable fashion for the little ones."
+  },
+  furniture: {
+    heading: "Furniture",
+    subheading: "Crafted with care to bring comfort and style into your home.",
+    sectionTitle: "Discover Furniture",
+    sectionDesc: "Modern and classic pieces to transform your living space."
+  },
+  homeappliances: {
+    heading: "Home Appliances",
+    subheading: "Smart solutions to make your everyday life easier and efficient.",
+    sectionTitle: "Discover Home Appliances",
+    sectionDesc: "Upgrade your lifestyle with the latest appliances."
+  },
+  default: {
+    heading: "Our Collection",
+    subheading: "Explore our wide range of products for every lifestyle.",
+    sectionTitle: "Our Collection",
+    sectionDesc: "Browse from thousands of products across all categories."
+  },
+};
+
 // Skeleton loader for products
 const ProductSkeleton = () => {
   return (
@@ -78,18 +144,47 @@ const CategoryProducts = () => {
       <Navbar />
 
       {/* Category Banner Strip */}
-      <div className="relative w-full h-60 md:h-72 lg:h-80 overflow-hidden">
-        <img
-          src={bannerImage}
-          alt={`${categoryName} banner`}
-          className="absolute inset-0 w-full h-full object-cover"
-        />
-        <div className="absolute inset-0 bg-black/40 flex justify-center items-center">
-          <h1 className="text-4xl md:text-5xl font-extrabold text-white drop-shadow-lg capitalize">
-            {categoryName}
-          </h1>
-        </div>
-      </div>
+     {/* Category Banner Strip */}
+<div className="relative w-full h-60 md:h-72 lg:h-80 overflow-hidden">
+  <img
+    src={bannerImage}
+    alt={`${categoryName} banner`}
+    className="absolute inset-0 w-full h-full object-cover"
+  />
+  <div className="absolute inset-0 bg-black/50 flex flex-col justify-center items-center text-center px-4">
+    <h1 className="text-4xl md:text-5xl font-extrabold text-white drop-shadow-lg mb-3">
+      {categoryTexts[categoryName]?.heading ||
+        categoryTexts.default.heading}
+    </h1>
+    <p className="text-white text-lg md:text-xl max-w-2xl leading-snug">
+      {categoryTexts[categoryName]?.subheading ||
+        categoryTexts.default.subheading}
+    </p>
+  </div>
+</div>
+
+<div className="py-12 bg-white">
+  <div className="flex items-center pl-6">
+    {/* Small accent line before heading */}
+    <div className="w-6 h-1 bg-gradient-to-r from-orange-500 to-yellow-400 rounded-full mr-3"></div>
+
+    {/* Heading */}
+    <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight text-gray-800 mr-4 flex-shrink-0">
+      <span className="bg-gradient-to-r from-orange-500 via-orange-600 to-yellow-400 bg-clip-text text-transparent">
+        {categoryTexts[categoryName]?.sectionTitle ||
+          categoryTexts.default.sectionTitle}
+      </span>
+    </h2>
+
+    {/* Long line stretching to end (always visible with min width) */}
+    <div className="flex-grow min-w-[40px] h-1 bg-gradient-to-r from-orange-500 via-orange-600 to-yellow-400 rounded-full"></div>
+  </div>
+
+  <p className="text-gray-600 mt-6 max-w-3xl text-base sm:text-lg md:text-xl leading-relaxed pl-6">
+    {categoryTexts[categoryName]?.sectionDesc ||
+      categoryTexts.default.sectionDesc}
+  </p>
+</div>
 
       {/* Category Products Section */}
       <div className="relative p-8 bg-gray-50 overflow-hidden">

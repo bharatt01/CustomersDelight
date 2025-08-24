@@ -63,7 +63,13 @@ const Journey = () => {
     <section id="journey" className="py-8 bg-white"> {/* reduced from py-12 */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-6"> {/* reduced from mb-10 */}
-          <h2 className="text-4xl font-extrabold text-gray-900 mb-1">Our Journey</h2> {/* was text-3xl */}
+        <h2 className="text-4xl font-extrabold text-gray-900 mb-1">
+  Our{" "}
+  <span className="bg-gradient-to-r from-orange-500 to-orange-500 bg-clip-text text-transparent">
+    Journey
+  </span>
+</h2>
+{/* was text-3xl */}
           <p className="text-xl text-gray-600 max-w-2xl mx-auto"> {/* was text-base */}
             From a small startup in Faridabad to a leading technology partner for retail businesses — here’s how we’ve grown.
           </p>

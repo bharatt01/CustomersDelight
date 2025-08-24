@@ -30,7 +30,15 @@ const Team = () => {
     <section id="team" className="py-20 bg-white">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">Meet Our Team</h2>
+        <h2 className="text-4xl font-bold text-gray-900 mb-4">
+  Meet{" "}
+  <span className="bg-gradient-to-r from-orange-500 to-orange-500 bg-clip-text text-transparent">
+    Our
+  </span>{" "}
+  Team
+</h2>
+
+
           <p className="text-lg text-gray-600 max-w-3xl mx-auto">
             We're a team of passionate individuals dedicated to empowering local retail shops with the right technology and strategy.
           </p>

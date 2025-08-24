@@ -37,9 +37,7 @@ const PrimeMembership = () => {
     <>
       <Navbar />
 
-      {/* Hero Strip / Banner */}
-    {/* Hero Strip / Banner */}
-<div
+     <div
   className="w-full h-60 md:h-72 lg:h-80 flex items-start justify-center bg-cover bg-center relative"
   style={{
     backgroundImage: `url('/Images/primemember.png')`,
@@ -47,14 +45,68 @@ const PrimeMembership = () => {
 >
   {/* Dark overlay */}
   <div className="absolute inset-0 bg-black bg-opacity-50"></div>
-
-  {/* Heading */}
-  <h1 className="relative mt-8 text-4xl sm:text-5xl font-extrabold text-white text-center">
-    PRIME MEMBERSHIP
-  </h1>
 </div>
+{/* Prime Membership Heading with staggered animation */}
+<motion.div
+  className="w-full px-4 -mt-6 relative z-10"
+  initial="hidden"
+  whileInView="visible"
+  viewport={{ once: true }}
+  variants={{
+    hidden: {},
+    visible: {
+      transition: {
+        staggerChildren: 0.25, // delay between elements
+      },
+    },
+  }}
+>
+  <div className="text-center mt-12 mb-2">
+    <div className="flex items-center justify-center w-full">
+      {/* Left line */}
+      <motion.span
+        className="flex-1 h-[3px] bg-gradient-to-r from-orange-400 to-yellow-400 rounded-full mx-3"
+        variants={{
+          hidden: { opacity: 0, x: -50 },
+          visible: { opacity: 1, x: 0, transition: { duration: 0.6, ease: "easeOut" } },
+        }}
+      />
 
+      {/* Heading */}
+      <motion.h2
+        className="px-4 text-3xl sm:text-4xl md:text-5xl font-extrabold 
+        bg-gradient-to-r from-orange-400 via-yellow-400 to-orange-500 
+        bg-clip-text text-transparent whitespace-nowrap"
+        variants={{
+          hidden: { opacity: 0, y: 40 },
+          visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
+        }}
+      >
+        Prime Membership
+      </motion.h2>
 
+      {/* Right line */}
+      <motion.span
+        className="flex-1 h-[3px] bg-gradient-to-r from-yellow-400 to-orange-400 rounded-full mx-3"
+        variants={{
+          hidden: { opacity: 0, x: 50 },
+          visible: { opacity: 1, x: 0, transition: { duration: 0.6, ease: "easeOut" } },
+        }}
+      />
+    </div>
+
+    {/* Subtitle */}
+    <motion.p
+      className="text-gray-700 mt-4 text-base md:text-lg max-w-2xl mx-auto leading-relaxed"
+      variants={{
+        hidden: { opacity: 0, y: 20 },
+        visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
+      }}
+    >
+      Unlock premium rewards, savings & exclusive perks with Prime
+    </motion.p>
+  </div>
+</motion.div>
 
       <section className="relative bg-gradient-to-br from-white via-orange-50 to-white py-20 px-6 lg:px-20 overflow-hidden text-gray-800">
         <div className="relative z-10 max-w-6xl mx-auto">

@@ -8,9 +8,17 @@ const MissionVision = () => {
 
       <div className="relative max-w-7xl mx-auto px-6 lg:px-8 z-10">
         <div className="text-center mb-20">
-          <h2 className="text-5xl font-extrabold text-gray-900 mb-6 tracking-tight">
-            Our Mission & Vision
-          </h2>
+        <h2 className="text-5xl font-extrabold text-gray-900 mb-6 tracking-tight">
+  Our{" "}
+  <span className="bg-gradient-to-r from-orange-500 to-orange-500 bg-clip-text text-transparent">
+    Mission
+  </span>{" "}
+  &{" "}
+  <span className="bg-gradient-to-r from-orange-500 to-orange-500 bg-clip-text text-transparent">
+    Vision
+  </span>
+</h2>
+
           <p className="text-xl text-gray-700 max-w-3xl mx-auto leading-relaxed">
             Driven by purpose and guided by vision, we're committed to transforming 
             the retail landscape through innovative technology solutions.

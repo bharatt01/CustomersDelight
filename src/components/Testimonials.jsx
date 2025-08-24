@@ -97,7 +97,13 @@ const Testimonials = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Heading */}
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">Client Success Stories</h2>
+<h2 className="text-4xl font-bold text-gray-900 mb-4">
+  <span className="bg-gradient-to-r from-orange-500 to-orange-500 bg-clip-text text-transparent">
+    Client
+  </span>{" "}
+  Success Stories
+</h2>
+
           <p className="text-lg text-gray-600 max-w-3xl mx-auto">
             Real businesses. Real results. See how local shop owners grew with our digital help.
           </p>

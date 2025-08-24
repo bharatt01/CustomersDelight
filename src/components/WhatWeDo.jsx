@@ -17,15 +17,22 @@ const WhatWeDo = () => {
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* Heading & Paragraph */}
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-gray-900 mb-6">What We Do</h2>
-          <p className="text-lg text-gray-700 leading-relaxed max-w-4xl mx-auto">
-            We help local retail shops, specially in unorganised sector, grow their business by leveraging technology, tools and innovative ideas.
-            Since most local shops feel the heat of online market shopping from large ecommerce companies, their sales are going down day by day,
-            profits are declining, and many shops are shutting down. We use Google My Business to improve local search, mini website, and social media
-            to bring more new customers to our clients for shopping and reshopping — that is, repeating customers.
-          </p>
-        </div>
+        {/* Heading & Paragraph */}
+<div className="text-center mb-16">
+  <h2 className="text-4xl font-extrabold mb-6">
+    <span className="bg-gradient-to-r from-orange-500 to-orange-500 bg-clip-text text-transparent">
+      What
+    </span>{" "}
+    We Do
+  </h2>
+  <p className="text-lg text-gray-700 leading-relaxed max-w-4xl mx-auto">
+    We help local retail shops, specially in unorganised sector, grow their business by leveraging technology, tools and innovative ideas.
+    Since most local shops feel the heat of online market shopping from large ecommerce companies, their sales are going down day by day,
+    profits are declining, and many shops are shutting down. We use Google My Business to improve local search, mini website, and social media
+    to bring more new customers to our clients for shopping and reshopping — that is, repeating customers.
+  </p>
+</div>
+
 
         {/* Cards Section */}
         <div className="grid md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-6 mb-24">
@@ -50,14 +57,19 @@ const WhatWeDo = () => {
         </div>
 
         {/* 3-Step Digital Growth Strategy */}
-        <div className="text-center mb-14">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
-            Our 3-Step Digital Growth Strategy
-          </h2>
-          <p className="text-gray-600 max-w-2xl mx-auto text-lg">
-            A powerful system to attract new customers and turn them into repeat buyers.
-          </p>
-        </div>
+       <div className="text-center mb-14">
+  <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+    Our{" "}
+    <span className="bg-gradient-to-r from-orange-500 to-orange-500 bg-clip-text text-transparent">
+      3-Step  Digital Growth
+    </span>{" "}
+   Strategy
+  </h2>
+  <p className="text-gray-600 max-w-2xl mx-auto text-lg">
+    A powerful system to attract new customers and turn them into repeat buyers.
+  </p>
+</div>
+
 
         <div className="relative flex flex-col md:flex-row items-center justify-between gap-14 md:gap-6">
           {/* Step 1 */}
