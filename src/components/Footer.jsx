@@ -1,11 +1,12 @@
-import React from 'react';
-import './footer.css';
+import React, { useState } from "react";
+import "./footer.css";
 
 const Footer = () => {
+  const [showCategories, setShowCategories] = useState(false);
+
   return (
     <footer className="footer-section">
       <div className="footer-container">
-
         {/* Brand Section */}
         <div className="footer-brand-section">
           <h4 className="footer-brand">Customer's Delight</h4>
@@ -14,12 +15,34 @@ const Footer = () => {
           </p>
         </div>
 
-        {/* Company Links */}
+        {/* Company Links with Dropdown */}
         <div className="footer-links-section">
           <h6 className="footer-title">Company</h6>
           <ul className="footer-links">
             <li><a href="/about-us">About Us</a></li>
-            <li><a href="/categories">Categories</a></li>
+
+            {/* Dropdown Toggle */}
+            <li
+              className="dropdown-toggle"
+              onClick={() => setShowCategories(!showCategories)}
+              style={{ cursor: "pointer" }}
+            >
+              Categories{" "}
+              <span>
+                {showCategories ? <i className="bi bi-chevron-up"></i> : <i className="bi bi-chevron-down"></i>}
+              </span>
+            </li>
+
+            {/* Dropdown Menu */}
+            {showCategories && (
+              <ul className="footer-dropdown">
+                <li><a href="/categories/men">Men</a></li>
+                <li><a href="/categories/women">Women</a></li>
+                <li><a href="/categories/kids">Kids</a></li>
+                <li><a href="/categories/accessories">Accessories</a></li>
+              </ul>
+            )}
+
             <li><a href="/prime-member">Prime Membership</a></li>
             <li><a href="/blogs">Blogs</a></li>
           </ul>
@@ -44,7 +67,6 @@ const Footer = () => {
             <a href="https://www.linkedin.com/in/customer-delight/"><i className="bi bi-linkedin"></i></a>
           </div>
         </div>
-
       </div>
 
       {/* Footer Bottom */}

@@ -132,3 +132,34 @@
     justify-content: flex-start;
   }
 }
+/* Dropdown styles */
+.dropdown-toggle {
+  cursor: pointer;
+  color: #bbb;
+  transition: color 0.2s ease;
+}
+
+.dropdown-toggle:hover {
+  color: #ff9800;
+}
+
+.footer-dropdown {
+  list-style: none;
+  padding-left: 15px;
+  margin-top: 6px;
+}
+
+.footer-dropdown li {
+  margin-bottom: 6px;
+}
+
+.footer-dropdown a {
+  color: #aaa;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: color 0.2s ease;
+}
+
+.footer-dropdown a:hover {
+  color: #ff9800;
+}
