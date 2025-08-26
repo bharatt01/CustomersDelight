@@ -60,13 +60,13 @@ const categoryTexts = {
     sectionTitle: "Discover Kids' Collection",
     sectionDesc: "Fun, comfortable, and durable fashion for the little ones."
   },
-  Furniture: {
+  furniture: {
     heading: "Furniture",
     subheading: "Crafted with care to bring comfort and style into your home.",
     sectionTitle: "Discover Furniture",
     sectionDesc: "Modern and classic pieces to transform your living space."
   },
-  HomeAppliances: {
+  homeappliances: {
     heading: "Home Appliances",
     subheading: "Smart solutions to make your everyday life easier and efficient.",
     sectionTitle: "Discover Home Appliances",

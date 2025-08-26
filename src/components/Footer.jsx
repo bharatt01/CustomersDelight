@@ -22,21 +22,13 @@ const Footer = () => {
             <li><a href="/about-us">About Us</a></li>
 
             {/* Dropdown Toggle */}
-       <li
+   <li
   className="dropdown-toggle"
   onClick={() => setShowCategories(!showCategories)}
 >
   Categories
-  <span>
-    {showCategories ? (
-      <i className="bi bi-chevron-up"></i>
-    ) : (
-      <i className="bi bi-chevron-down"></i>
-    )}
-  </span>
+ 
 </li>
-
-
             {/* Dropdown Menu */}
       {showCategories && (
   <ul className={`footer-dropdown ${showCategories ? "show" : ""}`}>
