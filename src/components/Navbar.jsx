@@ -219,7 +219,7 @@ const Navbar = () => {
                     </li>
                     <li>
                       <Link
-                        to="/category/womens"
+                        to="/category/women"
                         onClick={() => setMobileOpen(false)}
                       >
                         Women
@@ -235,7 +235,7 @@ const Navbar = () => {
                     </li>
                       <li>
                       <Link
-                        to="/category/Home-appliances"
+                        to="/category/homeappliances"
                         onClick={() => setMobileOpen(false)}
                       >
                         Home Appliances
@@ -243,7 +243,7 @@ const Navbar = () => {
                     </li>
                       <li>
                       <Link
-                        to="/category/Furniture"
+                        to="/category/furniture"
                         onClick={() => setMobileOpen(false)}
                       >
                         Furniture
@@ -254,7 +254,7 @@ const Navbar = () => {
               </li>
               <li>
                 <Link
-                  to="/Prime-member"
+                  to="/prime-member"
                   onClick={() => setMobileOpen(false)}
                 >
                   Prime Membership
