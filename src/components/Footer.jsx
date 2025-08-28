@@ -69,7 +69,7 @@ const Footer = () => {
       {/* Footer Bottom */}
       <div className="footer-bottom">
         <hr />
-        <p>&copy; {new Date().getFullYear()} Customer's Delight — All rights reserved.</p>
+        <p style={{color:"white"}}>&copy; {new Date().getFullYear()} Customer's Delight — All rights reserved.</p>
       </div>
     </footer>
   );
