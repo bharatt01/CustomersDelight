@@ -72,12 +72,12 @@ const categoryTexts = {
     sectionTitle: "Discover Home Appliances",
     sectionDesc: "Upgrade your lifestyle with the latest appliances."
   },
-  default: {
-    heading: "Our Collection",
-    subheading: "Explore our wide range of products for every lifestyle.",
-    sectionTitle: "Our Collection",
-    sectionDesc: "Browse from thousands of products across all categories."
-  },
+  // default: {
+  //   heading: "Our Collection",
+  //   subheading: "Explore our wide range of products for every lifestyle.",
+  //   sectionTitle: "Our Collection",
+  //   sectionDesc: "Browse from thousands of products across all categories."
+  // },
 };
 
 // Skeleton loader for products
