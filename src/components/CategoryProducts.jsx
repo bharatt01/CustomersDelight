@@ -12,7 +12,7 @@ const categoryBanners = {
   kids: "/Images/kidss.png",
   furniture: "/Images/furnituree.png",
   homeappliances: "/Images/homeappliances.png",
-  default: "/Images/default.png", // add fallback
+  // default: "/Images/default.png", // add fallback
 };
 // Add this above your component
 // const categoryTexts = {
