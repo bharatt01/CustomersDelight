@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { db } from "../firebase";
 import { collection, getDocs } from "firebase/firestore";
-
+import LazyImage from "./LazyImage";
 const StoresSection = () => {
   const [stores, setStores] = useState([]);
 
@@ -20,7 +20,7 @@ const StoresSection = () => {
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
         {stores.map((store) => (
           <div key={store.id} className="bg-white p-4 shadow-lg rounded-xl">
-            <img
+          <LazyImage
               src={store.imageUrl}
               alt={store.name}
               className="w-full h-40 object-cover rounded-md mb-3"

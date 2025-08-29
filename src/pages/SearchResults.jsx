@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useSearchParams, useNavigate } from "react-router-dom";
 import { db } from "../firebase";
 import { collection, getDocs } from "firebase/firestore";
+import LazyImage from "../components/LazyImage";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 
@@ -118,7 +119,7 @@ const SearchResults = () => {
                       onClick={() => navigate(`/${store.slug}`)}
                       className="border rounded-lg shadow hover:shadow-lg transition cursor-pointer overflow-hidden"
                     >
-                      <img
+                      <LazyImage
                         src={store.imageUrl || "/placeholder.png"}
                         alt={store.name}
                         className="w-full h-40 object-cover"
@@ -143,7 +144,7 @@ const SearchResults = () => {
                       key={product.id}
                       className="border rounded-lg shadow hover:shadow-lg transition overflow-hidden"
                     >
-                      <img
+                     <LazyImage
                         src={product.images && product.images.length > 0 ? product.images[0] : "/placeholder.png"}
                         alt={product.name}
                         className="w-full h-40 object-contain mb-2"

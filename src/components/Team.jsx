@@ -1,6 +1,6 @@
 import React from 'react';
 import { Linkedin, Mail } from 'lucide-react';
-
+import LazyImage from "./LazyImage";
 const teamMembers = [
   {
     name: 'Amod Sharma',
@@ -51,7 +51,7 @@ const Team = () => {
               className="group bg-white border border-gray-200 rounded-2xl p-6 shadow-md hover:shadow-xl transition duration-300 flex flex-col items-center text-center"
             >
               <div className="w-32 h-36 rounded-full overflow-hidden mb-4 border-4 border-orange-100 group-hover:scale-105 transition duration-300">
-                <img
+                <LazyImage
                   src={member.image}
                   alt={member.name}
                   className="w-full h-full object-cover"

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { db } from "../../firebase";
 import { doc, getDoc } from "firebase/firestore";
 import { useParams, useSearchParams } from "react-router-dom";
-
+import LazyImage from "./LazyImage";
 const ProductDetails = () => {
   const { id } = useParams();
   const [searchParams] = useSearchParams();
@@ -31,7 +31,7 @@ const ProductDetails = () => {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {/* Main Image */}
         <div>
-          <img
+          <LazyImage
             src={selectedImage}
             alt={product.name}
             className="w-full h-96 object-cover rounded-lg shadow"
@@ -39,7 +39,7 @@ const ProductDetails = () => {
           {/* Thumbnails */}
           <div className="flex gap-2 mt-4">
             {product.images?.map((img, idx) => (
-              <img
+              <LazyImage
                 key={idx}
                 src={img}
                 alt={`thumbnail-${idx}`}

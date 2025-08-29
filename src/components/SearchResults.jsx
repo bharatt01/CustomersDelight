@@ -4,7 +4,7 @@ import { db } from "../firebase";
 import { collectionGroup, query, where, getDocs } from "firebase/firestore";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
-
+import LazyImage from "./LazyImage";
 const SearchResults = () => {
   const location = useLocation();
   const params = new URLSearchParams(location.search);
@@ -49,7 +49,7 @@ const SearchResults = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
             {products.map(product => (
               <div key={product.id} className="border p-4 rounded-lg shadow-md">
-                <img
+                <LazyImage
                   src={product.images && product.images.length > 0 ? product.images[0] : "/placeholder.png"}
                   alt={product.name}
                   className="w-full h-40 object-contain mb-2"

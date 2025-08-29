@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { db } from "../firebase";
 import { collectionGroup, query, where, getDocs, getDoc, doc } from "firebase/firestore";
 import { useParams } from "react-router-dom";
+import LazyImage from "./LazyImage";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 
@@ -146,7 +147,7 @@ const CategoryProducts = () => {
       {/* Category Banner Strip */}
      {/* Category Banner Strip */}
 <div className="relative w-full h-60 md:h-72 lg:h-80 overflow-hidden">
-  <img
+  <LazyImage
     src={bannerImage}
     alt={`${categoryName} banner`}
     className="absolute inset-0 w-full h-full object-cover"
@@ -205,7 +206,7 @@ const CategoryProducts = () => {
               >
                 {/* Product Image */}
                 <div className="relative">
-                  <img
+                  <LazyImage
                     src={product.images && product.images.length > 0 ? product.images[0] : "/placeholder.png"}
                     alt={product.name}
                     className="w-full h-64 object-contain p-4 bg-gray-50"

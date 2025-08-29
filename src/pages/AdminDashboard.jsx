@@ -105,7 +105,7 @@ const AdminDashboard = () => {
               key={product.id}
               className="bg-gray-50 border border-gray-200 rounded-xl p-5 shadow-sm hover:shadow-md transition"
             >
-              <img
+              <LazyImage
                 src={product.image}
                 alt={product.name}
                 className="w-full h-40 object-cover rounded-lg mb-4"

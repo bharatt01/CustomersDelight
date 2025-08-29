@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import "swiper/css";
 import "swiper/css/pagination";
 import "./hero.css";
-
+import LazyImage from "./LazyImage";
 const HeroSlider = () => {
   const navigate = useNavigate();
 
@@ -21,7 +21,7 @@ const HeroSlider = () => {
         {/* Slide 1 */}
         <SwiperSlide>
           <div className="relative w-full h-full">
-            <img
+            <LazyImage
               src="/Images/hero3.png"
               alt="Local Stores"
               className="w-full h-full object-cover"
@@ -62,7 +62,7 @@ const HeroSlider = () => {
         {/* Slide 2 */}
         <SwiperSlide>
           <div className="relative w-full h-full">
-            <img
+            <LazyImage
               src="/Images/hero6.jpg"
               alt="Prime Membership"
               className="w-full h-full object-cover"

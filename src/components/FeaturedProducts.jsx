@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { db } from "../firebase";
 import { collection, getDocs, query, where } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
+import LazyImage from "./LazyImage";
 import './Featured.css';
 
 const SkeletonCard = () => (
@@ -101,7 +102,7 @@ const FeaturedProducts = ({ limit = 4 }) => {
         >
           {/* Product Image */}
           <div className="relative w-full h-64">
-            <img
+            <LazyImage
               src={
                 (product.images && product.images[0]) ||
                 "https://via.placeholder.com/400"

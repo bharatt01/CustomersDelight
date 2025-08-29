@@ -6,7 +6,7 @@ import {
   Users,
   ShoppingBag,
 } from 'lucide-react';
-
+import LazyImage from './LazyImage';
 const Testimonials = () => {
   const testimonials = [
     {
@@ -144,7 +144,7 @@ const Testimonials = () => {
                 <p className="text-yellow-500 text-xs">{testimonial.category}</p>
               </div>
               <div className="flex items-center">
-                <img
+                <LazyImage
                   src={testimonial.image}
                   alt={testimonial.name}
                   className="w-12 h-12 rounded-full object-cover mr-4"

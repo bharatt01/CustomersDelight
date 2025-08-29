@@ -1,6 +1,7 @@
   import React, { useEffect, useState } from "react";
   import { db } from "../firebase";
   import { collection, getDocs } from "firebase/firestore";
+ import LazyImage from "../components/LazyImage";
   import BlogCard from "../components/BlogCard";
   import Navbar from "../components/Navbar";
   import Footer from "../components/Footer";

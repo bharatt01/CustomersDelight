@@ -3,6 +3,7 @@ import { db } from "../firebase";
 import { collection, getDocs, query, where } from "firebase/firestore";
 import { Link, useNavigate } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
+import LazyImage from "./LazyImage";
 import './featuredstores.css'
 // Skeleton loader for stores
 const StoreSkeleton = () => {
@@ -101,7 +102,7 @@ const FeaturedStores = ({ limit = 4 }) => {
             className="bg-white border border-gray-200 rounded-2xl shadow-md overflow-hidden flex flex-col hover:-translate-y-2 hover:shadow-xl transition-all duration-300"
           >
             <div className="relative">
-              <img
+              <LazyImage
                 src={store.imageUrl || "https://via.placeholder.com/400"}
                 alt={store.name}
                 className="w-full h-56 object-cover rounded-t-2xl img"

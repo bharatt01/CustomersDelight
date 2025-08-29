@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import DOMPurify from "dompurify";
-
+import LazyImage from "./LazyImage";
 const BlogCard = ({ blog }) => {
   // Strip HTML tags for preview
   const cleanText = DOMPurify.sanitize(blog.content, { ALLOWED_TAGS: [] });
@@ -9,7 +9,7 @@ const BlogCard = ({ blog }) => {
   return (
     <Link to={`/blog/${blog.slug}`} className="block">
       <div className="border rounded-lg overflow-hidden shadow-md hover:shadow-lg transition">
-        <img
+        <LazyImage
           src={blog.imageUrl}
           alt={blog.title}
           className="w-full h-48 object-cover"

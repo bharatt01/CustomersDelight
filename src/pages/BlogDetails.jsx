@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { db } from "../firebase";
 import { collection, getDocs, orderBy, query } from "firebase/firestore";
+import LazyImage from "../components/LazyImage";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 
@@ -73,7 +74,7 @@ const BlogDetail = () => {
 
         {blog.imageUrl && (
           <div className="overflow-hidden rounded-xl shadow-md mb-10">
-            <img
+            <LazyImage
               src={blog.imageUrl}
               alt={blog.title}
               className="w-full max-h-[500px] object-cover"

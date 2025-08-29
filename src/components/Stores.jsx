@@ -3,6 +3,7 @@ import { db } from "../firebase";
 import { collection, getDocs } from "firebase/firestore";
 import { Link } from "react-router-dom";
 import './stores.css';
+import LazyImage from "./LazyImage";
 const Stores = () => {
   const [stores, setStores] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -49,7 +50,7 @@ const Stores = () => {
               className="bg-white shadow-lg rounded-xl overflow-hidden flex flex-col"
             >
              <div className="h-80 overflow-hidden imgcard">   {/* increased from h-68 to h-80 */}
-  <img
+  <LazyImage
     src={store.imageUrl || "https://via.placeholder.com/400"}
     alt={store.name}
     className="w-full h-full object-cover"

@@ -6,7 +6,7 @@ import Navbar from "./Navbar";
 import Footer from "./Footer";
 import { Share2, Phone } from "lucide-react";
 import "./StoreDetail.css";
-
+import LazyImage from "./LazyImage";  
 const StoreDetail = () => {
   const { slug } = useParams();
   const [store, setStore] = useState(null);
@@ -81,7 +81,7 @@ const StoreDetail = () => {
 
       {/* Banner Section */}
       <div className="w-full h-[50vh] relative">
-        <img src={store.imageUrl} alt={store.name} className="w-full h-full object-cover" />
+        <LazyImage src={store.imageUrl} alt={store.name} className="w-full h-full object-cover" />
       </div>
 
       {/* Store Info */}
@@ -156,7 +156,7 @@ const StoreDetail = () => {
 
         {/* Product Image */}
         <div className="w-full h-64 bg-gray-50 flex items-center justify-center overflow-hidden">
-        <img
+        <LazyImage
   src={product.images && product.images.length > 0 ? product.images[0] : "fallback.jpg"}
   alt={product.name}
   className="max-w-full max-h-full object-contain p-4 transition-transform duration-300 group-hover:scale-105"

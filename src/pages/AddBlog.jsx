@@ -11,6 +11,7 @@ import {
   deleteDoc,
   doc,
 } from "firebase/firestore";
+import LazyImage from "../components/LazyImage";
 import { signOut } from "firebase/auth";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
@@ -188,7 +189,7 @@ const AddBlog = () => {
             className="border rounded-lg p-4 shadow bg-white flex flex-col justify-between"
           >
             <div>
-              <img
+              <LazyImage
                 src={blog.imageUrl}
                 alt={blog.title}
                 className="w-full h-40 object-cover rounded mb-3"

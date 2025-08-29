@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { Container} from 'react-bootstrap';
+import LazyImage from "../components/LazyImage";
 import './productdetail.css';
 import Navbar from '../components/Navbar'
 const ProductDetails = () => {
@@ -22,7 +23,7 @@ const ProductDetails = () => {
     <div className="product-details container">
       <div className="product-grid">
         <div className="product-images">
-          <img src={product.image} alt={product.name} className="main-image" />
+          <LazyImage src={product.image} alt={product.name} className="main-image" />
         
         </div>
 
