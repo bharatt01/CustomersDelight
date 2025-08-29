@@ -32,10 +32,11 @@ const Footer = () => {
             {/* Dropdown Menu */}
       {showCategories && (
   <ul className={`footer-dropdown ${showCategories ? "show" : ""}`}>
-    <li><a href="/categories/men">Men</a></li>
-    <li><a href="/categories/women">Women</a></li>
-    <li><a href="/categories/kids">Kids</a></li>
-    <li><a href="/categories/accessories">Accessories</a></li>
+    <li><a href="/category/men">Men</a></li>
+    <li><a href="/category/women">Women</a></li>
+    <li><a href="/category/kids">Kids</a></li>
+    <li><a href="/category/homeappliances">Home Appliances</a></li>
+    <li><a href="/category/furniture">Furniture</a></li>
   </ul>
 )}
 
