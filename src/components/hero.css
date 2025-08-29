@@ -179,3 +179,37 @@
     font-size: 0.8rem;
   }
 }
+@media (max-width: 768px) {
+  .footer-container {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px; /* smaller gap between each section */
+  }
+
+  .footer-brand-section,
+  .footer-links-section,
+  .footer-contact-section,
+  .footer-social-section {
+    flex: unset;         /* remove flex growth */
+    min-width: unset;    /* allow natural width */
+    width: 100%;         /* stack full width */
+    margin-bottom: 0;    /* remove extra spacing */
+  }
+
+  .footer-title {
+    margin-bottom: 6px;
+  }
+
+  .footer-links li {
+    margin-bottom: 4px;
+  }
+
+  .footer-social {
+    margin-top: 4px;
+    gap: 10px;
+  }
+
+  .footer-bottom {
+    margin-top: 20px;
+  }
+}

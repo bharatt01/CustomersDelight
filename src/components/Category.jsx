@@ -9,8 +9,8 @@ const categories = [
   { title: "Men", image: "/Images/men2.avif", categorySlug: "men" },
   { title: "Women", image: "/Images/woman2.avif", categorySlug: "women" },
   { title: "Kids", image: "/Images/kids2.avif", categorySlug: "kids" },
-  { title: "Home Appliances", image: "/Images/Appliances.jpg", categorySlug: "home" },
-  { title: "Furniture", image: "/Images/furniture.jpg", categorySlug: "accessories" }
+  { title: "Home Appliances", image: "/Images/Appliances.jpg", categorySlug: "homeappliances" },
+  { title: "Furniture", image: "/Images/furniture.jpg", categorySlug: "furniture" }
 ];
 
 const NextArrow = ({ onClick }) => (
