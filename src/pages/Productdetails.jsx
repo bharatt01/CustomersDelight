@@ -6,7 +6,7 @@ import './productdetail.css';
 import Navbar from '../components/Navbar'
 const ProductDetails = () => {
   const { state: product } = useLocation();
-  const [selectedSize, setSelectedSize] = useState(null);
+
 
   if (!product) return <p>Product not found.</p>;
  const handleBuyNow = (product) => {

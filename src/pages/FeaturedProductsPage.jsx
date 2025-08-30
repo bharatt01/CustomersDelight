@@ -1,6 +1,5 @@
 import React from "react";
 import FeaturedProducts from "../components/FeaturedProducts";
-import LazyImage from "../components/LazyImage";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 
