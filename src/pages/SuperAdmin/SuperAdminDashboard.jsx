@@ -1,5 +1,4 @@
 import React from 'react'
-import Navbar from '../../components/Navbar'
 import { auth } from "../../firebase";
 import AddStore from './AddStore'
 import ManageStores from './ManageStores'
