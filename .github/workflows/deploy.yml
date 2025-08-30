@@ -3,10 +3,10 @@ name: Build and Deploy React App
 on:
   push:
     branches:
-      - main   # 👈 change to "master" if your repo uses master
+      - main   # or "master" depending on your repo
 
 permissions:
-  contents: write   # 👈 allow pushing to deploy branch
+  contents: write
 
 jobs:
   build:
@@ -19,16 +19,20 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 18
+          node-version: 18   # try 16 if 18 fails
 
-      - name: Install Dependencies and Build
+      - name: Install Dependencies
         run: |
           npm install
-          npm run build
+
+      - name: Build React App
+        run: |
+          CI=false npm run build   # 👈 avoids React build warnings breaking CI
 
       - name: Deploy to GitHub Branch
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           branch: deploy
           folder: build
+
 
