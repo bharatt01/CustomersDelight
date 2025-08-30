@@ -4,7 +4,7 @@ import Slider from "react-slick";
 import "./category.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import LazyImage from "./LazyImage";
+// import LazyImage from "./LazyImage";
 const categories = [
   { title: "Men", image: "/Images/men2.avif", categorySlug: "men" },
   { title: "Women", image: "/Images/woman2.avif", categorySlug: "women" },

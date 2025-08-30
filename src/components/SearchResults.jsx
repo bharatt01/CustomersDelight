@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { db } from "../firebase";
-import { collectionGroup, query, where, getDocs } from "firebase/firestore";
+import { collectionGroup, query, getDocs } from "firebase/firestore";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 import LazyImage from "./LazyImage";
