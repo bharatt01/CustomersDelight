@@ -1,0 +1,34 @@
+name: Build and Deploy React App
+
+on:
+  push:
+    branches:
+      - master   # 👈 change this if your main branch is "main"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checkout repo
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      # Setup Node.js
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      # Install and Build
+      - name: Install Dependencies and Build
+        run: |
+          npm install
+          npm run build
+
+      # Deploy build folder to "deploy" branch
+      - name: Deploy to GitHub Branch
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          branch: deploy   # 👈 branch Hostinger will use
+          folder: build    # 👈 only upload build folder
