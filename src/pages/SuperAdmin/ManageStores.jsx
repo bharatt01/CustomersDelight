@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 const ManageStores = () => {
   const [stores, setStores] = useState([]);
   const [editingStore, setEditingStore] = useState(null);
-  const [updatedData, setUpdatedData] = useState({ name: "", email: "", phone: "" });
+  const [updatedData, setUpdatedData] = useState({ name: "", email: "", phoneNumber: "" });
 
   // Fetch stores from Firestore
   const fetchStores = async () => {
@@ -43,9 +43,9 @@ const ManageStores = () => {
   const handleEdit = (store) => {
     setEditingStore(store);
     setUpdatedData({
-      name: store.name,
-      email: store.email,
-      phone: store.phone,
+      name: store.name || "",
+      email: store.email || "",
+      phoneNumber: store.phoneNumber || "",
     });
   };
 
@@ -91,7 +91,7 @@ const ManageStores = () => {
                 <tr key={store.id} className="hover:bg-gray-50">
                   <td className="py-2 px-4 border">{store.name}</td>
                   <td className="py-2 px-4 border">{store.email}</td>
-                  <td className="py-2 px-4 border">{store.phone}</td>
+                  <td className="py-2 px-4 border">{store.phoneNumber}</td>
                   <td className="py-2 px-4 border text-center">
                     {store.featured ? (
                       <span className="text-yellow-600 font-semibold">Yes</span>
@@ -157,8 +157,10 @@ const ManageStores = () => {
             <input
               type="text"
               placeholder="Phone"
-              value={updatedData.phone}
-              onChange={(e) => setUpdatedData({ ...updatedData, phone: e.target.value })}
+              value={updatedData.phoneNumber}
+              onChange={(e) =>
+                setUpdatedData({ ...updatedData, phoneNumber: e.target.value })
+              }
               className="border p-2 mb-4 w-full"
             />
             <div className="flex justify-end gap-2">

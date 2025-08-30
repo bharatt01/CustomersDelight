@@ -26,7 +26,7 @@ const AboutUs = () => {
   
   <div className="relative z-10 text-center px-4 text-white max-w-3xl mx-auto">
     <p className="text-xl sm:text-2xl md:text-3xl font-medium leading-relaxed drop-shadow-lg">
-      We help retail shops, restaurants and other businesses grow locally with the use of <br />
+      We help retail shops, restaurants and other businesses to grow locally with the use of <br />
       <span className="text-orange-400 font-bold">Technology, Tools, Ideas.</span>
     </p>
   </div>
