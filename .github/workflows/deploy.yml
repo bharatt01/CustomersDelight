@@ -32,4 +32,4 @@ jobs:
           password: ${{ secrets.FTP_PASSWORD }}
           port: ${{ secrets.FTP_PORT }}
           local-dir: build/     # <-- 🔥 important fix
-          server-dir: public_html
+          server-dir: public_html/
