@@ -24,7 +24,7 @@ const Navbar = () => {
 {/* Logo */}
 <Link to="/" className="md:ml-0 -ml-3 mr-3">
   <div className="text-xl font-bold text-orange-500 whitespace-nowrap">
-    Customer's Delight
+    Customer's DelightT
   </div>
 </Link>
 
