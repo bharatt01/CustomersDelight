@@ -6,13 +6,13 @@ import LazyImage from "./LazyImage";
 import "./Featured.css";
 
 const SkeletonCard = () => (
-  <div className="animate-pulse bg-white rounded-3xl shadow-2xl overflow-hidden flex flex-col">
-    <div className="w-full h-64 bg-gray-200"></div>
+  <div className="animate-pulse bg-white rounded-2xl shadow-xl overflow-hidden flex flex-col">
+    <div className="w-full h-72 bg-gray-200"></div>
     <div className="p-5 flex flex-col flex-grow">
       <div className="h-4 bg-gray-200 rounded w-1/3 mb-2"></div>
       <div className="h-5 bg-gray-300 rounded w-2/3 mb-2"></div>
       <div className="h-4 bg-gray-200 rounded w-1/4 mb-4"></div>
-      <div className="mt-auto h-10 bg-gray-300 rounded-xl"></div>
+      <div className="mt-auto h-10 bg-gray-300 rounded-lg"></div>
     </div>
   </div>
 );
@@ -94,14 +94,14 @@ const FeaturedProducts = ({ limit = 4 }) => {
       </div>
 
       {/* Product Cards */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 items-start">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
         {displayedProducts.map((product) => (
           <div
             key={product.id}
             className="bg-white rounded-2xl shadow-xl overflow-hidden transform hover:scale-105 hover:shadow-2xl transition-all duration-300 flex flex-col"
           >
-            {/* Product Image (natural height, no cropping) */}
-            <div className="w-full">
+            {/* Product Image */}
+            <div className="relative w-full h-72 overflow-hidden">
               <LazyImage
                 src={
                   product.images && product.images.length > 0
@@ -109,26 +109,17 @@ const FeaturedProducts = ({ limit = 4 }) => {
                     : "https://via.placeholder.com/600"
                 }
                 alt={product.name}
-                className="w-full h-auto object-full"
+                className="w-full h-full object-contain bg-gray-50"
                 onError={(e) =>
                   (e.target.src = "https://via.placeholder.com/600")
                 }
               />
-            </div>
 
-            {/* Product Info */}
-            <div className="p-5 flex flex-col flex-grow">
-              <p className="text-sm text-gray-500 mb-1">{product.storeName}</p>
-              <h3 className="text-lg font-bold text-gray-900 mb-1">
-                {product.name}
-              </h3>
-              <p className="text-gray-800 font-semibold mb-2">₹{product.price}</p>
-              <p className="text-gray-500 text-sm line-clamp-2 mb-4">
-                {product.description || "No description available."}
-              </p>
+              {/* Gradient Overlay */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
 
               {/* Badges */}
-              <div className="flex flex-wrap gap-2 mb-4">
+              <div className="absolute top-3 left-3 flex flex-col gap-2">
                 {product.featured && (
                   <span className="bg-orange-500 text-white px-3 py-1 text-xs font-bold rounded-full shadow-md">
                     Special Offer
@@ -145,6 +136,18 @@ const FeaturedProducts = ({ limit = 4 }) => {
                   </span>
                 )}
               </div>
+            </div>
+
+            {/* Product Info */}
+            <div className="p-5 flex flex-col flex-grow">
+              <p className="text-sm text-gray-500 mb-1">{product.storeName}</p>
+              <h3 className="text-lg font-bold text-gray-900 mb-1">
+                {product.name}
+              </h3>
+              <p className="text-gray-800 font-semibold mb-2">₹{product.price}</p>
+              <p className="text-gray-500 text-sm line-clamp-2 mb-4">
+                {product.description || "No description available."}
+              </p>
 
               {/* WhatsApp Buy Button */}
               {product.storePhone && (

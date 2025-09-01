@@ -198,67 +198,71 @@ const CategoryProducts = () => {
             No products to display.
           </p>
         ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 relative z-10">
-            {products.map((product) => (
-              <div
-                key={product.id}
-                className="bg-white border border-gray-200 rounded-2xl shadow-md overflow-hidden flex flex-col hover:-translate-y-2 hover:shadow-xl transition-all duration-300"
-              >
-                {/* Product Image */}
-                <div className="relative">
-                  <LazyImage
-                    src={product.images && product.images.length > 0 ? product.images[0] : "/placeholder.png"}
-                    alt={product.name}
-                    className="w-full h-64 object-contain p-4 bg-gray-50"
-                  />
-                  <span className="absolute top-3 left-3 bg-gradient-to-r from-orange-500 to-yellow-500 text-white text-xs font-semibold px-3 py-1 rounded-full shadow">
-                    New
-                  </span>
-                </div>
+         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+  {products.map((product) => (
+    <div
+      key={product.id}
+      className="bg-white rounded-2xl shadow-xl overflow-hidden transform hover:scale-105 hover:shadow-2xl transition-all duration-300 flex flex-col"
+    >
+      {/* Product Image */}
+      <div className="relative w-full h-72 overflow-hidden">
+        <LazyImage
+          src={
+            product.images && product.images.length > 0
+              ? product.images[0]
+              : "https://via.placeholder.com/600"
+          }
+          alt={product.name}
+          className="w-full h-full object-contain bg-white"
+          onError={(e) => (e.target.src = "https://via.placeholder.com/600")}
+        />
 
-                {/* Product Info */}
-                <div className="p-6 flex flex-col flex-grow">
-                  <h3 className="text-lg font-bold text-gray-800 mb-1 line-clamp-1">
-                    {product.name}
-                  </h3>
-                  <p className="text-orange-600 font-extrabold text-xl mb-2">
-                    ₹{product.price}
-                  </p>
-                  <p className="text-gray-600 text-sm mb-4 line-clamp-2">
-                    {product.description}
-                  </p>
+        {/* Gradient Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
 
-                  {/* WhatsApp Buy Button */}
-                  {product.storePhone && (
-                    <a
-                      href={`https://wa.me/91${product.storePhone}?text=Hi, I’m interested in ${product.name}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="mt-auto inline-flex items-center justify-center px-6 py-3 rounded-full 
-                                 bg-gradient-to-r from-orange-500 to-yellow-400 text-white font-semibold text-sm
-                                 shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300"
-                    >
-                      WhatsApp to Buy
-                    </a>
-                  )}
+        {/* Badges */}
+        <div className="absolute top-3 left-3 flex flex-col gap-2">
+          {product.featured && (
+            <span className="bg-orange-500 text-white px-3 py-1 text-xs font-bold rounded-full shadow-md">
+              Special Offer
+            </span>
+          )}
+          {product.deal && (
+            <span className="bg-emerald-500 text-white px-3 py-1 text-xs font-bold rounded-full shadow-md">
+              DEAL
+            </span>
+          )}
+          {product.offer && (
+            <span className="bg-cyan-500 text-white px-3 py-1 text-xs font-bold rounded-full shadow-md">
+              {product.offer}
+            </span>
+          )}
+        </div>
+      </div>
 
-                  {/* Rating Stars */}
-                  <div className="flex items-center mt-3">
-                    {[...Array(5)].map((_, idx) => (
-                      <svg
-                        key={idx}
-                        className="w-4 h-4 text-yellow-400"
-                        fill="currentColor"
-                        viewBox="0 0 20 20"
-                      >
-                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.947a1 1 0 00.95.69h4.145c.969 0 1.371 1.24.588 1.81l-3.36 2.44a1 1 0 00-.364 1.118l1.287 3.947c.3.921-.755 1.688-1.54 1.118l-3.36-2.44a1 1 0 00-1.176 0l-3.36 2.44c-.784.57-1.838-.197-1.539-1.118l1.287-3.947a1 1 0 00-.364-1.118l-3.36-2.44c-.784-.57-.38-1.81.588-1.81h4.145a1 1 0 00.95-.69l1.286-3.947z"/>
-                      </svg>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
+      {/* Product Info */}
+      <div className="p-5 flex flex-col flex-grow">
+        <h3 className="text-lg font-bold text-gray-900 mb-1">{product.name}</h3>
+        <p className="text-gray-800 font-semibold mb-2">₹{product.price}</p>
+        <p className="text-gray-500 text-sm line-clamp-2 mb-4">
+          {product.description || "No description available."}
+        </p>
+
+        {/* WhatsApp Buy Button */}
+        {product.storePhone && (
+          <a
+            href={`https://wa.me/91${product.storePhone}?text=Hi, I’m interested in ${product.name}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-auto bg-orange-500 hover:bg-orange-600 text-white py-2 px-4 rounded-lg font-bold shadow-md hover:shadow-lg transition duration-300 text-center"
+          >
+            Buy Now
+          </a>
+        )}
+      </div>
+    </div>
+  ))}
+</div>
         )}
       </div>
 
